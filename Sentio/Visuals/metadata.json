@@ -1,0 +1,25 @@
+[
+    {
+      "name": "Alerts Over Time By Severity",
+      "description": "This visual shows the number of alerts over time split by severity - useful to identify trends in alert severity over time.. Informational alerts are excluded from this graph.",
+      "tags": ["alerts", "severity"],
+      "export": {
+            "type": "time_series_echarts",
+            "config": {
+                "title": "Alerts Over Time By Severity",
+                "index": "alerts-*",
+                "query": "NOT severity:info",
+                "field": "",
+                "fields": [],
+                "split": "severity",
+                "timeRange": {
+                    "from": "now-7d",
+                    "to": "now"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-04-01T13:17:17.676Z",
+            "updatedAt": "2026-04-01T13:18:11.412Z"
+        }
+    }
+  ]
