@@ -1,0 +1,191 @@
+[
+  {
+    "name": "O365 Enviornment Dashboard",
+    "description": "An overview of your O365 environment including critical visuals to determine abnormalities in your environment",
+    "reference": "https://www.cybersift.io",
+    "tags": ["o365"],
+    "export": {
+{
+  "id": 41,
+  "title": "Office 365 Dashboard",
+  "description": "An overview of your office 365 environment",
+  "panels": [
+    {
+      "id": "1775140513160-iqwj0kobx",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "O365 - User Login Timeline",
+        "index": "o365-*",
+        "query": "event.action:UserLoggedIn",
+        "field": "",
+        "fields": [],
+        "timeRange": {
+          "from": "now/w",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 0,
+      "y": 0,
+      "w": 12,
+      "h": 6
+    },
+    {
+      "id": "1775140525632-genqwphb2",
+      "type": "pie",
+      "config": {
+        "title": "O365 - User Login vs User Failure Login",
+        "index": "o365-*",
+        "query": "event.action:UserLoggedIn OR event.action:UserLoginFailed",
+        "field": "event.action",
+        "fields": [],
+        "size": 10,
+        "timeRange": {
+          "from": "now/w",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 0,
+      "y": 6,
+      "w": 5,
+      "h": 9
+    },
+    {
+      "id": "1775140547250-42luz5r2m",
+      "type": "data_table",
+      "config": {
+        "title": "O365 - Alerts by Title",
+        "index": "alerts-*",
+        "query": "original.fields.csIndex:o365",
+        "field": "",
+        "fields": [
+          "title"
+        ],
+        "timeRange": {
+          "from": "now/M",
+          "to": "now/M"
+        },
+        "globalQuery": ""
+      },
+      "x": 5,
+      "y": 6,
+      "w": 7,
+      "h": 7
+    },
+    {
+      "id": "1775140564748-m00ahiobk",
+      "type": "data_table",
+      "config": {
+        "title": "O365 - User Agents",
+        "index": "o365-*",
+        "query": "",
+        "field": "",
+        "fields": [
+          "user_agent.original"
+        ],
+        "timeRange": {
+          "from": "now-15m",
+          "to": "now"
+        },
+        "globalQuery": "",
+        "size": 50
+      },
+      "x": 0,
+      "y": 15,
+      "w": 5,
+      "h": 10
+    },
+    {
+      "id": "1775140583037-m4kk3baka",
+      "type": "pie",
+      "config": {
+        "title": "O365 - Hosting Types",
+        "index": "o365-*",
+        "query": "",
+        "field": "cybersift.threat_info.usageType",
+        "fields": [],
+        "timeRange": {
+          "from": "now-15m",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 5,
+      "y": 19,
+      "w": 7,
+      "h": 6
+    },
+    {
+      "id": "1775141054299-qqt42o6b8",
+      "type": "data_table",
+      "config": {
+        "title": "O365 - Successful Logins from ASNs",
+        "index": "o365-*",
+        "query": "event.action:UserLoggedIn",
+        "field": "",
+        "fields": [
+          "source.as.organization.name"
+        ],
+        "timeRange": {
+          "from": "now-7d",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 5,
+      "y": 13,
+      "w": 3,
+      "h": 6
+    },
+    {
+      "id": "1775141061081-7b6gbr32q",
+      "type": "data_table",
+      "config": {
+        "title": "O365 - Failure Logins from ASNs",
+        "index": "o365-*",
+        "query": "event.action:UserLoginFailed",
+        "field": "",
+        "fields": [
+          "source.as.organization.name"
+        ],
+        "timeRange": {
+          "from": "now-15m",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 8,
+      "y": 13,
+      "w": 4,
+      "h": 6
+    },
+    {
+      "id": "1775141615433-y1cfxc06d",
+      "type": "vertical_bar",
+      "config": {
+        "title": "O365 - Activities from top countries",
+        "index": "o365-*",
+        "query": "",
+        "field": "source.geo.country_iso_code",
+        "fields": [],
+        "size": 5,
+        "split": "o365.audit.Operation",
+        "timeRange": {
+          "from": "now-30d",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 0,
+      "y": 25,
+      "w": 12,
+      "h": 8
+    }
+  ],
+  "layout": {},
+  "createdAt": "2026-04-02T14:35:06.523Z",
+  "updatedAt": "2026-04-02T14:53:54.583Z"
+}    }        
+  }
+]
