@@ -25,7 +25,7 @@
       {
     "name": "Top blocked IPs",
     "description": "This visualization shows the top destination IP addresses that internal hosts attempted to connect to but were blocked by the firewall, ranked by the number of blocked attempts. It helps identify potentially risky or unauthorized outbound connections, such as communication with known malicious hosts, command-and-control servers, or unintended external services.",
-    "tags": ["blocked IPs", "external connections"],
+    "tags": ["blocked IPs", "external connections", "firewall"],
     "export": {
   "id": 8,
   "type": "vertical_bar",
