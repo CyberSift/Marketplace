@@ -5,7 +5,6 @@
     "reference": "https://www.cybersift.io",
     "tags": ["o365"],
     "export": {
-{
   "id": 41,
   "title": "Office 365 Dashboard",
   "description": "An overview of your office 365 environment",
@@ -186,6 +185,6 @@
   "layout": {},
   "createdAt": "2026-04-02T14:35:06.523Z",
   "updatedAt": "2026-04-02T14:53:54.583Z"
-}    }        
+}           
   }
 ]
