@@ -21,5 +21,28 @@
             "createdAt": "2026-04-01T13:17:17.676Z",
             "updatedAt": "2026-04-01T13:18:11.412Z"
         }
-    }
+    },
+      {
+    "name": "Top blocked IPs",
+    "description": "This visualization shows the top destination IP addresses that internal hosts attempted to connect to but were blocked by the firewall, ranked by the number of blocked attempts. It helps identify potentially risky or unauthorized outbound connections, such as communication with known malicious hosts, command-and-control servers, or unintended external services.",
+    "tags": ["blocked IPs", "external connections", "firewall"],
+    "export": {
+  "id": 8,
+  "type": "vertical_bar",
+  "config": {
+    "title": "Top blocked IPs",
+    "index": "filebeat-*",
+    "query": "isInternalFlow:false AND action:Drop",
+    "field": "DestinationAddress",
+    "fields": [],
+    "timeRange": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "globalQuery": ""
+  },
+  "createdAt": "2026-04-06T12:54:38.375Z",
+  "updatedAt": "2026-04-06T12:55:09.691Z"
+          }
+  }
   ]
