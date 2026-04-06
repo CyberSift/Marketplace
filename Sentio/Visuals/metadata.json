@@ -44,5 +44,30 @@
   "createdAt": "2026-04-06T12:54:38.375Z",
   "updatedAt": "2026-04-06T12:55:09.691Z"
           }
+  },
+  {
+    "name": "Top allowed traffic by port",
+    "description": "This visualization shows the most frequently used network ports for allowed traffic, ranked by the number of connections. It helps identify common services and communication patterns within the environment, making it easier to spot unusual or unexpected port usage that could indicate misconfigurations or potential security risks.",
+    "tags": ["firewall", "allowed traffic", "port"],
+    "export": {
+  "id": 9,
+  "type": "vertical_bar",
+  "config": {
+    "title": "Top allowed traffic by port",
+    "index": "filebeat-*",
+    "query": "action:Accept",
+    "field": "DestinationPort",
+    "fields": [],
+    "split": "DestinationPort",
+    "size": 24,
+    "timeRange": {
+      "from": "now/w",
+      "to": "now/w"
+    },
+    "globalQuery": ""
+  },
+  "createdAt": "2026-04-06T13:26:47.800Z",
+  "updatedAt": "2026-04-06T13:26:55.782Z"
+         }        
   }
   ]
