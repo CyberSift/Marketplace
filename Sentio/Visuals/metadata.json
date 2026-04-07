@@ -143,5 +143,34 @@
             "createdAt": "2026-04-06T22:09:08.235Z",
             "updatedAt": "2026-04-06T22:43:17.618Z"
         }
-    }
+    },
+    {
+  "name": "External connections on Sensitive ports",
+  "description": "External connections on Sensitive ports 22, 23, 3389, 21, 445, 2049, 1433, 3306, 5432, 27017, 53, 161, 162 for cybersift.threat_info.knownThreat is true",
+  "reference": "https://doi.org/10.6028/nist.sp.800-41",
+  "tags": [
+    "Sensitive ports",
+    "External connections",
+    "cybersift.threat_info"
+  ],
+  "export": {
+    "id": 11,
+    "type": "pie",
+    "config": {
+      "title": "External connections on Sensitive ports",
+      "index": "filebeat-*",
+      "query": "isDestinationInternal:false AND (DestinationPort:22 OR DestinationPort:23 OR DestinationPort:3389 OR DestinationPort:21 OR DestinationPort:445 OR DestinationPort:2049 OR DestinationPort:53 OR DestinationPort:161 OR DestinationPort:162 OR DestinationPort:1433 OR DestinationPort:3306 OR DestinationPort:5432 OR DestinationPort:27017) AND cybersift.threat_info.knownThreat:true",
+      "field": "DestinationAddress",
+      "fields": [],
+      "size": 25,
+      "timeRange": {
+        "from": "now-24h",
+        "to": "now"
+      },
+      "globalQuery": ""
+    },
+    "createdAt": "2026-04-07T04:50:19.327Z",
+    "updatedAt": "2026-04-07T05:08:30.459Z"
+  }
+}
 ]
