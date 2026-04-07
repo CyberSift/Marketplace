@@ -143,5 +143,28 @@
             "createdAt": "2026-04-06T22:09:08.235Z",
             "updatedAt": "2026-04-06T22:43:17.618Z"
         }
-    }
+    },
+    {
+    "name": "New accounts created",
+    "description": "This visualization shows the number of newly created user accounts over time. It helps track account provisioning activity and detect unusual spikes that may indicate unauthorized account creation, privilege misuse, or potential persistence mechanisms used by attackers.",
+    "tags": ["windows", "new account"],
+    "export": {
+  "id": 18,
+  "type": "time_series_echarts",
+  "config": {
+    "title": "New accounts created",
+    "index": "winlogbeat-*",
+    "query": "event.code:4720",
+    "field": "",
+    "fields": [],
+    "timeRange": {
+      "from": "now/M",
+      "to": "now"
+    },
+    "globalQuery": ""
+  },
+  "createdAt": "2026-04-07T12:26:03.218Z",
+  "updatedAt": "2026-04-07T12:26:11.518Z"
+    }        
+  }
 ]
