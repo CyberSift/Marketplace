@@ -39,7 +39,7 @@
             "config": {
                 "title": "Top blocked IPs",
                 "index": "filebeat-*",
-                "query": "isInternalFlow:false AND action:Drop",
+                "query": "isInternalFlow:false AND action:(Drop OR denied)",
                 "field": "DestinationAddress",
                 "fields": [],
                 "timeRange": {
@@ -66,7 +66,7 @@
             "config": {
                 "title": "Top allowed traffic by port",
                 "index": "filebeat-*",
-                "query": "action:Accept",
+                "query": "action:(Accept OR permitted)",
                 "field": "DestinationPort",
                 "fields": [],
                 "split": "DestinationPort",
