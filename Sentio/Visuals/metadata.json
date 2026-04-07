@@ -80,5 +80,34 @@
             "createdAt": "2026-04-06T13:26:47.800Z",
             "updatedAt": "2026-04-06T13:26:55.782Z"
         }
+    },
+    {
+        "name": "Comprehensive Port Usage Check",
+        "description": "Targets are: Exfiltration, Config issues, Port Abnormalities, etc... \n Tip:Exfiltration can happen on any open port, thus the DNS 53 was the most common. \n Additionally, do use the checkbox: Show Previous Period",
+        "tags": [
+            "FireWall",
+            "Ports",
+            "Behavior based"
+        ],
+        "export": {
+            "id": 18,
+            "type": "time_series_echarts",
+            "config": {
+                "title": "Comprehensive Port Usage Check",
+                "index": "filebeat-*",
+                "query": "",
+                "field": "",
+                "fields": [],
+                "split": "DestinationPort",
+                "area": false,
+                "timeRange": {
+                    "from": "now-7d",
+                    "to": "now"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-04-06T21:09:26.028Z",
+            "updatedAt": "2026-04-06T21:10:40.186Z"
+        }
     }
 ]
