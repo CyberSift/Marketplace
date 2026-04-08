@@ -145,6 +145,27 @@
         }
     },
     {
+    "name": "New accounts created",
+    "description": "This visualization shows the number of newly created user accounts over time. It helps track account provisioning activity and detect unusual spikes that may indicate unauthorized account creation, privilege misuse, or potential persistence mechanisms used by attackers.",
+    "tags": ["windows", "new account"],
+    "export": {
+  "id": 18,
+  "type": "time_series_echarts",
+  "config": {
+    "title": "New accounts created",
+    "index": "winlogbeat-*",
+    "query": "event.code:4720",
+    "field": "",
+    "fields": [],
+    "timeRange": {
+      "from": "now/M",
+      "to": "now"
+    },
+    "globalQuery": ""
+  },
+  "createdAt": "2026-04-07T12:26:03.218Z",
+  "updatedAt": "2026-04-07T12:26:11.518Z"
+    }        
     "name": "Failed vs successful logins",
     "description": "This visualization compares the number of failed and successful login attempts over time. It helps identify authentication patterns and detect potential brute-force attacks, account misuse, or misconfigurations by highlighting spikes in failed logins or unusual changes in login behavior.",
     "tags": ["failed logins", "successful logins", "windows"],
