@@ -1,5 +1,6 @@
 [
     {
+    {
         "name": "Alerts Over Time By Severity",
         "description": "This visual shows the number of alerts over time split by severity - useful to identify trends in alert severity over time.. Informational alerts are excluded from this graph.",
         "tags": [
