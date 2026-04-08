@@ -145,32 +145,165 @@
         }
     },
     {
-  "name": "External connections on Sensitive ports",
-  "description": "External connections on Sensitive ports 22, 23, 3389, 21, 445, 2049, 1433, 3306, 5432, 27017, 53, 161, 162 for cybersift.threat_info.knownThreat is true",
-  "reference": "https://doi.org/10.6028/nist.sp.800-41",
-  "tags": [
-    "Sensitive ports",
-    "External connections",
-    "cybersift.threat_info"
-  ],
-  "export": {
-    "id": 11,
-    "type": "pie",
-    "config": {
-      "title": "External connections on Sensitive ports",
-      "index": "filebeat-*",
-      "query": "isDestinationInternal:false AND (DestinationPort:22 OR DestinationPort:23 OR DestinationPort:3389 OR DestinationPort:21 OR DestinationPort:445 OR DestinationPort:2049 OR DestinationPort:53 OR DestinationPort:161 OR DestinationPort:162 OR DestinationPort:1433 OR DestinationPort:3306 OR DestinationPort:5432 OR DestinationPort:27017) AND cybersift.threat_info.knownThreat:true",
-      "field": "DestinationAddress",
-      "fields": [],
-      "size": 25,
-      "timeRange": {
-        "from": "now-24h",
-        "to": "now"
+    "name": "External connections on Sensitive ports",
+    "description": "External connections on Sensitive ports 22, 23, 3389, 21, 445, 2049, 1433, 3306, 5432, 27017, 53, 161, 162 for cybersift.threat_info.knownThreat is true",
+    "reference": "https://doi.org/10.6028/nist.sp.800-41",
+    "tags": [
+      "Sensitive ports",
+      "External connections",
+      "cybersift.threat_info"
+    ],
+    "export": {
+      "id": 11,
+      "type": "pie",
+      "config": {
+        "title": "External connections on Sensitive ports",
+        "index": "filebeat-*",
+        "query": "isDestinationInternal:false AND DestinationPort:(21 OR 22 OR 23 OR 445 OR 53 OR 161 OR 162 OR 1433 OR 2049 OR 3306 OR 3389 OR 5432 OR 27017) AND cybersift.threat_info.knownThreat:true",
+        "field": "DestinationAddress",
+        "fields": [],
+        "size": 25,
+        "timeRange": {
+          "from": "now-24h",
+          "to": "now"
+        },
+        "globalQuery": ""
       },
-      "globalQuery": ""
+      "createdAt": "2026-04-07T04:50:19.327Z",
+      "updatedAt": "2026-04-07T05:08:30.459Z"
+    }
+  },
+  {
+        "name": "New accounts created",
+        "description": "This visualization shows the number of newly created user accounts over time. It helps track account provisioning activity and detect unusual spikes that may indicate unauthorized account creation, privilege misuse, or potential persistence mechanisms used by attackers.",
+        "tags": [
+            "windows",
+            "new account"
+        ],
+        "export": {
+            "id": 18,
+            "type": "time_series_echarts",
+            "config": {
+                "title": "New accounts created",
+                "index": "winlogbeat-*",
+                "query": "event.code:4720",
+                "field": "",
+                "fields": [],
+                "timeRange": {
+                    "from": "now/M",
+                    "to": "now"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-04-07T12:26:03.218Z",
+            "updatedAt": "2026-04-07T12:26:11.518Z"
+        }
     },
-    "createdAt": "2026-04-07T04:50:19.327Z",
-    "updatedAt": "2026-04-07T05:08:30.459Z"
+    {
+        "name": "Failed vs successful logins",
+        "description": "This visualization compares the number of failed and successful login attempts over time. It helps identify authentication patterns and detect potential brute-force attacks, account misuse, or misconfigurations by highlighting spikes in failed logins or unusual changes in login behavior.",
+        "tags": [
+            "failed logins",
+            "successful logins",
+            "windows"
+        ],
+        "export": {
+            "id": 16,
+            "type": "vertical_bar",
+            "config": {
+                "title": "Failed vs successful logins",
+                "index": "winlogbeat-*",
+                "query": "event.code:4624 OR event.code:4625",
+                "field": "event.code",
+                "fields": [],
+                "timeRange": {
+                    "from": "now/w",
+                    "to": "now/w"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-04-07T12:24:04.368Z",
+            "updatedAt": "2026-04-07T12:24:10.363Z"
+        }
+    },
+    {
+        "name": "Brute force attack on O365 accounts",
+        "description": "Failed Brute force attack on Office 365 accounts ",
+        "reference": "",
+        "tags": [
+            "Remote Logins",
+            "Failed logins",
+            "Office logins "
+        ],
+        "export": {
+            "id": 17,
+            "type": "pie",
+            "config": {
+                "title": "Brute force attack on Office 365 accounts",
+                "index": "o365-*",
+                "query": "event.action:UserLoginFailed OR event.action:UserLoggedIn and NOT(cybersift.threat_info.knownThreat:false)",
+                "field": "user.email",
+                "fields": [],
+                "size": 25,
+                "timeRange": {
+                    "from": "now-7d",
+                    "to": "now"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-04-07T12:23:38.821Z",
+            "updatedAt": "2026-04-07T12:24:52.154Z"
+        }
+    },
+    {
+        "name": "Remote Logins",
+        "description": "Remote Logins for windows ",
+        "reference": "",
+        "tags": [
+            "Remote Logins",
+            "External connections"
+        ],
+        "export": {
+            "id": 14,
+            "type": "pie",
+            "config": {
+                "title": "Remote Logins ",
+                "index": "winlogbeat-*",
+                "query": "event.code:4624 AND (NOT(winlog.event_data.IpAddress:10*) OR NOT(winlog.event_data.IpAddress:127.0.0.1)OR NOT(winlog.event_data.IpAddress:*1) )",
+                "field": "winlog.cybersift.LoginInfo.SourceAddress",
+                "fields": [],
+                "size": 25,
+                "timeRange": {
+                    "from": "now-30d",
+                    "to": "now"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-04-07T11:37:38.881Z",
+            "updatedAt": "2026-04-07T11:42:49.758Z"
+        }
+    },
+    {
+    "name": "Account lockouts",
+    "description": "This visualization shows the number of user account lockouts over time. It helps identify potential brute-force or password spraying attacks, as well as user-related issues such as repeated failed logins, by highlighting spikes or unusual patterns in account lockout activity.",
+    "tags": ["windows", "account lockout"],
+    "export": {
+  "id": 19,
+  "type": "time_series_echarts",
+  "config": {
+    "title": "Account lockouts",
+    "index": "winlogbeat-*",
+    "query": "event.code:4740",
+    "field": "",
+    "fields": [],
+    "timeRange": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "globalQuery": ""
+  },
+  "createdAt": "2026-04-07T12:27:18.470Z",
+  "updatedAt": "2026-04-07T12:27:33.388Z"
+     }        
   }
-}
 ]

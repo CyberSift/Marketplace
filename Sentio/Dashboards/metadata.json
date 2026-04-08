@@ -3,188 +3,411 @@
     "name": "O365 Enviornment Dashboard",
     "description": "An overview of your O365 environment including critical visuals to determine abnormalities in your environment",
     "reference": "https://www.cybersift.io",
-    "tags": ["o365"],
+    "tags": [
+      "o365"
+    ],
     "export": {
-  "id": 41,
-  "title": "Office 365 Dashboard",
-  "description": "An overview of your office 365 environment",
-  "panels": [
-    {
-      "id": "1775140513160-iqwj0kobx",
-      "type": "time_series_echarts",
-      "config": {
-        "title": "O365 - User Login Timeline",
-        "index": "o365-*",
-        "query": "event.action:UserLoggedIn",
-        "field": "",
-        "fields": [],
-        "timeRange": {
-          "from": "now/w",
-          "to": "now"
+      "id": 41,
+      "title": "Office 365 Dashboard",
+      "description": "An overview of your office 365 environment",
+      "panels": [
+        {
+          "id": "1775140513160-iqwj0kobx",
+          "type": "time_series_echarts",
+          "config": {
+            "title": "O365 - User Login Timeline",
+            "index": "o365-*",
+            "query": "event.action:UserLoggedIn",
+            "field": "",
+            "fields": [],
+            "timeRange": {
+              "from": "now/w",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "x": 0,
+          "y": 0,
+          "w": 12,
+          "h": 6
         },
-        "globalQuery": ""
-      },
-      "x": 0,
-      "y": 0,
-      "w": 12,
-      "h": 6
-    },
-    {
-      "id": "1775140525632-genqwphb2",
-      "type": "pie",
-      "config": {
-        "title": "O365 - User Login vs User Failure Login",
-        "index": "o365-*",
-        "query": "event.action:UserLoggedIn OR event.action:UserLoginFailed",
-        "field": "event.action",
-        "fields": [],
-        "size": 10,
-        "timeRange": {
-          "from": "now/w",
-          "to": "now"
+        {
+          "id": "1775140525632-genqwphb2",
+          "type": "pie",
+          "config": {
+            "title": "O365 - User Login vs User Failure Login",
+            "index": "o365-*",
+            "query": "event.action:UserLoggedIn OR event.action:UserLoginFailed",
+            "field": "event.action",
+            "fields": [],
+            "size": 10,
+            "timeRange": {
+              "from": "now/w",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "x": 0,
+          "y": 6,
+          "w": 5,
+          "h": 9
         },
-        "globalQuery": ""
-      },
-      "x": 0,
-      "y": 6,
-      "w": 5,
-      "h": 9
-    },
-    {
-      "id": "1775140547250-42luz5r2m",
-      "type": "data_table",
-      "config": {
-        "title": "O365 - Alerts by Title",
-        "index": "alerts-*",
-        "query": "original.fields.csIndex:o365",
-        "field": "",
-        "fields": [
-          "title"
-        ],
-        "timeRange": {
-          "from": "now/M",
-          "to": "now/M"
+        {
+          "id": "1775140547250-42luz5r2m",
+          "type": "data_table",
+          "config": {
+            "title": "O365 - Alerts by Title",
+            "index": "alerts-*",
+            "query": "original.fields.csIndex:o365",
+            "field": "",
+            "fields": [
+              "title"
+            ],
+            "timeRange": {
+              "from": "now/M",
+              "to": "now/M"
+            },
+            "globalQuery": ""
+          },
+          "x": 5,
+          "y": 6,
+          "w": 7,
+          "h": 7
         },
-        "globalQuery": ""
-      },
-      "x": 5,
-      "y": 6,
-      "w": 7,
-      "h": 7
-    },
-    {
-      "id": "1775140564748-m00ahiobk",
-      "type": "data_table",
-      "config": {
-        "title": "O365 - User Agents",
-        "index": "o365-*",
-        "query": "",
-        "field": "",
-        "fields": [
-          "user_agent.original"
-        ],
-        "timeRange": {
-          "from": "now-15m",
-          "to": "now"
+        {
+          "id": "1775140564748-m00ahiobk",
+          "type": "data_table",
+          "config": {
+            "title": "O365 - User Agents",
+            "index": "o365-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "user_agent.original"
+            ],
+            "timeRange": {
+              "from": "now-15m",
+              "to": "now"
+            },
+            "globalQuery": "",
+            "size": 50
+          },
+          "x": 0,
+          "y": 15,
+          "w": 5,
+          "h": 10
         },
-        "globalQuery": "",
-        "size": 50
-      },
-      "x": 0,
-      "y": 15,
-      "w": 5,
-      "h": 10
-    },
-    {
-      "id": "1775140583037-m4kk3baka",
-      "type": "pie",
-      "config": {
-        "title": "O365 - Hosting Types",
-        "index": "o365-*",
-        "query": "",
-        "field": "cybersift.threat_info.usageType",
-        "fields": [],
-        "timeRange": {
-          "from": "now-15m",
-          "to": "now"
+        {
+          "id": "1775140583037-m4kk3baka",
+          "type": "pie",
+          "config": {
+            "title": "O365 - Hosting Types",
+            "index": "o365-*",
+            "query": "",
+            "field": "cybersift.threat_info.usageType",
+            "fields": [],
+            "timeRange": {
+              "from": "now-15m",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "x": 5,
+          "y": 19,
+          "w": 7,
+          "h": 6
         },
-        "globalQuery": ""
-      },
-      "x": 5,
-      "y": 19,
-      "w": 7,
-      "h": 6
-    },
-    {
-      "id": "1775141054299-qqt42o6b8",
-      "type": "data_table",
-      "config": {
-        "title": "O365 - Successful Logins from ASNs",
-        "index": "o365-*",
-        "query": "event.action:UserLoggedIn",
-        "field": "",
-        "fields": [
-          "source.as.organization.name"
-        ],
-        "timeRange": {
-          "from": "now-7d",
-          "to": "now"
+        {
+          "id": "1775141054299-qqt42o6b8",
+          "type": "data_table",
+          "config": {
+            "title": "O365 - Successful Logins from ASNs",
+            "index": "o365-*",
+            "query": "event.action:UserLoggedIn",
+            "field": "",
+            "fields": [
+              "source.as.organization.name"
+            ],
+            "timeRange": {
+              "from": "now-7d",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "x": 5,
+          "y": 13,
+          "w": 3,
+          "h": 6
         },
-        "globalQuery": ""
-      },
-      "x": 5,
-      "y": 13,
-      "w": 3,
-      "h": 6
-    },
-    {
-      "id": "1775141061081-7b6gbr32q",
-      "type": "data_table",
-      "config": {
-        "title": "O365 - Failure Logins from ASNs",
-        "index": "o365-*",
-        "query": "event.action:UserLoginFailed",
-        "field": "",
-        "fields": [
-          "source.as.organization.name"
-        ],
-        "timeRange": {
-          "from": "now-15m",
-          "to": "now"
+        {
+          "id": "1775141061081-7b6gbr32q",
+          "type": "data_table",
+          "config": {
+            "title": "O365 - Failure Logins from ASNs",
+            "index": "o365-*",
+            "query": "event.action:UserLoginFailed",
+            "field": "",
+            "fields": [
+              "source.as.organization.name"
+            ],
+            "timeRange": {
+              "from": "now-15m",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "x": 8,
+          "y": 13,
+          "w": 4,
+          "h": 6
         },
-        "globalQuery": ""
-      },
-      "x": 8,
-      "y": 13,
-      "w": 4,
-      "h": 6
-    },
-    {
-      "id": "1775141615433-y1cfxc06d",
-      "type": "vertical_bar",
-      "config": {
-        "title": "O365 - Activities from top countries",
-        "index": "o365-*",
-        "query": "",
-        "field": "source.geo.country_iso_code",
-        "fields": [],
-        "size": 5,
-        "split": "o365.audit.Operation",
-        "timeRange": {
-          "from": "now-30d",
-          "to": "now"
-        },
-        "globalQuery": ""
-      },
-      "x": 0,
-      "y": 25,
-      "w": 12,
-      "h": 8
+        {
+          "id": "1775141615433-y1cfxc06d",
+          "type": "vertical_bar",
+          "config": {
+            "title": "O365 - Activities from top countries",
+            "index": "o365-*",
+            "query": "",
+            "field": "source.geo.country_iso_code",
+            "fields": [],
+            "size": 5,
+            "split": "o365.audit.Operation",
+            "timeRange": {
+              "from": "now-30d",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "x": 0,
+          "y": 25,
+          "w": 12,
+          "h": 8
+        }
+      ],
+      "layout": {},
+      "createdAt": "2026-04-02T14:35:06.523Z",
+      "updatedAt": "2026-04-02T14:53:54.583Z"
     }
-  ],
-  "layout": {},
-  "createdAt": "2026-04-02T14:35:06.523Z",
-  "updatedAt": "2026-04-02T14:53:54.583Z"
-}           
+  },
+  {
+    "name": "User/IP/Host investigation",
+    "description": "An overview of actions and alerts of particular asset",
+    "reference": "https://www.cybersift.io",
+    "tags": [
+      "firewall",
+      "windows",
+      "Linux"
+    ],
+    "export": {
+      "id": 5,
+      "title": "User/IP/Host Investigation",
+      "description": "",
+      "panels": [
+        {
+          "id": "1775483129898-bx5qox5k4",
+          "type": "data_table",
+          "config": {
+            "title": "Windows hosts per user",
+            "index": "wb-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "agent.hostname"
+            ]
+          },
+          "x": 0,
+          "y": 0,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483189803-rzns1s87r",
+          "type": "data_table",
+          "config": {
+            "title": "Linux hosts per user",
+            "index": "ab-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "agent.hostname"
+            ]
+          },
+          "x": 6,
+          "y": 0,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483239242-5uy8ar0pz",
+          "type": "data_table",
+          "config": {
+            "title": "Target usernames per IP (computer)",
+            "index": "wb-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "winlog.event_data.TargetUserName"
+            ]
+          },
+          "x": 0,
+          "y": 4,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483284165-oqjosc5b8",
+          "type": "data_table",
+          "config": {
+            "title": "Login source IPs",
+            "index": "wb-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "winlog.cybersift.LoginInfo.SourceAddress"
+            ]
+          },
+          "x": 6,
+          "y": 4,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483357093-xcwwlio10",
+          "type": "data_table",
+          "config": {
+            "title": "Target usernames per IP (user)",
+            "index": "wb-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "winlog.event_data.TargetUserName"
+            ]
+          },
+          "x": 0,
+          "y": 8,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483522811-bubh8a6nz",
+          "type": "time_series_echarts",
+          "config": {
+            "title": "Pass/accept trafic on(excluding 443,80,53)",
+            "index": "syslog-fw-*",
+            "query": "NOT DestinationPort:(443 OR 53 OR 80) AND action:(accept OR pass)",
+            "field": "",
+            "fields": [],
+            "split": "DestinationAddress"
+          },
+          "x": 6,
+          "y": 8,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483592469-jabdncwdi",
+          "type": "time_series_echarts",
+          "config": {
+            "title": "Destination ports",
+            "index": "syslog-fw-*",
+            "query": "",
+            "field": "",
+            "fields": [],
+            "split": "DestinationPort"
+          },
+          "x": 0,
+          "y": 12,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483790131-7xia9cyt5",
+          "type": "time_series_echarts",
+          "config": {
+            "title": "denied connections",
+            "index": "syslog-fw-*",
+            "query": "NOT (action:pass OR action:accept)",
+            "field": "",
+            "fields": [],
+            "split": "DestinationAddress"
+          },
+          "x": 6,
+          "y": 12,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483859861-clcwtj1hq",
+          "type": "data_table",
+          "config": {
+            "title": "alerts low",
+            "index": "alerts-*",
+            "query": "severity:low",
+            "field": "",
+            "fields": [
+              "title"
+            ]
+          },
+          "x": 0,
+          "y": 16,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483890391-6en1g89jp",
+          "type": "data_table",
+          "config": {
+            "title": "alerts medium",
+            "index": "alerts-*",
+            "query": "severity:medium",
+            "field": "",
+            "fields": [
+              "title"
+            ]
+          },
+          "x": 6,
+          "y": 16,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775483955330-wefgqyrhd",
+          "type": "data_table",
+          "config": {
+            "title": "alerts high",
+            "index": "alerts-*",
+            "query": "severity:high",
+            "field": "",
+            "fields": [
+              "title"
+            ]
+          },
+          "x": 0,
+          "y": 20,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "id": "1775484074085-smrzk5622",
+          "type": "data_table",
+          "config": {
+            "title": "alerts critical",
+            "index": "alerts-*",
+            "query": "severity:critical",
+            "field": "",
+            "fields": [
+              "title"
+            ]
+          },
+          "x": 0,
+          "y": 24,
+          "w": 6,
+          "h": 4
+        }
+      ],
+      "layout": {},
+      "createdAt": "2026-04-06T13:44:50.313Z",
+      "updatedAt": "2026-04-06T14:01:31.176Z"
+    }
   }
 ]
