@@ -186,5 +186,47 @@
   "createdAt": "2026-04-02T14:35:06.523Z",
   "updatedAt": "2026-04-02T14:53:54.583Z"
 }           
+  },
+{
+    "name": "User/IP/Host investigation",
+    "description": "An overview of actions and alerts of particular asset",
+    "reference": "https://www.cybersift.io",
+    "tags": [
+      "firewall",
+      "windows",
+      "Linux"
+    ],
+    "export": {
+
+  "id": 5,
+  "title": "asset lookup",
+  "description": "",
+  "panels": [
+    {
+      "id": "1775483129898-bx5qox5k4",
+      "type": "data_table",
+      "config": {
+        "title": "Windows hosts per user",
+        "index": "wb-*",
+        "query": "",
+        "field": "",
+        "fields": [
+          "agent.hostname"
+        ]
+      },
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 4
+    },
+    {
+      "id": "1775483189803-rzns1s87r",
+      "type": "data_table",
+@@ -408,7 +214,6 @@
+  "layout": {},
+  "createdAt": "2026-04-06T13:44:50.313Z",
+  "updatedAt": "2026-04-06T14:01:31.176Z"
+
+    }
   }
 ]
