@@ -166,6 +166,27 @@
   "createdAt": "2026-04-07T12:26:03.218Z",
   "updatedAt": "2026-04-07T12:26:11.518Z"
     }        
+    "name": "Failed vs successful logins",
+    "description": "This visualization compares the number of failed and successful login attempts over time. It helps identify authentication patterns and detect potential brute-force attacks, account misuse, or misconfigurations by highlighting spikes in failed logins or unusual changes in login behavior.",
+    "tags": ["failed logins", "successful logins", "windows"],
+    "export": {
+  "id": 16,
+  "type": "vertical_bar",
+  "config": {
+    "title": "Failed vs successful logins",
+    "index": "winlogbeat-*",
+    "query": "event.code:4624 OR event.code:4625",
+    "field": "event.code",
+    "fields": [],
+    "timeRange": {
+      "from": "now/w",
+      "to": "now/w"
+    },
+    "globalQuery": ""
+  },
+  "createdAt": "2026-04-07T12:24:04.368Z",
+  "updatedAt": "2026-04-07T12:24:10.363Z"
+        }        
   }
         "name": "Brute force attack on O365 accounts",
         "description": "Failed Brute force attack on Office 365 accounts ",
