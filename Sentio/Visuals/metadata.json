@@ -167,4 +167,53 @@
   "updatedAt": "2026-04-07T12:27:33.388Z"
      }
   }
+        "name": "Brute force attack on O365 accounts",
+        "description": "Failed Brute force attack on Office 365 accounts ",
+        "reference": "",
+        "tags": ["Remote Logins", "Failed logins", "Office logins "],
+        "export":{
+          "id": 17,
+          "type": "pie",
+          "config": {
+            "title": "Brute force attack on Office 365 accounts",
+            "index": "o365-*",
+            "query": "event.action:UserLoginFailed OR event.action:UserLoggedIn and NOT(cybersift.threat_info.knownThreat:false)",
+            "field": "user.email",
+            "fields": [],
+            "size": 25,
+            "timeRange": {
+              "from": "now-7d",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "createdAt": "2026-04-07T12:23:38.821Z",
+          "updatedAt": "2026-04-07T12:24:52.154Z"
+        }
+    },
+     {
+        "name": "Remote Logins",
+        "description": "Remote Logins for windows ",
+        "reference": "",
+        "tags": ["Remote Logins", "External connections"],
+        "export":{
+          "id": 14,
+          "type": "pie",
+          "config": {
+            "title": "Remote Logins ",
+            "index": "winlogbeat-*",
+            "query": "event.code:4624 AND (NOT(winlog.event_data.IpAddress:10*) OR NOT(winlog.event_data.IpAddress:127.0.0.1)OR NOT(winlog.event_data.IpAddress:*1) )",
+            "field": "winlog.cybersift.LoginInfo.SourceAddress",
+            "fields": [],
+            "size": 25,
+            "timeRange": {
+              "from": "now-30d",
+              "to": "now"
+            },
+            "globalQuery": ""
+          },
+          "createdAt": "2026-04-07T11:37:38.881Z",
+          "updatedAt": "2026-04-07T11:42:49.758Z"
+        }
+    }
 ]
