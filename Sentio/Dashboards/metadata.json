@@ -415,7 +415,7 @@
     "description": "An overview of your network environment including critical visuals to determine abnormalities in your environment",
     "reference": "https://www.cybersift.io",
     "tags": [
-      "o365"
+      "network"
     ],
     "export": {
   "id": 32,
@@ -447,9 +447,9 @@
       "id": "1775812904220-w7qsmm3c4",
       "type": "vertical_bar",
       "config": {
-        "title": "Top blocked IPs",
+        "title": "Malacious IPs",
         "index": "filebeat-*",
-        "query": "isInternalFlow:false AND action:Drop",
+        "query": "isInternalFlow:false AND cybersift.threat_info.knownThreat:true",
         "field": "DestinationAddress",
         "fields": [],
         "timeRange": {
