@@ -409,5 +409,211 @@
       "createdAt": "2026-04-06T13:44:50.313Z",
       "updatedAt": "2026-04-06T14:01:31.176Z"
     }
+  },
+  {
+    "name": "Network Security Posture Dashboard",
+    "description": "An overview of your network environment including critical visuals to determine abnormalities in your environment",
+    "reference": "https://www.cybersift.io",
+    "tags": [
+      "o365"
+    ],
+    "export": {
+  "id": 32,
+  "title": "External Network Security Posture",
+  "description": "External Network Security Posture  New ASN connection , Most network activities performed , blocked Ips, ASN Usage behaviour change, Ports usage behaviour change,Network beacon.",
+  "panels": [
+    {
+      "id": "1775812865956-qj3slpr51",
+      "type": "pie",
+      "config": {
+        "title": "Most Activity Types",
+        "index": "filebeat-*",
+        "query": "isInternal:false",
+        "field": "action",
+        "fields": [],
+        "size": 16,
+        "timeRange": {
+          "from": "now-24h",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 0,
+      "y": 0,
+      "w": 4,
+      "h": 8
+    },
+    {
+      "id": "1775812904220-w7qsmm3c4",
+      "type": "vertical_bar",
+      "config": {
+        "title": "Top blocked IPs",
+        "index": "filebeat-*",
+        "query": "isInternalFlow:false AND action:Drop",
+        "field": "DestinationAddress",
+        "fields": [],
+        "timeRange": {
+          "from": "now-7d",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 9,
+      "y": 16,
+      "w": 3,
+      "h": 7
+    },
+    {
+      "id": "1775812956154-vas6frc8c",
+      "type": "pie",
+      "config": {
+        "title": "SMB To Public IP",
+        "index": "filebeat-*",
+        "query": "port_of_interest:445 AND isSourceInternal:true AND  isInternal:false",
+        "field": "DestinationAddress",
+        "fields": [],
+        "size": 25,
+        "timeRange": {
+          "from": "now-24h",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 8,
+      "y": 8,
+      "w": 4,
+      "h": 8
+    },
+    {
+      "id": "1775812989649-6eluncjtb",
+      "type": "data_table",
+      "config": {
+        "title": " Network Beaconing ",
+        "index": "alerts-*",
+        "query": "alert_type:NetworkBeaconing",
+        "field": "",
+        "fields": [
+          "details"
+        ],
+        "size": 25,
+        "timeRange": {
+          "from": "now-24h",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 6,
+      "y": 16,
+      "w": 3,
+      "h": 7
+    },
+    {
+      "id": "1775813010654-ehld34mrm",
+      "type": "vertical_bar",
+      "config": {
+        "title": "Targeted Ports and action",
+        "index": "filebeat-*",
+        "query": "isInternal:false",
+        "field": "port_of_interest",
+        "fields": [],
+        "split": "action",
+        "timeRange": {
+          "from": "now-15m",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 0,
+      "y": 8,
+      "w": 5,
+      "h": 8
+    },
+    {
+      "id": "1775813058821-7k3lbp45g",
+      "type": "data_table",
+      "config": {
+        "title": "Increased Port Usage By ASN",
+        "index": "alerts-*",
+        "query": "alert_type:PortsUsed",
+        "field": "",
+        "fields": [
+          "description"
+        ],
+        "timeRange": {
+          "from": "now-24h",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 5,
+      "y": 8,
+      "w": 3,
+      "h": 8
+    },
+    {
+      "id": "1775813073804-qzygf7hf0",
+      "type": "vertical_bar",
+      "config": {
+        "title": "New Asn's Connecting ",
+        "index": "alerts-*",
+        "query": "title:\"First Seen Destination ASN\"",
+        "field": "data.destination",
+        "fields": [],
+        "split": "data.port",
+        "timeRange": {
+          "from": "now-7d",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 0,
+      "y": 16,
+      "w": 3,
+      "h": 7
+    },
+    {
+      "id": "1775813102583-cxgn0zupk",
+      "type": "pie",
+      "config": {
+        "title": "Anamalous ASN's  connecting ",
+        "index": "alerts-*",
+        "query": "alert_type:AsnVolume",
+        "field": "description",
+        "fields": [],
+        "timeRange": {
+          "from": "now-24h",
+          "to": "now"
+        },
+        "globalQuery": ""
+      },
+      "x": 3,
+      "y": 16,
+      "w": 3,
+      "h": 7
+    },
+    {
+      "id": "1775813880588-kn59vw96g",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "Network Alerts ",
+        "index": "alerts-*",
+        "query": "tags:network",
+        "field": "",
+        "fields": [],
+        "aggregation": {
+          "interval": "1h"
+        },
+        "split": "title"
+      },
+      "x": 4,
+      "y": 0,
+      "w": 8,
+      "h": 8
+    }
+  ],
+  "layout": {},
+  "createdAt": "2026-04-10T09:51:38.606Z",
+  "updatedAt": "2026-04-10T09:53:47.451Z"
   }
+}
 ]
