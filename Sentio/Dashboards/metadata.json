@@ -447,7 +447,7 @@
       "id": "1775812904220-w7qsmm3c4",
       "type": "vertical_bar",
       "config": {
-        "title": "Malacious IPs",
+        "title": "Malicious IPs",
         "index": "filebeat-*",
         "query": "isInternalFlow:false AND cybersift.threat_info.knownThreat:true",
         "field": "DestinationAddress",
