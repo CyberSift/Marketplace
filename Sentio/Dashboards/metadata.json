@@ -615,7 +615,7 @@
   "createdAt": "2026-04-10T09:51:38.606Z",
   "updatedAt": "2026-04-10T09:53:47.451Z"
   }
-}
+},
 {
   "title": "[Sonicwall] - Security Posture Dashboard",
   "description": "A security overview dashboard showing your current security posture which is split between Alerts from different sources and your firewall traffic ",
