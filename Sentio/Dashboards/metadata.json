@@ -615,5 +615,299 @@
   "createdAt": "2026-04-10T09:51:38.606Z",
   "updatedAt": "2026-04-10T09:53:47.451Z"
   }
-}
+},
+{
+  "title": "[Sonicwall] - Security Posture Dashboard",
+  "description": "A security overview dashboard showing your current security posture which is split between Alerts from different sources and your firewall traffic ",
+  "reference": "https://www.cybersift.io",
+  "tags": [
+      "firewall",
+      "alerts"
+    ],
+	"export": {
+      	"id": 6,
+      	"title": "[Sonicwall] - Security Posture Dashboard",
+      	"description": "",
+  "panels": [
+    {
+      "id": "1779111603788-mmdccyq7k",
+      "type": "metric",
+      "config": {
+        "title": "Alerts Overview",
+        "index": "alerts-*",
+        "query": "NOT severity:info",
+        "field": "",
+        "fields": [],
+        "metric": {
+          "type": "count",
+          "field": "_id"
+        }
+      },
+      "x": 0,
+      "y": 0,
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "1779111788237-iq81c63a6",
+      "type": "pie",
+      "config": {
+        "title": "Alerts By Severity",
+        "index": "alerts-*",
+        "query": "",
+        "field": "severity",
+        "fields": []
+      },
+      "x": 2,
+      "y": 5,
+      "w": 4,
+      "h": 4
+    },
+    {
+      "id": "1779111909093-yz9rc5cj7",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "Alerts over Time",
+        "index": "alerts-*",
+        "query": "",
+        "field": "",
+        "fields": [],
+        "aggregation": {
+          "interval": "1h"
+        },
+        "area": true,
+        "split": "title"
+      },
+      "x": 2,
+      "y": 0,
+      "w": 10,
+      "h": 5
+    },
+    {
+      "id": "1779112003783-kfdbqth1y",
+      "type": "data_table",
+      "config": {
+        "title": "Alerts Type",
+        "index": "alerts-*",
+        "query": "",
+        "field": "",
+        "fields": [
+          "tags"
+        ]
+      },
+      "x": 0,
+      "y": 2,
+      "w": 2,
+      "h": 5
+    },
+    {
+      "id": "1779112112379-y38m25opu",
+      "type": "data_table",
+      "config": {
+        "title": "Latest Alerts",
+        "index": "alerts-*",
+        "query": "",
+        "field": "",
+        "fields": [
+          "title",
+          "severity"
+        ],
+        "size": 3
+      },
+      "x": 6,
+      "y": 5,
+      "w": 6,
+      "h": 4
+    },
+    {
+      "id": "1779112255922-bxhvru977",
+      "type": "metric",
+      "config": {
+        "title": "Alert Anomalies",
+        "index": "alerts-*",
+        "query": "tags:anomaly",
+        "field": "",
+        "fields": [],
+        "metric": {
+          "type": "count",
+          "field": "_id"
+        }
+      },
+      "x": 0,
+      "y": 7,
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "1779112440344-gfdd77ftf",
+      "type": "metric",
+      "config": {
+        "title": "Total Traffic Count",
+        "index": "sonicwall-*",
+        "query": "",
+        "field": "",
+        "fields": [],
+        "metric": {
+          "type": "count",
+          "field": "_id"
+        }
+      },
+      "x": 0,
+      "y": 9,
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "1779113297842-v61f0etae",
+      "type": "vertical_bar",
+      "config": {
+        "title": "Top Categorized Traffic ",
+        "index": "sonicwall-*",
+        "query": "",
+        "field": "ASN Description",
+        "fields": [],
+        "split": "cybersift.threat_info.usageType",
+        "size": 5,
+        "aggregation": {}
+      },
+      "x": 6,
+      "y": 9,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779113758039-d98b9abiz",
+      "type": "data_table",
+      "config": {
+        "title": "CS Intel - Top Threat IPs",
+        "index": "sonicwall-*",
+        "query": "cybersift.threat_info.knownThreat:true",
+        "field": "",
+        "fields": [
+          "SourceAddress",
+          "cybersift.threat_info.threats"
+        ],
+        "size": 5
+      },
+      "x": 0,
+      "y": 11,
+      "w": 6,
+      "h": 5
+    },
+    {
+      "id": "1779113955342-fqsmbhgqs",
+      "type": "metric",
+      "config": {
+        "title": "Inbound Threats",
+        "index": "sonicwall-*",
+        "query": "cybersift.threat_info.knownThreat:true AND (isSourceInternal:false AND isDestinationInternal:true) ",
+        "field": "",
+        "fields": [],
+        "metric": {
+          "type": "count",
+          "field": "_id"
+        }
+      },
+      "x": 2,
+      "y": 9,
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "1779114044603-kjk00uaml",
+      "type": "metric",
+      "config": {
+        "title": "Outbound Threats",
+        "index": "sonicwall-*",
+        "query": "cybersift.threat_info.knownThreat:true AND (isSourceInternal:true AND isDestinationInternal:false) ",
+        "field": "",
+        "fields": [],
+        "metric": {
+          "type": "count",
+          "field": "_id"
+        }
+      },
+      "x": 4,
+      "y": 9,
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "1779114351148-9eit78bmd",
+      "type": "vertical_bar",
+      "config": {
+        "title": "Successful External Connection on administrative ports",
+        "index": "sonicwall-*",
+        "query": "(isSourceInternal:true AND isDestinationInternal:false) AND (action:allow) AND DestinationPort:(22 OR 23 OR 161 OR 5900 OR 3389)",
+        "field": "DestinationAddress",
+        "fields": [],
+        "size": 20,
+        "split": "DestinationPort"
+      },
+      "x": 0,
+      "y": 16,
+      "w": 6,
+      "h": 5
+    },
+    {
+      "id": "1779114480624-xfdhpd08l",
+      "type": "pie",
+      "config": {
+        "title": "Top ISPs",
+        "index": "sonicwall-*",
+        "query": "NOT cybersift.threat_info.isp:INTERNAL",
+        "field": "ASN Description",
+        "fields": [],
+        "size": 5
+      },
+      "x": 6,
+      "y": 15,
+      "w": 6,
+      "h": 5
+    },
+    {
+      "id": "1779114615062-abmq3b2j6",
+      "type": "pie",
+      "config": {
+        "title": "Top Threat Origin",
+        "index": "sonicwall-*",
+        "query": "cybersift.threat_info.knownThreat: true",
+        "field": "cybersift.threat_info.countryCode",
+        "fields": [],
+        "size": 5
+      },
+      "x": 0,
+      "y": 21,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779114914454-knlevzobq",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "Top Sent Traffic (Maximum)",
+        "index": "sonicwall-*",
+        "query": "",
+        "field": "",
+        "fields": [],
+        "split": "SourceDestinationTuple",
+        "aggregation": {
+          "metric": {
+            "type": "max",
+            "field": "Bytes"
+          },
+          "interval": "1h"
+        },
+        "area": true
+      },
+      "x": 6,
+      "y": 20,
+      "w": 6,
+      "h": 7
+    }
+  ],
+  "layout": {},
+  "createdAt": "2026-05-18T13:37:07.479Z",
+  "updatedAt": "2026-05-18T14:45:46.583Z"
+  }
 ]
