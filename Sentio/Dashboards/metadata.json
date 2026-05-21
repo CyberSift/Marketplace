@@ -617,7 +617,7 @@
   }
 },
 {
-  "title": "[Sonicwall] - Security Posture Dashboard",
+  "name": "[Sonicwall] - Security Posture Dashboard",
   "description": "A security overview dashboard showing your current security posture which is split between Alerts from different sources and your firewall traffic ",
   "reference": "https://www.cybersift.io",
   "tags": [
