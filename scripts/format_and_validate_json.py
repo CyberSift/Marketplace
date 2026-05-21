@@ -7,11 +7,37 @@ import json
 import sys
 from pathlib import Path
 
+REQUIRED_FIELDS = ("name", "description", "tags", "export")
+SENTIO_PARENTS = frozenset(("Sentio/Visuals", "Sentio/Dashboards"))
+
 
 def get_json_files_from_args(argv: list[str]) -> list[Path]:
     """Filter CLI args to existing .json files."""
     files = [Path(item) for item in argv]
     return [path for path in files if path.suffix == ".json" and path.exists()]
+
+
+def _validate_sentio_metadata(data: list[dict], path: Path) -> list[str]:
+    """Return a list of error strings for missing required fields."""
+    errors: list[str] = []
+    for idx, obj in enumerate(data):
+        missing = [f for f in REQUIRED_FIELDS if f not in obj]
+        if missing:
+            errors.append(
+                f"{path}[{idx}]: missing required field(s): {', '.join(missing)}"
+            )
+    return errors
+
+
+def _is_sentio_parent(path_str: str) -> bool:
+    """Check if the path lives inside a Sentio/Visuals or Sentio/Dashboards dir."""
+    norm = path_str.replace("\\", "/").lstrip("/").rstrip("/")
+    depth = len(norm.split("/"))
+    # Need at least Sentio/{Folder}/filename
+    if depth < 3:
+        return False
+    candidate = "/".join(norm.split("/", 2)[-2].split("/")[:2])
+    return candidate in SENTIO_PARENTS
 
 
 def format_and_validate_json_file(path: Path) -> tuple[bool, str]:
@@ -21,6 +47,12 @@ def format_and_validate_json_file(path: Path) -> tuple[bool, str]:
         parsed = json.loads(raw)
     except json.JSONDecodeError as exc:
         return False, f"{path}: invalid JSON ({exc})"
+
+    # Strict validation for Sentio metadata files
+    if _is_sentio_parent(str(path)) and isinstance(parsed, list):
+        errors = _validate_sentio_metadata(parsed, path)
+        if errors:
+            return False, "; ".join(errors)
 
     formatted = json.dumps(parsed, indent=2, ensure_ascii=False, sort_keys=False) + "\n"
     if formatted != raw:
