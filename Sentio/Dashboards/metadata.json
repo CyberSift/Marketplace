@@ -910,5 +910,195 @@
    "createdAt": "2026-05-18T13:37:07.479Z",
    "updatedAt": "2026-05-18T14:45:46.583Z"
    }
+},
+{
+  "name": "o365 BEC",
+  "description": "A security overview dashboard showing activity of 0365 user ",
+  "reference": "https://www.cybersift.io",
+  "tags": [
+      "o365",
+      "alerts"
+    ],
+	"export": {
+  "id": 9,
+  "title": "BEC",
+  "description": "",
+  "panels": [
+    {
+      "id": "1779771595106-lli6le67e",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "user logins",
+        "index": "o365-*",
+        "query": "event.action:\"UserLoggedIn\" OR event.action:\"UserLoginFailed\" OR\nevent.action:\"EmailAuthOTPAuthenticationSucceeded\" OR event.action:\"EmailAuthOTPAuthenticationFailed\" OR event.action:\"SignInEvent\" \n",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "client.ip"
+      },
+      "x": 0,
+      "y": 7,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779771682177-1xq2oq78m",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "user logins countries",
+        "index": "o365-*",
+        "query": "event.action:\"UserLoggedIn\" OR event.action:\"UserLoginFailed\" OR\nevent.action:\"EmailAuthOTPAuthenticationSucceeded\" OR event.action:\"EmailAuthOTPAuthenticationFailed\" OR event.action:\"SignInEvent\" \n",
+        "field": "",
+        "metric": {},
+        "split": "source.geo.country_iso_code",
+        "fields": []
+      },
+      "x": 6,
+      "y": 7,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779771750082-75w8hdnpl",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "user logins agents",
+        "index": "o365-*",
+        "query": "event.action:\"UserLoggedIn\" OR event.action:\"UserLoginFailed\" OR\nevent.action:\"EmailAuthOTPAuthenticationSucceeded\" OR event.action:\"EmailAuthOTPAuthenticationFailed\" OR event.action:\"SignInEvent\" \n",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "o365.audit.UserAgent"
+      },
+      "x": 6,
+      "y": 0,
+      "w": 6,
+      "h": 7
+    },
+    {
+      "id": "1779771907368-o1tcbbquw",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "user 0365 activity",
+        "index": "o365-*",
+        "query": "",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 7
+    },
+    {
+      "id": "1779772612697-jgvnqawh5",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "user modifications",
+        "index": "o365-*",
+        "query": "event.action:\"modified-user-account\" OR event.action:\"Update PasswordProfile.\" OR event.action:\"Change user password.\" OR event.action:\"Update StsRefreshTokenValidFrom Timestamp.\"\n\n \n",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 0,
+      "y": 19,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779772745584-ixymi7a0d",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "rule modifications",
+        "index": "o365-*",
+        "query": "event.action:\"UpdateInboxRules\" OR event.action:\"New-InboxRule\" OR event.action:\"Set-InboxRule\" OR event.action:\"Enable-InboxRule\"",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 6,
+      "y": 13,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779773141110-lxiwcn74s",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "Pernissions changes",
+        "index": "o365-*",
+        "query": "event.action:\"Set-Mailbox\" OR event.action:\"Set-CASMailbox\" OR event.action:\"Add-MailboxPermission\"\nOR event.action:\"Remove-MailboxPermission\" OR event.action:\"ModifyFolderPermissions\" OR event.action:\"AddFolderPermissions\"",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 0,
+      "y": 13,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779773313162-0owcj1wxs",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "Groups ",
+        "index": "o365-*",
+        "query": "event.action:\"AddedToGroup\" OR event.action:\"Add member to group.\" OR event.action:\"Add member to role.\" OR event.action:\"Remove member from role.\"",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 6,
+      "y": 19,
+      "w": 6,
+      "h": 6
+    },
+    {
+      "id": "1779774036556-qojr9ypvp",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "Threat Intel",
+        "index": "o365-*",
+        "query": "event.action:\"TIMailData\" OR event.action:\"TIUrlClickData\"",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 0,
+      "y": 25,
+      "w": 6,
+      "h": 7
+    },
+    {
+      "id": "1779774102796-nvqtatsqe",
+      "type": "time_series_echarts",
+      "config": {
+        "title": "o365 build in alerts",
+        "index": "o365-*",
+        "query": "event.action:\"AlertEntityGenerated\" OR event.action:\"AlertTriggered\"",
+        "field": "",
+        "metric": {},
+        "fields": [],
+        "split": "event.action"
+      },
+      "x": 6,
+      "y": 25,
+      "w": 6,
+      "h": 7
+    }
+  ],
+  "layout": {},
+  "scope": "",
+  "createdAt": "2026-05-26T04:58:53.502Z",
+  "updatedAt": "2026-05-26T05:44:28.000Z"
+}
 }
 ]
