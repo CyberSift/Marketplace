@@ -922,7 +922,7 @@
   "export":{
     "id": 75,
     "title": "Eset Dashboard",
-    "description": "Eset related events showing severity, number of events generated, title, process name and command line parameters ",
+    "description": "Eset related events showing level of severity of events generated, number of events generated, title, process name and command line parameters ",
     "panels": [
       {
         "id": "1780208679708-kws9odyuv",
@@ -944,7 +944,7 @@
         "id": "1780210922158-tsfhr54m9",
         "type": "time_series_echarts",
         "config": {
-          "title": "Fatal or Critical Events over time ",
+          "title": "Suspicious Events ",
           "index": "eset-*",
           "query": "severity:Fatal OR Critical",
           "field": "",
