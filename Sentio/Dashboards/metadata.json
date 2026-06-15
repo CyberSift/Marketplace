@@ -912,188 +912,194 @@
    }
 },
 {
-  "id": 75,
-  "title": "Eset Dashboard",
+  "name": "Eset Dashboard",
   "description": "Provides visibility into ESET security events by displaying the severity level, total event count, event titles, associated process names, and command-line execution parameters",
-  "panels": [
-    {
-      "id": "1780208679708-kws9odyuv",
-      "type": "pie",
-      "config": {
-        "title": "Events by Severity",
-        "index": "eset-*",
-        "query": "",
-        "field": "severity",
-        "fields": [],
-        "metric": {}
-      },
-      "x": 0,
-      "y": 0,
-      "w": 6,
-      "h": 6
-    },
-    {
-      "id": "1780212812024-jw7q0l1jv",
-      "type": "vertical_bar",
-      "config": {
-        "title": "Warning - Events",
-        "index": "eset-*",
-        "query": "severity:Warning ",
-        "field": "operation",
-        "metric": {},
-        "fields": []
-      },
-      "x": 6,
-      "y": 6,
-      "w": 6,
-      "h": 6
-    },
-    {
-      "id": "1780270856643-7pm0k3qy9",
-      "type": "vertical_bar",
-      "config": {
-        "title": "Fatal OR Critical - Events",
-        "index": "eset-*",
-        "query": "severity:Fatal OR Critical",
-        "field": "operation",
-        "metric": {},
-        "fields": [],
-        "size": 7
-      },
-      "x": 0,
-      "y": 6,
-      "w": 6,
-      "h": 6
-    },
-    {
-      "id": "1780271293063-f5yd0o5py",
-      "type": "data_table",
-      "config": {
-        "title": "Warning - Commandline",
-        "index": "eset-*",
-        "query": "severity:Warning ",
-        "field": "",
-        "metric": {},
-        "fields": [
-          "command_line"
-        ]
-      },
-      "x": 6,
-      "y": 12,
-      "w": 6,
-      "h": 8
-    },
-    {
-      "id": "1780271702073-bf868d80q",
-      "type": "data_table",
-      "config": {
-        "title": "Warning - Title",
-        "index": "eset-*",
-        "query": "severity:Warning ",
-        "field": "",
-        "metric": {},
-        "fields": [
-          "title"
-        ]
-      },
-      "x": 6,
-      "y": 20,
-      "w": 6,
-      "h": 8
-    },
-    {
-      "id": "1780272277350-9iq48so97",
-      "type": "data_table",
-      "config": {
-        "title": "Fatal OR Critical - Title",
-        "index": "eset-*",
-        "query": "severity:Fatal OR Critical",
-        "field": "",
-        "fields": [
-          "title"
-        ],
-        "metric": {}
-      },
-      "x": 0,
-      "y": 20,
-      "w": 6,
-      "h": 8
-    },
-    {
-      "id": "1780272362907-wba578qif",
-      "type": "data_table",
-      "config": {
-        "title": "Fatal OR Critical - Processname",
-        "index": "eset-*",
-        "query": "severity:Fatal OR Critical",
-        "field": "",
-        "fields": [
-          "processname"
-        ],
-        "metric": {}
-      },
-      "x": 0,
-      "y": 28,
-      "w": 6,
-      "h": 8
-    },
-    {
-      "id": "1780272474343-9ro5a3p6y",
-      "type": "data_table",
-      "config": {
-        "title": "Fatal OR Critical - Command line",
-        "index": "eset-*",
-        "query": "severity:Fatal OR Critical",
-        "field": "",
-        "fields": [
-          "command_line"
-        ],
-        "metric": {}
-      },
-      "x": 0,
-      "y": 12,
-      "w": 6,
-      "h": 8
-    },
-    {
-      "id": "1780272550869-42egi927h",
-      "type": "data_table",
-      "config": {
-        "title": "Warning - Processname",
-        "index": "eset-*",
-        "query": "severity:Warning ",
-        "field": "",
-        "fields": [
-          "processname"
-        ],
-        "metric": {}
-      },
-      "x": 6,
-      "y": 28,
-      "w": 6,
-      "h": 8
-    },
-    {
-      "id": "1781505092808-9ofe2ul13",
-      "type": "time_series_echarts",
-      "config": {
-        "title": "Eset Events Overview",
-        "index": "eset-*",
-        "query": "",
-        "field": "",
-        "metric": {},
-        "fields": [],
-        "split": "event_type"
-      },
-      "x": 6,
-      "y": 0,
-      "w": 6,
-      "h": 6
-    }
+  "reference": "https://www.cybersift.io",
+  "tags": [
+    "eset"
   ],
-  "layout": {},
-  "scope": "private",
-  "createdAt": "2026-06-15T06:43:11.372Z",
-  "updatedAt": "2026-06-15T06:47:09.718Z"
+  "export": {
+    "id": 75,
+    "title": "Eset Dashboard",
+    "description": "Provides visibility into ESET security events",
+    "panels": [{
+        "id": "1780208679708-kws9odyuv",
+        "type": "pie",
+        "config": {
+          "title": "Events by Severity",
+          "index": "eset-*",
+          "query": "",
+          "field": "severity",
+          "fields": [],
+          "metric": {}
+        },
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      {
+        "id": "1780212812024-jw7q0l1jv",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Warning - Events",
+          "index": "eset-*",
+          "query": "severity:Warning ",
+          "field": "operation",
+          "metric": {},
+          "fields": []
+        },
+        "x": 6,
+        "y": 6,
+        "w": 6,
+        "h": 6
+      },
+      {
+        "id": "1780270856643-7pm0k3qy9",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Fatal OR Critical - Events",
+          "index": "eset-*",
+          "query": "severity:Fatal OR Critical",
+          "field": "operation",
+          "metric": {},
+          "fields": [],
+          "size": 7
+        },
+        "x": 0,
+        "y": 6,
+        "w": 6,
+        "h": 6
+      },
+      {
+        "id": "1780271293063-f5yd0o5py",
+        "type": "data_table",
+        "config": {
+          "title": "Warning - Commandline",
+          "index": "eset-*",
+          "query": "severity:Warning ",
+          "field": "",
+          "metric": {},
+          "fields": [
+            "command_line"
+          ]
+        },
+        "x": 6,
+        "y": 12,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1780271702073-bf868d80q",
+        "type": "data_table",
+        "config": {
+          "title": "Warning - Title",
+          "index": "eset-*",
+          "query": "severity:Warning ",
+          "field": "",
+          "metric": {},
+          "fields": [
+            "title"
+          ]
+        },
+        "x": 6,
+        "y": 20,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1780272277350-9iq48so97",
+        "type": "data_table",
+        "config": {
+          "title": "Fatal OR Critical - Title",
+          "index": "eset-*",
+          "query": "severity:Fatal OR Critical",
+          "field": "",
+          "fields": [
+            "title"
+          ],
+          "metric": {}
+        },
+        "x": 0,
+        "y": 20,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1780272362907-wba578qif",
+        "type": "data_table",
+        "config": {
+          "title": "Fatal OR Critical - Processname",
+          "index": "eset-*",
+          "query": "severity:Fatal OR Critical",
+          "field": "",
+          "fields": [
+            "processname"
+          ],
+          "metric": {}
+        },
+        "x": 0,
+        "y": 28,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1780272474343-9ro5a3p6y",
+        "type": "data_table",
+        "config": {
+          "title": "Fatal OR Critical - Command line",
+          "index": "eset-*",
+          "query": "severity:Fatal OR Critical",
+          "field": "",
+          "fields": [
+            "command_line"
+          ],
+          "metric": {}
+        },
+        "x": 0,
+        "y": 12,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1780272550869-42egi927h",
+        "type": "data_table",
+        "config": {
+          "title": "Warning - Processname",
+          "index": "eset-*",
+          "query": "severity:Warning ",
+          "field": "",
+          "fields": [
+            "processname"
+          ],
+          "metric": {}
+        },
+        "x": 6,
+        "y": 28,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1781505092808-9ofe2ul13",
+        "type": "time_series_echarts",
+        "config": {
+          "title": "Eset Events Overview",
+          "index": "eset-*",
+          "query": "",
+          "field": "",
+          "metric": {},
+          "fields": [],
+          "split": "event_type"
+        },
+        "x": 6,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      }
+    ],
+    "layout": {},
+    "createdAt": "2026-06-15T06:43:11.372Z",
+    "updatedAt": "2026-06-15T06:47:09.718Z"
+  }
 }
 ]
