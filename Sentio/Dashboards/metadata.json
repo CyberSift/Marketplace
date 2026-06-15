@@ -1005,7 +1005,7 @@
       "id": "1780272277350-9iq48so97",
       "type": "data_table",
       "config": {
-        "title": "Title",
+        "title": " Fatal events Title",
         "index": "eset-*",
         "query": "severity:Fatal OR Critical",
         "field": "",
@@ -1095,6 +1095,5 @@
   "scope": "private",
   "createdAt": "2026-06-15T06:43:11.372Z",
   "updatedAt": "2026-06-15T06:47:09.718Z"
-}
 }
 ]
