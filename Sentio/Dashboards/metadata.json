@@ -912,7 +912,7 @@
    }
 },
 {
-  "name": "Eset Dashboard",
+  "name": "ESET Dashboard",
   "description": "Provides visibility into ESET security events by displaying the severity level, total event count, event titles, associated process names, and command-line execution parameters",
   "reference": "https://www.cybersift.io",
   "tags": [
@@ -920,7 +920,7 @@
   ],
   "export": {
     "id": 75,
-    "title": "Eset Dashboard",
+    "title": "ESET Dashboard",
     "description": "Provides visibility into ESET security events",
     "panels": [{
         "id": "1780208679708-kws9odyuv",
