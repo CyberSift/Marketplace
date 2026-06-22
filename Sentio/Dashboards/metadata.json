@@ -1101,5 +1101,243 @@
     "createdAt": "2026-06-15T06:43:11.372Z",
     "updatedAt": "2026-06-15T06:47:09.718Z"
   }
-}
+},
+{
+    "name": "Alerts Management",
+    "description": "The dashboard provides a comprehensive overview of all alerts, with key highlights for top-priority and persistent issues. It also features dedicated insights into machine learning detections and host liveliness monitoring, enabling quick identification of high priority events and system health status.",
+    "reference": "https://cybersift.io",
+    "tags": [
+      "alerts"
+    ],
+    "export": {
+      "id": 10,
+      "title": "Alerts Management",
+      "description": "",
+      "panels": [
+        {
+          "id": "1781792301731-846xjmerf",
+          "type": "metric",
+          "config": {
+            "title": "Alert Count",
+            "index": "alerts-*",
+            "query": "",
+            "field": "",
+            "fields": [],
+            "metric": {
+              "type": "count",
+              "field": "_id"
+            }
+          },
+          "x": 0,
+          "y": 0,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "id": "1781792335527-w7u9bf7hr",
+          "type": "time_series_echarts",
+          "config": {
+            "title": "Alerts Over Time",
+            "index": "alerts-*",
+            "query": "",
+            "field": "",
+            "metric": {},
+            "fields": [],
+            "aggregation": {
+              "interval": "1h"
+            }
+          },
+          "x": 2,
+          "y": 0,
+          "w": 10,
+          "h": 7
+        },
+        {
+          "id": "1781792534547-792ekhcub",
+          "type": "pie",
+          "config": {
+            "title": "Severity",
+            "index": "alerts-*",
+            "query": "",
+            "field": "severity",
+            "metric": {},
+            "fields": []
+          },
+          "x": 0,
+          "y": 2,
+          "w": 2,
+          "h": 5
+        },
+        {
+          "id": "1781792709835-nfynpevku",
+          "type": "data_table",
+          "config": {
+            "title": "High Severity Alerts",
+            "index": "alerts-*",
+            "query": "severity:high",
+            "field": "",
+            "fields": [
+              "title"
+            ],
+            "size": 10000
+          },
+          "x": 0,
+          "y": 7,
+          "w": 4,
+          "h": 8
+        },
+        {
+          "id": "1781792781795-2uxbrc1la",
+          "type": "data_table",
+          "config": {
+            "title": "Medium Severity Alerts",
+            "index": "alerts-*",
+            "query": "severity:medium",
+            "field": "",
+            "fields": [
+              "title"
+            ],
+            "size": 100000
+          },
+          "x": 4,
+          "y": 7,
+          "w": 4,
+          "h": 8
+        },
+        {
+          "id": "1781792828012-9cpeaa6m5",
+          "type": "data_table",
+          "config": {
+            "title": "Low Severity Alerts",
+            "index": "alerts-*",
+            "query": "severity:low",
+            "field": "",
+            "metric": {},
+            "fields": [
+              "title"
+            ],
+            "size": 100000
+          },
+          "x": 8,
+          "y": 7,
+          "w": 4,
+          "h": 8
+        },
+        {
+          "id": "1781792973555-c2c9bv9rr",
+          "type": "data_table",
+          "config": {
+            "title": "Alert Details [Select an Alert]",
+            "index": "alerts-*",
+            "query": "",
+            "field": "",
+            "fields": [
+              "description",
+              "details"
+            ],
+            "size": 1000
+          },
+          "x": 0,
+          "y": 15,
+          "w": 6,
+          "h": 9
+        },
+        {
+          "id": "1781793104715-n6o0wvy4m",
+          "type": "vertical_bar",
+          "config": {
+            "title": "Alert Persistence",
+            "index": "alerts-*",
+            "query": "NOT severity:info",
+            "field": "title",
+            "metric": {},
+            "fields": [],
+            "size": 20
+          },
+          "x": 0,
+          "y": 24,
+          "w": 6,
+          "h": 9
+        },
+        {
+          "id": "1781793172411-6x36xh8wx",
+          "type": "pie",
+          "config": {
+            "title": "Alert Volume Type",
+            "index": "alerts-*",
+            "query": "",
+            "field": "tags",
+            "fields": [],
+            "metric": {},
+            "size": 5
+          },
+          "x": 6,
+          "y": 15,
+          "w": 4,
+          "h": 4
+        },
+        {
+          "id": "1781793313291-8pnqf2rmw",
+          "type": "metric",
+          "config": {
+            "title": "Machine Learning Alerts and Anomalies",
+            "index": "alerts-*",
+            "query": "tags:(ml* OR \"anomaly\")",
+            "field": "",
+            "fields": [],
+            "metric": {
+              "type": "count",
+              "field": "_id"
+            }
+          },
+          "x": 10,
+          "y": 15,
+          "w": 2,
+          "h": 4
+        },
+        {
+          "id": "1781793569907-lj2xrqsx1",
+          "type": "data_table",
+          "config": {
+            "title": "Top Priority Alerts ",
+            "index": "alerts-*",
+            "query": "severity:high AND current:>1000 ",
+            "field": "",
+            "fields": [
+              "title",
+              "expected",
+              "current",
+              "description"
+            ],
+            "metric": {},
+            "size": 50000
+          },
+          "x": 6,
+          "y": 19,
+          "w": 6,
+          "h": 7
+        },
+        {
+          "id": "1781793699748-z2fub6zd7",
+          "type": "pie",
+          "config": {
+            "title": "Liveliness Checks",
+            "index": "alerts-*",
+            "query": "title:Liveliness*",
+            "field": "host",
+            "fields": [],
+            "metric": {}
+          },
+          "x": 6,
+          "y": 26,
+          "w": 6,
+          "h": 7
+        }
+      ],
+      "layout": {},
+      "scope": "shared",
+      "createdAt": "2026-06-18T14:10:06.859Z",
+      "updatedAt": "2026-06-18T14:42:00.547Z"
+    }
+  }
 ]
