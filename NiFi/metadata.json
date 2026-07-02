@@ -1,0 +1,272 @@
+[
+    {
+      "name": "Flow Name",
+      "description": "Flow Description",
+      "reference": "https://www.cybersift.io",
+      "tags": [
+        "flow_tag_1"
+      ],
+      "export": {
+        "flowContents": {
+            "identifier": "604b20b9-0dc5-39a5-b084-2fc82587b5ec",
+            "instanceIdentifier": "12d9c4c9-0191-1000-ed23-96c583d52fee",
+            "name": "SentinelOne",
+            "comments": "",
+            "position": {
+                "x": 808.0,
+                "y": 176.0
+            },
+            "processGroups": [
+            ],
+            "remoteProcessGroups": [
+            ],
+            "processors": [
+                {
+                    "identifier": "d5030227-943e-305f-b17c-e62988f848c2",
+                    "instanceIdentifier": "12e03944-0191-1000-da66-6455c88f2fdf",
+                    "name": "PutElasticCS",
+                    "comments": "",
+                    "position": {
+                        "x": 624.0,
+                        "y": 424.0
+                    },
+                    "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+                    "bundle": {
+                        "group": "io.cybersift",
+                        "artifact": "nifi-PutElasticCS-nar",
+                        "version": "1.0"
+                    },
+                    "properties": {
+                        "Elasticsearch ID attribute": null,
+                        "Elasticsearch Username": null,
+                        "Bulk Size": "1000",
+                        "Elasticsearch Default Index": "sentinelone-${now():format('yyyy.MM.dd')}",
+                        "PROXY PORT": null,
+                        "Elasticsearch Index Flowfile Attribute": null,
+                        "PROXY IP": null,
+                        "Backup Directory": " ",
+                        "MULTILINE": "false",
+                        "Elasticsearch URL": "http://localhost:9200"
+                    },
+                    "propertyDescriptors": {
+                        "Elasticsearch ID attribute": {
+                            "name": "Elasticsearch ID attribute",
+                            "displayName": "Elasticsearch ID attribute",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "Elasticsearch Username": {
+                            "name": "Elasticsearch Username",
+                            "displayName": "Elasticsearch Username",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "Bulk Size": {
+                            "name": "Bulk Size",
+                            "displayName": "Bulk Size",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "Elasticsearch Default Index": {
+                            "name": "Elasticsearch Default Index",
+                            "displayName": "Elasticsearch Default Index",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "PROXY PORT": {
+                            "name": "PROXY PORT",
+                            "displayName": "Proxy Port",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "Elasticsearch Index Flowfile Attribute": {
+                            "name": "Elasticsearch Index Flowfile Attribute",
+                            "displayName": "Elasticsearch Index Flowfile Attribute",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "PROXY IP": {
+                            "name": "PROXY IP",
+                            "displayName": "Proxy IP",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "Elasticsearch Password": {
+                            "name": "Elasticsearch Password",
+                            "displayName": "Elasticsearch Password",
+                            "identifiesControllerService": false,
+                            "sensitive": true
+                        },
+                        "Backup Directory": {
+                            "name": "Backup Directory",
+                            "displayName": "Backup Directory",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "MULTILINE": {
+                            "name": "MULTILINE",
+                            "displayName": "Multiple JSON per flowfile",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "Elasticsearch URL": {
+                            "name": "Elasticsearch URL",
+                            "displayName": "Elasticsearch URL",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        }
+                    },
+                    "style": {
+                    },
+                    "schedulingPeriod": "0 sec",
+                    "schedulingStrategy": "TIMER_DRIVEN",
+                    "executionNode": "ALL",
+                    "penaltyDuration": "30 sec",
+                    "yieldDuration": "1 sec",
+                    "bulletinLevel": "WARN",
+                    "runDurationMillis": 0,
+                    "concurrentlySchedulableTaskCount": 1,
+                    "autoTerminatedRelationships": [
+                        "Auto Terminated Relationships",
+                        "Original Flow Files"
+                    ],
+                    "scheduledState": "ENABLED",
+                    "retryCount": 10,
+                    "retriedRelationships": [
+                    ],
+                    "backoffMechanism": "PENALIZE_FLOWFILE",
+                    "maxBackoffPeriod": "10 mins",
+                    "componentType": "PROCESSOR",
+                    "groupIdentifier": "604b20b9-0dc5-39a5-b084-2fc82587b5ec"
+                },
+                {
+                    "identifier": "e7a03848-eacf-3ac1-b2d4-ea36ce5bde6b",
+                    "instanceIdentifier": "12da5ee7-0191-1000-9d36-ca63979c774f",
+                    "name": "SentinelOne",
+                    "comments": "",
+                    "position": {
+                        "x": 600.0,
+                        "y": 96.0
+                    },
+                    "type": "io.cybersift.processors.SentinelOne.SentinelOne",
+                    "bundle": {
+                        "group": "io.cybersift",
+                        "artifact": "nifi-SentinelOne-nar",
+                        "version": "1.0"
+                    },
+                    "properties": {
+                        "INACTIVE_THRESHOLD": "7",
+                        "MANAGEMENT_URL": "https://euce1-105.sentinelone.net"
+                    },
+                    "propertyDescriptors": {
+                        "API_KEY": {
+                            "name": "API_KEY",
+                            "displayName": "API Key",
+                            "identifiesControllerService": false,
+                            "sensitive": true
+                        },
+                        "INACTIVE_THRESHOLD": {
+                            "name": "INACTIVE_THRESHOLD",
+                            "displayName": "Inactive Threshold (days)",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        },
+                        "MANAGEMENT_URL": {
+                            "name": "MANAGEMENT_URL",
+                            "displayName": "Management Url",
+                            "identifiesControllerService": false,
+                            "sensitive": false
+                        }
+                    },
+                    "style": {
+                    },
+                    "schedulingPeriod": "10min",
+                    "schedulingStrategy": "TIMER_DRIVEN",
+                    "executionNode": "ALL",
+                    "penaltyDuration": "30 sec",
+                    "yieldDuration": "1 sec",
+                    "bulletinLevel": "WARN",
+                    "runDurationMillis": 0,
+                    "concurrentlySchedulableTaskCount": 1,
+                    "autoTerminatedRelationships": [
+                    ],
+                    "scheduledState": "ENABLED",
+                    "retryCount": 10,
+                    "retriedRelationships": [
+                    ],
+                    "backoffMechanism": "PENALIZE_FLOWFILE",
+                    "maxBackoffPeriod": "10 mins",
+                    "componentType": "PROCESSOR",
+                    "groupIdentifier": "604b20b9-0dc5-39a5-b084-2fc82587b5ec"
+                }
+            ],
+            "inputPorts": [
+            ],
+            "outputPorts": [
+            ],
+            "connections": [
+                {
+                    "identifier": "477861eb-e6c6-3197-b86e-7cd4719b1843",
+                    "instanceIdentifier": "12db2ee0-0191-1000-b67a-2e24c103df5e",
+                    "name": "",
+                    "source": {
+                        "id": "e7a03848-eacf-3ac1-b2d4-ea36ce5bde6b",
+                        "type": "PROCESSOR",
+                        "groupId": "604b20b9-0dc5-39a5-b084-2fc82587b5ec",
+                        "name": "SentinelOne",
+                        "comments": "",
+                        "instanceIdentifier": "12da5ee7-0191-1000-9d36-ca63979c774f"
+                    },
+                    "destination": {
+                        "id": "d5030227-943e-305f-b17c-e62988f848c2",
+                        "type": "PROCESSOR",
+                        "groupId": "604b20b9-0dc5-39a5-b084-2fc82587b5ec",
+                        "name": "PutElasticCS",
+                        "comments": "",
+                        "instanceIdentifier": "12e03944-0191-1000-da66-6455c88f2fdf"
+                    },
+                    "labelIndex": 1,
+                    "zIndex": 0,
+                    "selectedRelationships": [
+                        "SUCCESS"
+                    ],
+                    "backPressureObjectThreshold": 10000,
+                    "backPressureDataSizeThreshold": "1 GB",
+                    "flowFileExpiration": "0 sec",
+                    "prioritizers": [
+                    ],
+                    "bends": [
+                    ],
+                    "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                    "partitioningAttribute": "",
+                    "loadBalanceCompression": "DO_NOT_COMPRESS",
+                    "componentType": "CONNECTION",
+                    "groupIdentifier": "604b20b9-0dc5-39a5-b084-2fc82587b5ec"
+                }
+            ],
+            "labels": [
+            ],
+            "funnels": [
+            ],
+            "controllerServices": [
+            ],
+            "variables": {
+            },
+            "defaultFlowFileExpiration": "0 sec",
+            "defaultBackPressureObjectThreshold": 10000,
+            "defaultBackPressureDataSizeThreshold": "1 GB",
+            "componentType": "PROCESS_GROUP",
+            "flowFileConcurrency": "UNBOUNDED",
+            "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+        },
+        "externalControllerServices": {
+        },
+        "parameterContexts": {
+        },
+        "flowEncodingVersion": "1.0",
+        "parameterProviders": {
+        },
+        "latest": false
+    }
+    }
+]
