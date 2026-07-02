@@ -1,10 +1,10 @@
 [
   {
-    "name": "Flow Name",
-    "description": "Flow Description",
+    "name": "SentinelOne API",
+    "description": "This flow is used to collect and monitor SentinelOne API data",
     "reference": "https://www.cybersift.io",
     "tags": [
-      "flow_tag_1"
+      "sentinelone"
     ],
     "export": {
       "flowContents": {
