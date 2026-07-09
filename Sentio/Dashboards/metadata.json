@@ -1339,5 +1339,202 @@
       "createdAt": "2026-06-18T14:10:06.859Z",
       "updatedAt": "2026-06-18T14:42:00.547Z"
     }
+  },
+	{
+  "name": "Entra ID Posture",
+  "description": "This is a dashboard which gives you insights into your Entra based interactive and non-interactive sign-in logs",
+  "reference": "http://cybersift.io/",
+  "tags": ["entra", "azure", "microsoft", "dashboard", "posture"],
+  "export": {
+    "id": 26,
+    "title": "Entra ID Posture",
+    "description": "This is a dashboard which gives you insights into your Entra based interactive and non-interactive sign-in logs",
+    "panels": [{
+        "id": "1782604852059-ko17e9a01",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Top Countries by states",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "properties.location.countryOrRegion",
+          "fields": [],
+          "metric": {},
+          "size": 10,
+          "split": "properties.location.state"
+        },
+        "x": 0,
+        "y": 8,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1782606141126-ab9bca9ma",
+        "type": "time_series_echarts",
+        "config": {
+          "title": "Timeline by Users",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "",
+          "fields": [],
+          "metric": {},
+          "split": "identity"
+        },
+        "x": 3,
+        "y": 0,
+        "w": 9,
+        "h": 8
+      },
+      {
+        "id": "1782608361650-p8mfk9xaa",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Top Application by ClientApp",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "properties.clientAppUsed",
+          "fields": [],
+          "metric": {},
+          "split": "properties.appDisplayName",
+          "size": 5
+        },
+        "x": 6,
+        "y": 8,
+        "w": 6,
+        "h": 14
+      },
+      {
+        "id": "1782609715411-ywijlghzc",
+        "type": "pie",
+        "config": {
+          "title": "Success (Code:0) vs Failure (Rest)",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "resultType",
+          "fields": [],
+          "metric": {},
+          "size": 5
+        },
+        "x": 0,
+        "y": 22,
+        "w": 3,
+        "h": 8
+      },
+      {
+        "id": "1782610220472-9qpum2w69",
+        "type": "pie",
+        "config": {
+          "title": "Disabled User Activity",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs AND resultType:50057\n",
+          "field": "identity",
+          "fields": [],
+          "metric": {}
+        },
+        "x": 0,
+        "y": 30,
+        "w": 3,
+        "h": 8
+      },
+      {
+        "id": "1782610507726-ovngey0i2",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Top IP by Autonomous System (AS)",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "properties.ipAddress",
+          "fields": [],
+          "metric": {},
+          "split": "properties.autonomousSystemNumber",
+          "size": 15
+        },
+        "x": 0,
+        "y": 15,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1782610864965-avw06y9ht",
+        "type": "pie",
+        "config": {
+          "title": "Categories",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "category",
+          "fields": [],
+          "metric": {},
+          "size": 5
+        },
+        "x": 0,
+        "y": 0,
+        "w": 3,
+        "h": 8
+      },
+      {
+        "id": "1782611447225-d9r5m5i53",
+        "type": "data_table",
+        "config": {
+          "title": "Error Code Appendix",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs",
+          "field": "",
+          "fields": [
+            "properties.status.failureReason",
+            "properties.status.errorCode"
+          ],
+          "size": 500
+        },
+        "x": 3,
+        "y": 22,
+        "w": 9,
+        "h": 8
+      },
+      {
+        "id": "1782622351399-c8hxl2brf",
+        "type": "pie",
+        "config": {
+          "title": "Malicious IP Sign-in",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs AND resultType:50053",
+          "field": "identity",
+          "fields": [],
+          "metric": {}
+        },
+        "x": 3,
+        "y": 30,
+        "w": 3,
+        "h": 8
+      },
+      {
+        "id": "1782623328025-808xmzxi3",
+        "type": "data_table",
+        "config": {
+          "title": "Non standard User-Agents",
+          "index": "azure-*",
+          "query": "eventhub.name: entraidsigninlogs AND NOT properties.userAgent:(Mozilla* OR Dalvik* OR MSAL* OR *Microsoft* OR \"\") ",
+          "field": "",
+          "fields": [
+            "properties.userAgent"
+          ],
+          "size": 60
+        },
+        "x": 6,
+        "y": 30,
+        "w": 6,
+        "h": 8
+      }
+    ],
+    "layout": {},
+    "index": "azure-*",
+    "query": "",
+    "timeRange": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "filters": [],
+    "scope": "shared",
+    "createdAt": "2026-06-29T01:51:09.879Z",
+    "updatedAt": "2026-06-29T01:56:04.870Z"
+  	}
   }
 ]
