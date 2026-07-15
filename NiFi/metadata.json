@@ -256,1016 +256,998 @@
     "description": "This flow is used to collect and monitor Windows log beat data",
     "reference": "https://www.cybersift.io",
     "tags": [
-        "Winlogbeat"
+      "Winlogbeat"
     ],
     "export": {
-        "flowContents": {
-            "identifier": "f4226e45-2e79-32d6-92cf-74c529cba7da",
-            "instanceIdentifier": "01911023-5a68-1f14-bb96-8be96c52bb4a",
-            "name": "Windows",
-            "comments": "",
+      "flowContents": {
+        "identifier": "f4226e45-2e79-32d6-92cf-74c529cba7da",
+        "instanceIdentifier": "01911023-5a68-1f14-bb96-8be96c52bb4a",
+        "name": "Windows",
+        "comments": "",
+        "position": {
+          "x": 2176.0,
+          "y": 608.0
+        },
+        "processGroups": [
+          {
+            "identifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+            "instanceIdentifier": "f0000000-0000-0000-b124-5e0c0541a64e",
+            "name": "Client Flow",
             "position": {
-                "x": 2176.0,
-                "y": 608.0
+              "x": 840.5364994418868,
+              "y": 499.55750414572015
             },
-            "processGroups": [
-                {
-                    "identifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                    "instanceIdentifier": "f0000000-0000-0000-b124-5e0c0541a64e",
-                    "name": "Client Flow",
-                    "position": {
-                        "x": 840.5364994418868,
-                        "y": 499.55750414572015
-                    },
-                    "processGroups": [],
-                    "remoteProcessGroups": [],
-                    "processors": [
-                        {
-                            "identifier": "663f78b9-9dfa-3e1d-aa11-40e56071c487",
-                            "instanceIdentifier": "bd0d2d96-3ee4-43d7-3701-25655912e62a",
-                            "name": "PutElasticCS (windows)",
-                            "comments": "Events to windows-* index.",
-                            "position": {
-                                "x": 1600.0,
-                                "y": 360.0
-                            },
-                            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
-                            "bundle": {
-                                "group": "io.cybersift",
-                                "artifact": "nifi-PutElasticCS-nar",
-                                "version": "1.0"
-                            },
-                            "properties": {
-                                "Elasticsearch ID attribute": "es_id",
-                                "Elasticsearch Username": null,
-                                "Bulk Size": "1000",
-                                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('windows-')}",
-                                "PROXY PORT": null,
-                                "Elasticsearch Index Flowfile Attribute": null,
-                                "PROXY IP": null,
-                                "Backup Directory": " ",
-                                "MULTILINE": "false",
-                                "Elasticsearch URL": "http://localhost:9200"
-                            },
-                            "propertyDescriptors": {
-                                "Elasticsearch ID attribute": {
-                                    "name": "Elasticsearch ID attribute",
-                                    "displayName": "Elasticsearch ID attribute",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Username": {
-                                    "name": "Elasticsearch Username",
-                                    "displayName": "Elasticsearch Username",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Bulk Size": {
-                                    "name": "Bulk Size",
-                                    "displayName": "Bulk Size",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Default Index": {
-                                    "name": "Elasticsearch Default Index",
-                                    "displayName": "Elasticsearch Default Index",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY PORT": {
-                                    "name": "PROXY PORT",
-                                    "displayName": "Proxy Port",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Index Flowfile Attribute": {
-                                    "name": "Elasticsearch Index Flowfile Attribute",
-                                    "displayName": "Elasticsearch Index Flowfile Attribute",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY IP": {
-                                    "name": "PROXY IP",
-                                    "displayName": "Proxy IP",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Password": {
-                                    "name": "Elasticsearch Password",
-                                    "displayName": "Elasticsearch Password",
-                                    "identifiesControllerService": false,
-                                    "sensitive": true
-                                },
-                                "Backup Directory": {
-                                    "name": "Backup Directory",
-                                    "displayName": "Backup Directory",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "MULTILINE": {
-                                    "name": "MULTILINE",
-                                    "displayName": "Multiple JSON per flowfile",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch URL": {
-                                    "name": "Elasticsearch URL",
-                                    "displayName": "Elasticsearch URL",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "Elasticsearch Response",
-                                "Original Flow Files"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
-                            "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf",
-                            "name": "JmesPathMatcher (alerts)",
-                            "comments": "Alerts routing (general). Configure JMESPath after import.",
-                            "position": {
-                                "x": 944.0,
-                                "y": 584.0
-                            },
-                            "type": "io.cybersift.processors.JmesPathMatcher.JmesPathMatcher",
-                            "bundle": {
-                                "group": "io.cybersift",
-                                "artifact": "nifi-JmesPathMatcher-nar",
-                                "version": "1.0"
-                            },
-                            "properties": {
-                                "EARLY_STOP": "true",
-                                "PLACEHOLDER": "Use '+' to add JMESPath expressions",
-                                "MULTILINE": "false"
-                            },
-                            "propertyDescriptors": {
-                                "EARLY_STOP": {
-                                    "name": "EARLY_STOP",
-                                    "displayName": "Early Stop",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PLACEHOLDER": {
-                                    "name": "PLACEHOLDER",
-                                    "displayName": "Placeholder",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "MULTILINE": {
-                                    "name": "MULTILINE",
-                                    "displayName": "Multiple JSON per flowfile",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "FAILED",
-                                "UNMATCHED"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "f3412341-7cd5-376d-b957-2901694d7b21",
-                            "instanceIdentifier": "c0f1d913-701a-4f2c-73e6-b9ca6b061a27",
-                            "name": "PutCybersiftSupport (OPTIONAL)",
-                            "comments": "OPTIONAL",
-                            "position": {
-                                "x": 1320.0,
-                                "y": 848.0
-                            },
-                            "type": "io.cybersift.processors.PutCybersiftSupport.PutCybersiftSupport",
-                            "bundle": {
-                                "group": "io.cybersift",
-                                "artifact": "nifi-PutCybersiftSupport-nar",
-                                "version": "1.0"
-                            },
-                            "properties": {
-                                "SITE": "CompanyName",
-                                "PROXY PORT": null,
-                                "PROXY IP": null,
-                                "ENDPOINT_URL": "https://cybersift.euc-alerts.freshservice.com/integrations/26000002778/alerts"
-                            },
-                            "propertyDescriptors": {
-                                "AUTH_KEY": {
-                                    "name": "AUTH_KEY",
-                                    "displayName": "Auth Key",
-                                    "identifiesControllerService": false,
-                                    "sensitive": true
-                                },
-                                "SITE": {
-                                    "name": "SITE",
-                                    "displayName": "Site/Customer",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY PORT": {
-                                    "name": "PROXY PORT",
-                                    "displayName": "Proxy Port",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY IP": {
-                                    "name": "PROXY IP",
-                                    "displayName": "Proxy IP",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "ENDPOINT_URL": {
-                                    "name": "ENDPOINT_URL",
-                                    "displayName": "Endpoint URL",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "RESPONSES",
-                                "FAILED"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "7e1e3325-7867-342c-ad23-2bb80454d6cc",
-                            "instanceIdentifier": "2ed19b7a-1ad4-4df0-939f-cfb3e58ad12c",
-                            "name": "PutElasticCS (holding)",
-                            "comments": "Holding-pen index for filtered events.",
-                            "position": {
-                                "x": 1408.0,
-                                "y": 128.0
-                            },
-                            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
-                            "bundle": {
-                                "group": "io.cybersift",
-                                "artifact": "nifi-PutElasticCS-nar",
-                                "version": "1.0"
-                            },
-                            "properties": {
-                                "Elasticsearch ID attribute": "es_id",
-                                "Elasticsearch Username": null,
-                                "Bulk Size": "1000",
-                                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('holding-')}",
-                                "PROXY PORT": null,
-                                "Elasticsearch Index Flowfile Attribute": null,
-                                "PROXY IP": null,
-                                "Backup Directory": " ",
-                                "MULTILINE": "false",
-                                "Elasticsearch URL": "http://localhost:9200"
-                            },
-                            "propertyDescriptors": {
-                                "Elasticsearch ID attribute": {
-                                    "name": "Elasticsearch ID attribute",
-                                    "displayName": "Elasticsearch ID attribute",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Username": {
-                                    "name": "Elasticsearch Username",
-                                    "displayName": "Elasticsearch Username",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Bulk Size": {
-                                    "name": "Bulk Size",
-                                    "displayName": "Bulk Size",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Default Index": {
-                                    "name": "Elasticsearch Default Index",
-                                    "displayName": "Elasticsearch Default Index",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY PORT": {
-                                    "name": "PROXY PORT",
-                                    "displayName": "Proxy Port",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Index Flowfile Attribute": {
-                                    "name": "Elasticsearch Index Flowfile Attribute",
-                                    "displayName": "Elasticsearch Index Flowfile Attribute",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY IP": {
-                                    "name": "PROXY IP",
-                                    "displayName": "Proxy IP",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Password": {
-                                    "name": "Elasticsearch Password",
-                                    "displayName": "Elasticsearch Password",
-                                    "identifiesControllerService": false,
-                                    "sensitive": true
-                                },
-                                "Backup Directory": {
-                                    "name": "Backup Directory",
-                                    "displayName": "Backup Directory",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "MULTILINE": {
-                                    "name": "MULTILINE",
-                                    "displayName": "Multiple JSON per flowfile",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch URL": {
-                                    "name": "Elasticsearch URL",
-                                    "displayName": "Elasticsearch URL",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "Elasticsearch Response",
-                                "Original Flow Files"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
-                            "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f",
-                            "name": "JmesPathMatcher (events)",
-                            "comments": "Configure event JMESPath rules after import.",
-                            "position": {
-                                "x": 620.0,
-                                "y": 120.0
-                            },
-                            "type": "io.cybersift.processors.JmesPathMatcher.JmesPathMatcher",
-                            "bundle": {
-                                "group": "io.cybersift",
-                                "artifact": "nifi-JmesPathMatcher-nar",
-                                "version": "1.0"
-                            },
-                            "properties": {
-                                "EARLY_STOP": "true",
-                                "PLACEHOLDER": "Use '+' to add JMESPath expressions",
-                                "MULTILINE": "false"
-                            },
-                            "propertyDescriptors": {
-                                "EARLY_STOP": {
-                                    "name": "EARLY_STOP",
-                                    "displayName": "Early Stop",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PLACEHOLDER": {
-                                    "name": "PLACEHOLDER",
-                                    "displayName": "Placeholder",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "MULTILINE": {
-                                    "name": "MULTILINE",
-                                    "displayName": "Multiple JSON per flowfile",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "FAILED"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
-                            "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664",
-                            "name": "WindowsContextWorker",
-                            "comments": "Configure per client/environment.",
-                            "position": {
-                                "x": 980.0,
-                                "y": 320.0
-                            },
-                            "type": "io.cybersift.processors.windowsContextWorker.WindowsContextWorker",
-                            "bundle": {
-                                "group": "default",
-                                "artifact": "nifi-windowsContextWorker-nar",
-                                "version": "unversioned"
-                            },
-                            "properties": {
-                                "Liveliness Threshold (Hours)": "1",
-                                "Alerts Index Name": "alerts",
-                                "Internal DNS resolver": null,
-                                "SWIFT Event Rareness Threshold (Hours)": "36"
-                            },
-                            "propertyDescriptors": {
-                                "Liveliness Threshold (Hours)": {
-                                    "name": "Liveliness Threshold (Hours)",
-                                    "displayName": "Liveliness Threshold (Hours)",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Alerts Index Name": {
-                                    "name": "Alerts Index Name",
-                                    "displayName": "Alerts Index Name",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Internal DNS resolver": {
-                                    "name": "Internal DNS resolver",
-                                    "displayName": "Internal DNS resolver",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "SWIFT Event Rareness Threshold (Hours)": {
-                                    "name": "SWIFT Event Rareness Threshold (Hours)",
-                                    "displayName": "SWIFT Event Rareness Threshold (Hours)",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "FAILED",
-                                "SWIFT",
-                                "IGNORED",
-                                "FILTERED"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "4da79368-b521-3fd7-aee4-e180f0d5ee50",
-                            "instanceIdentifier": "4c7bb3c0-0f6b-4b35-1357-6081777887cd",
-                            "name": "GetRedisList",
-                            "comments": "Set Redis list name per environment.",
-                            "position": {
-                                "x": 240.0,
-                                "y": 120.0
-                            },
-                            "type": "io.cybersift.processors.GetRedisList.GetRedisList",
-                            "bundle": {
-                                "group": "default",
-                                "artifact": "nifi-GetRedisList-nar",
-                                "version": "unversioned"
-                            },
-                            "properties": {
-                                "Redis Host": "127.0.0.1",
-                                "Redis Batch Size": "100",
-                                "Redis Port": "6377",
-                                "Elastic Index Date Format": "yyyy.MM.dd",
-                                "Redis Socket Type": "TCP",
-                                "Content Type JSON": "true",
-                                "Redis Password": " ",
-                                "Redis Unix Path": "/tmp/redis.sock",
-                                "List Name": "windows"
-                            },
-                            "propertyDescriptors": {
-                                "Redis Host": {
-                                    "name": "Redis Host",
-                                    "displayName": "Redis Host",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Redis Batch Size": {
-                                    "name": "Redis Batch Size",
-                                    "displayName": "Redis Batch Size",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Redis Port": {
-                                    "name": "Redis Port",
-                                    "displayName": "Redis Port",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elastic Index Date Format": {
-                                    "name": "Elastic Index Date Format",
-                                    "displayName": "Elastic Index Date Format",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Redis Socket Type": {
-                                    "name": "Redis Socket Type",
-                                    "displayName": "Redis Socket Type",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Content Type JSON": {
-                                    "name": "Content Type JSON",
-                                    "displayName": "Content Type JSON",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Redis Password": {
-                                    "name": "Redis Password",
-                                    "displayName": "Redis Password",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Redis Unix Path": {
-                                    "name": "Redis Unix Path",
-                                    "displayName": "Redis Unix Path",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "List Name": {
-                                    "name": "List Name",
-                                    "displayName": "List Name",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "LinuxEventLog",
-                                "Filtered",
-                                "WindowsEventLog",
-                                "Other"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "9cb00945-dad7-3b73-b8c6-e371d748bfb5",
-                            "instanceIdentifier": "6fe9a9e4-6614-4a7b-52c6-f5f1668f5f7a",
-                            "name": "PutElasticCS (alerts)",
-                            "comments": "Alerts to alerts-* index.",
-                            "position": {
-                                "x": 624.0,
-                                "y": 856.0
-                            },
-                            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
-                            "bundle": {
-                                "group": "io.cybersift",
-                                "artifact": "nifi-PutElasticCS-nar",
-                                "version": "1.0"
-                            },
-                            "properties": {
-                                "Elasticsearch ID attribute": "es_id",
-                                "Elasticsearch Username": null,
-                                "Bulk Size": "1000",
-                                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
-                                "PROXY PORT": null,
-                                "Elasticsearch Index Flowfile Attribute": null,
-                                "PROXY IP": null,
-                                "Backup Directory": " ",
-                                "MULTILINE": "false",
-                                "Elasticsearch URL": "http://localhost:9200"
-                            },
-                            "propertyDescriptors": {
-                                "Elasticsearch ID attribute": {
-                                    "name": "Elasticsearch ID attribute",
-                                    "displayName": "Elasticsearch ID attribute",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Username": {
-                                    "name": "Elasticsearch Username",
-                                    "displayName": "Elasticsearch Username",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Bulk Size": {
-                                    "name": "Bulk Size",
-                                    "displayName": "Bulk Size",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Default Index": {
-                                    "name": "Elasticsearch Default Index",
-                                    "displayName": "Elasticsearch Default Index",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY PORT": {
-                                    "name": "PROXY PORT",
-                                    "displayName": "Proxy Port",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Index Flowfile Attribute": {
-                                    "name": "Elasticsearch Index Flowfile Attribute",
-                                    "displayName": "Elasticsearch Index Flowfile Attribute",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "PROXY IP": {
-                                    "name": "PROXY IP",
-                                    "displayName": "Proxy IP",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch Password": {
-                                    "name": "Elasticsearch Password",
-                                    "displayName": "Elasticsearch Password",
-                                    "identifiesControllerService": false,
-                                    "sensitive": true
-                                },
-                                "Backup Directory": {
-                                    "name": "Backup Directory",
-                                    "displayName": "Backup Directory",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "MULTILINE": {
-                                    "name": "MULTILINE",
-                                    "displayName": "Multiple JSON per flowfile",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                },
-                                "Elasticsearch URL": {
-                                    "name": "Elasticsearch URL",
-                                    "displayName": "Elasticsearch URL",
-                                    "identifiesControllerService": false,
-                                    "sensitive": false
-                                }
-                            },
-                            "style": {},
-                            "schedulingPeriod": "0 sec",
-                            "schedulingStrategy": "TIMER_DRIVEN",
-                            "executionNode": "ALL",
-                            "penaltyDuration": "30 sec",
-                            "yieldDuration": "1 sec",
-                            "bulletinLevel": "WARN",
-                            "runDurationMillis": 0,
-                            "concurrentlySchedulableTaskCount": 1,
-                            "autoTerminatedRelationships": [
-                                "Elasticsearch Response",
-                                "Original Flow Files"
-                            ],
-                            "scheduledState": "ENABLED",
-                            "retryCount": 0,
-                            "retriedRelationships": [],
-                            "backoffMechanism": "PENALIZE_FLOWFILE",
-                            "maxBackoffPeriod": "10 mins",
-                            "componentType": "PROCESSOR",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        }
-                    ],
-                    "inputPorts": [],
-                    "outputPorts": [],
-                    "connections": [
-                        {
-                            "identifier": "9d060b88-7d22-3e3f-bd1c-f73144aa37bb",
-                            "instanceIdentifier": "c9c8f4b3-5b2c-4d9b-3714-33a39e81ec44",
-                            "name": "FILTER_HOLDING",
-                            "source": {
-                                "id": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "JmesPathMatcher (events)",
-                                "comments": "Configure event JMESPath rules after import.",
-                                "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f"
-                            },
-                            "destination": {
-                                "id": "7e1e3325-7867-342c-ad23-2bb80454d6cc",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "PutElasticCS (holding)",
-                                "comments": "Holding-pen index for filtered events.",
-                                "instanceIdentifier": "2ed19b7a-1ad4-4df0-939f-cfb3e58ad12c"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "FILTER_HOLDING"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "1d89cc4f-7d0f-39ec-b1f4-9b8b8cd9bc18",
-                            "instanceIdentifier": "8a6808a6-2fe8-4e50-fc33-f6df13da24c6",
-                            "name": "ALL",
-                            "source": {
-                                "id": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "JmesPathMatcher (alerts)",
-                                "comments": "Alerts routing (general). Configure JMESPath after import.",
-                                "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf"
-                            },
-                            "destination": {
-                                "id": "f3412341-7cd5-376d-b957-2901694d7b21",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "PutCybersiftSupport (OPTIONAL)",
-                                "comments": "OPTIONAL",
-                                "instanceIdentifier": "c0f1d913-701a-4f2c-73e6-b9ca6b061a27"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "ALL"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "308a4f87-ca19-3147-a36b-1c3a0f206966",
-                            "instanceIdentifier": "e19b9a8f-00f0-4c2d-9ff7-607925343cfc",
-                            "name": "All",
-                            "source": {
-                                "id": "4da79368-b521-3fd7-aee4-e180f0d5ee50",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "GetRedisList",
-                                "comments": "Set Redis list name per environment.",
-                                "instanceIdentifier": "4c7bb3c0-0f6b-4b35-1357-6081777887cd"
-                            },
-                            "destination": {
-                                "id": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "JmesPathMatcher (events)",
-                                "comments": "Configure event JMESPath rules after import.",
-                                "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "All"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "7e819ac7-dbc6-308c-b224-450ad1301d78",
-                            "instanceIdentifier": "e4af2f53-6f8a-4e62-f711-1da2b8d05c51",
-                            "name": "ALL",
-                            "source": {
-                                "id": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "JmesPathMatcher (alerts)",
-                                "comments": "Alerts routing (general). Configure JMESPath after import.",
-                                "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf"
-                            },
-                            "destination": {
-                                "id": "9cb00945-dad7-3b73-b8c6-e371d748bfb5",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "PutElasticCS (alerts)",
-                                "comments": "Alerts to alerts-* index.",
-                                "instanceIdentifier": "6fe9a9e4-6614-4a7b-52c6-f5f1668f5f7a"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "ALL"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "45f3ed72-300e-3ca7-be9d-7b44507a6c4b",
-                            "instanceIdentifier": "f2b9b8cc-5c13-4c3c-9421-793eb88db15e",
-                            "name": "SUCCESS",
-                            "source": {
-                                "id": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "WindowsContextWorker",
-                                "comments": "Configure per client/environment.",
-                                "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664"
-                            },
-                            "destination": {
-                                "id": "663f78b9-9dfa-3e1d-aa11-40e56071c487",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "PutElasticCS (windows)",
-                                "comments": "Events to windows-* index.",
-                                "instanceIdentifier": "bd0d2d96-3ee4-43d7-3701-25655912e62a"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "SUCCESS"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "c680263d-749b-3d0a-9e1d-da7482432e06",
-                            "instanceIdentifier": "c2a9f4d2-7c24-4c2f-4c98-fe1a607b4e64",
-                            "name": "ALERTS",
-                            "source": {
-                                "id": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "WindowsContextWorker",
-                                "comments": "Configure per client/environment.",
-                                "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664"
-                            },
-                            "destination": {
-                                "id": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "JmesPathMatcher (alerts)",
-                                "comments": "Alerts routing (general). Configure JMESPath after import.",
-                                "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "ALERTS"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        },
-                        {
-                            "identifier": "6177e69f-7a5e-3a82-811a-820cb43df0a2",
-                            "instanceIdentifier": "31d315b3-1e5f-4c1c-5c4e-65e1a363c30b",
-                            "name": "UNMATCHED",
-                            "source": {
-                                "id": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "JmesPathMatcher (events)",
-                                "comments": "Configure event JMESPath rules after import.",
-                                "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f"
-                            },
-                            "destination": {
-                                "id": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
-                                "type": "PROCESSOR",
-                                "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
-                                "name": "WindowsContextWorker",
-                                "comments": "Configure per client/environment.",
-                                "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664"
-                            },
-                            "labelIndex": 1,
-                            "zIndex": 0,
-                            "selectedRelationships": [
-                                "UNMATCHED"
-                            ],
-                            "backPressureObjectThreshold": 10000,
-                            "backPressureDataSizeThreshold": "1 GB",
-                            "flowFileExpiration": "0 sec",
-                            "prioritizers": [],
-                            "bends": [],
-                            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-                            "loadBalanceCompression": "DO_NOT_COMPRESS",
-                            "componentType": "CONNECTION",
-                            "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
-                        }
-                    ],
-                    "labels": [],
-                    "funnels": [],
-                    "controllerServices": [],
-                    "variables": {},
-                    "defaultFlowFileExpiration": "0 sec",
-                    "defaultBackPressureObjectThreshold": 10000,
-                    "defaultBackPressureDataSizeThreshold": "1 GB",
-                    "componentType": "PROCESS_GROUP",
-                    "flowFileConcurrency": "UNBOUNDED",
-                    "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE",
-                    "groupIdentifier": "f4226e45-2e79-32d6-92cf-74c529cba7da"
-                }
-            ],
+            "processGroups": [],
             "remoteProcessGroups": [],
-            "processors": [],
+            "processors": [
+              {
+                "identifier": "663f78b9-9dfa-3e1d-aa11-40e56071c487",
+                "instanceIdentifier": "bd0d2d96-3ee4-43d7-3701-25655912e62a",
+                "name": "PutElasticCS (windows)",
+                "comments": "Events to windows-* index.",
+                "position": {
+                  "x": 1600.0,
+                  "y": 360.0
+                },
+                "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+                "bundle": {
+                  "group": "io.cybersift",
+                  "artifact": "nifi-PutElasticCS-nar",
+                  "version": "1.0"
+                },
+                "properties": {
+                  "Elasticsearch ID attribute": "es_id",
+                  "Elasticsearch Username": null,
+                  "Bulk Size": "1000",
+                  "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('windows-')}",
+                  "PROXY PORT": null,
+                  "Elasticsearch Index Flowfile Attribute": null,
+                  "PROXY IP": null,
+                  "Backup Directory": " ",
+                  "MULTILINE": "false",
+                  "Elasticsearch URL": "http://localhost:9200"
+                },
+                "propertyDescriptors": {
+                  "Elasticsearch ID attribute": {
+                    "name": "Elasticsearch ID attribute",
+                    "displayName": "Elasticsearch ID attribute",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Username": {
+                    "name": "Elasticsearch Username",
+                    "displayName": "Elasticsearch Username",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Bulk Size": {
+                    "name": "Bulk Size",
+                    "displayName": "Bulk Size",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Default Index": {
+                    "name": "Elasticsearch Default Index",
+                    "displayName": "Elasticsearch Default Index",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY PORT": {
+                    "name": "PROXY PORT",
+                    "displayName": "Proxy Port",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Index Flowfile Attribute": {
+                    "name": "Elasticsearch Index Flowfile Attribute",
+                    "displayName": "Elasticsearch Index Flowfile Attribute",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY IP": {
+                    "name": "PROXY IP",
+                    "displayName": "Proxy IP",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Password": {
+                    "name": "Elasticsearch Password",
+                    "displayName": "Elasticsearch Password",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                  },
+                  "Backup Directory": {
+                    "name": "Backup Directory",
+                    "displayName": "Backup Directory",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "MULTILINE": {
+                    "name": "MULTILINE",
+                    "displayName": "Multiple JSON per flowfile",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch URL": {
+                    "name": "Elasticsearch URL",
+                    "displayName": "Elasticsearch URL",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "Elasticsearch Response",
+                  "Original Flow Files"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
+                "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf",
+                "name": "JmesPathMatcher (alerts)",
+                "comments": "Alerts routing (general). Configure JMESPath after import.",
+                "position": {
+                  "x": 944.0,
+                  "y": 584.0
+                },
+                "type": "io.cybersift.processors.JmesPathMatcher.JmesPathMatcher",
+                "bundle": {
+                  "group": "io.cybersift",
+                  "artifact": "nifi-JmesPathMatcher-nar",
+                  "version": "1.0"
+                },
+                "properties": {
+                  "EARLY_STOP": "true",
+                  "PLACEHOLDER": "Use '+' to add JMESPath expressions",
+                  "MULTILINE": "false"
+                },
+                "propertyDescriptors": {
+                  "EARLY_STOP": {
+                    "name": "EARLY_STOP",
+                    "displayName": "Early Stop",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PLACEHOLDER": {
+                    "name": "PLACEHOLDER",
+                    "displayName": "Placeholder",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "MULTILINE": {
+                    "name": "MULTILINE",
+                    "displayName": "Multiple JSON per flowfile",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "FAILED",
+                  "UNMATCHED"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "f3412341-7cd5-376d-b957-2901694d7b21",
+                "instanceIdentifier": "c0f1d913-701a-4f2c-73e6-b9ca6b061a27",
+                "name": "PutCybersiftSupport (OPTIONAL)",
+                "comments": "OPTIONAL",
+                "position": {
+                  "x": 1320.0,
+                  "y": 848.0
+                },
+                "type": "io.cybersift.processors.PutCybersiftSupport.PutCybersiftSupport",
+                "bundle": {
+                  "group": "io.cybersift",
+                  "artifact": "nifi-PutCybersiftSupport-nar",
+                  "version": "1.0"
+                },
+                "properties": {
+                  "SITE": "CompanyName",
+                  "PROXY PORT": null,
+                  "PROXY IP": null,
+                  "ENDPOINT_URL": "https://cybersift.euc-alerts.freshservice.com/integrations/26000002778/alerts"
+                },
+                "propertyDescriptors": {
+                  "AUTH_KEY": {
+                    "name": "AUTH_KEY",
+                    "displayName": "Auth Key",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                  },
+                  "SITE": {
+                    "name": "SITE",
+                    "displayName": "Site/Customer",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY PORT": {
+                    "name": "PROXY PORT",
+                    "displayName": "Proxy Port",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY IP": {
+                    "name": "PROXY IP",
+                    "displayName": "Proxy IP",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "ENDPOINT_URL": {
+                    "name": "ENDPOINT_URL",
+                    "displayName": "Endpoint URL",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "RESPONSES",
+                  "FAILED"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "7e1e3325-7867-342c-ad23-2bb80454d6cc",
+                "instanceIdentifier": "2ed19b7a-1ad4-4df0-939f-cfb3e58ad12c",
+                "name": "PutElasticCS (holding)",
+                "comments": "Holding-pen index for filtered events.",
+                "position": {
+                  "x": 1408.0,
+                  "y": 128.0
+                },
+                "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+                "bundle": {
+                  "group": "io.cybersift",
+                  "artifact": "nifi-PutElasticCS-nar",
+                  "version": "1.0"
+                },
+                "properties": {
+                  "Elasticsearch ID attribute": "es_id",
+                  "Elasticsearch Username": null,
+                  "Bulk Size": "1000",
+                  "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('holding-')}",
+                  "PROXY PORT": null,
+                  "Elasticsearch Index Flowfile Attribute": null,
+                  "PROXY IP": null,
+                  "Backup Directory": " ",
+                  "MULTILINE": "false",
+                  "Elasticsearch URL": "http://localhost:9200"
+                },
+                "propertyDescriptors": {
+                  "Elasticsearch ID attribute": {
+                    "name": "Elasticsearch ID attribute",
+                    "displayName": "Elasticsearch ID attribute",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Username": {
+                    "name": "Elasticsearch Username",
+                    "displayName": "Elasticsearch Username",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Bulk Size": {
+                    "name": "Bulk Size",
+                    "displayName": "Bulk Size",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Default Index": {
+                    "name": "Elasticsearch Default Index",
+                    "displayName": "Elasticsearch Default Index",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY PORT": {
+                    "name": "PROXY PORT",
+                    "displayName": "Proxy Port",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Index Flowfile Attribute": {
+                    "name": "Elasticsearch Index Flowfile Attribute",
+                    "displayName": "Elasticsearch Index Flowfile Attribute",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY IP": {
+                    "name": "PROXY IP",
+                    "displayName": "Proxy IP",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Password": {
+                    "name": "Elasticsearch Password",
+                    "displayName": "Elasticsearch Password",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                  },
+                  "Backup Directory": {
+                    "name": "Backup Directory",
+                    "displayName": "Backup Directory",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "MULTILINE": {
+                    "name": "MULTILINE",
+                    "displayName": "Multiple JSON per flowfile",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch URL": {
+                    "name": "Elasticsearch URL",
+                    "displayName": "Elasticsearch URL",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "Elasticsearch Response",
+                  "Original Flow Files"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
+                "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f",
+                "name": "JmesPathMatcher (events)",
+                "comments": "Configure event JMESPath rules after import.",
+                "position": {
+                  "x": 620.0,
+                  "y": 120.0
+                },
+                "type": "io.cybersift.processors.JmesPathMatcher.JmesPathMatcher",
+                "bundle": {
+                  "group": "io.cybersift",
+                  "artifact": "nifi-JmesPathMatcher-nar",
+                  "version": "1.0"
+                },
+                "properties": {
+                  "EARLY_STOP": "true",
+                  "PLACEHOLDER": "Use '+' to add JMESPath expressions",
+                  "MULTILINE": "false"
+                },
+                "propertyDescriptors": {
+                  "EARLY_STOP": {
+                    "name": "EARLY_STOP",
+                    "displayName": "Early Stop",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PLACEHOLDER": {
+                    "name": "PLACEHOLDER",
+                    "displayName": "Placeholder",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "MULTILINE": {
+                    "name": "MULTILINE",
+                    "displayName": "Multiple JSON per flowfile",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "FAILED"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
+                "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664",
+                "name": "WindowsContextWorker",
+                "comments": "Configure per client/environment.",
+                "position": {
+                  "x": 980.0,
+                  "y": 320.0
+                },
+                "type": "io.cybersift.processors.windowsContextWorker.WindowsContextWorker",
+                "bundle": {
+                  "group": "default",
+                  "artifact": "nifi-windowsContextWorker-nar",
+                  "version": "unversioned"
+                },
+                "properties": {
+                  "Liveliness Threshold (Hours)": "1",
+                  "Alerts Index Name": "alerts",
+                  "Internal DNS resolver": null,
+                  "SWIFT Event Rareness Threshold (Hours)": "36"
+                },
+                "propertyDescriptors": {
+                  "Liveliness Threshold (Hours)": {
+                    "name": "Liveliness Threshold (Hours)",
+                    "displayName": "Liveliness Threshold (Hours)",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Alerts Index Name": {
+                    "name": "Alerts Index Name",
+                    "displayName": "Alerts Index Name",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Internal DNS resolver": {
+                    "name": "Internal DNS resolver",
+                    "displayName": "Internal DNS resolver",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "SWIFT Event Rareness Threshold (Hours)": {
+                    "name": "SWIFT Event Rareness Threshold (Hours)",
+                    "displayName": "SWIFT Event Rareness Threshold (Hours)",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "FAILED",
+                  "SWIFT",
+                  "IGNORED",
+                  "FILTERED"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "4da79368-b521-3fd7-aee4-e180f0d5ee50",
+                "instanceIdentifier": "4c7bb3c0-0f6b-4b35-1357-6081777887cd",
+                "name": "GetRedisList",
+                "comments": "Set Redis list name per environment.",
+                "position": {
+                  "x": 240.0,
+                  "y": 120.0
+                },
+                "type": "io.cybersift.processors.GetRedisList.GetRedisList",
+                "bundle": {
+                  "group": "default",
+                  "artifact": "nifi-GetRedisList-nar",
+                  "version": "unversioned"
+                },
+                "properties": {
+                  "Redis Host": "127.0.0.1",
+                  "Redis Batch Size": "100",
+                  "Redis Port": "6377",
+                  "Elastic Index Date Format": "yyyy.MM.dd",
+                  "Redis Socket Type": "TCP",
+                  "Content Type JSON": "true",
+                  "Redis Password": " ",
+                  "Redis Unix Path": "/tmp/redis.sock",
+                  "List Name": "windows"
+                },
+                "propertyDescriptors": {
+                  "Redis Host": {
+                    "name": "Redis Host",
+                    "displayName": "Redis Host",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Redis Batch Size": {
+                    "name": "Redis Batch Size",
+                    "displayName": "Redis Batch Size",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Redis Port": {
+                    "name": "Redis Port",
+                    "displayName": "Redis Port",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elastic Index Date Format": {
+                    "name": "Elastic Index Date Format",
+                    "displayName": "Elastic Index Date Format",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Redis Socket Type": {
+                    "name": "Redis Socket Type",
+                    "displayName": "Redis Socket Type",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Content Type JSON": {
+                    "name": "Content Type JSON",
+                    "displayName": "Content Type JSON",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Redis Password": {
+                    "name": "Redis Password",
+                    "displayName": "Redis Password",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Redis Unix Path": {
+                    "name": "Redis Unix Path",
+                    "displayName": "Redis Unix Path",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "List Name": {
+                    "name": "List Name",
+                    "displayName": "List Name",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "LinuxEventLog",
+                  "Filtered",
+                  "WindowsEventLog",
+                  "Other"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "9cb00945-dad7-3b73-b8c6-e371d748bfb5",
+                "instanceIdentifier": "6fe9a9e4-6614-4a7b-52c6-f5f1668f5f7a",
+                "name": "PutElasticCS (alerts)",
+                "comments": "Alerts to alerts-* index.",
+                "position": {
+                  "x": 624.0,
+                  "y": 856.0
+                },
+                "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+                "bundle": {
+                  "group": "io.cybersift",
+                  "artifact": "nifi-PutElasticCS-nar",
+                  "version": "1.0"
+                },
+                "properties": {
+                  "Elasticsearch ID attribute": "es_id",
+                  "Elasticsearch Username": null,
+                  "Bulk Size": "1000",
+                  "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
+                  "PROXY PORT": null,
+                  "Elasticsearch Index Flowfile Attribute": null,
+                  "PROXY IP": null,
+                  "Backup Directory": " ",
+                  "MULTILINE": "false",
+                  "Elasticsearch URL": "http://localhost:9200"
+                },
+                "propertyDescriptors": {
+                  "Elasticsearch ID attribute": {
+                    "name": "Elasticsearch ID attribute",
+                    "displayName": "Elasticsearch ID attribute",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Username": {
+                    "name": "Elasticsearch Username",
+                    "displayName": "Elasticsearch Username",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Bulk Size": {
+                    "name": "Bulk Size",
+                    "displayName": "Bulk Size",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Default Index": {
+                    "name": "Elasticsearch Default Index",
+                    "displayName": "Elasticsearch Default Index",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY PORT": {
+                    "name": "PROXY PORT",
+                    "displayName": "Proxy Port",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Index Flowfile Attribute": {
+                    "name": "Elasticsearch Index Flowfile Attribute",
+                    "displayName": "Elasticsearch Index Flowfile Attribute",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "PROXY IP": {
+                    "name": "PROXY IP",
+                    "displayName": "Proxy IP",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch Password": {
+                    "name": "Elasticsearch Password",
+                    "displayName": "Elasticsearch Password",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                  },
+                  "Backup Directory": {
+                    "name": "Backup Directory",
+                    "displayName": "Backup Directory",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "MULTILINE": {
+                    "name": "MULTILINE",
+                    "displayName": "Multiple JSON per flowfile",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  },
+                  "Elasticsearch URL": {
+                    "name": "Elasticsearch URL",
+                    "displayName": "Elasticsearch URL",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                  }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                  "Elasticsearch Response",
+                  "Original Flow Files"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 0,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              }
+            ],
             "inputPorts": [],
             "outputPorts": [],
-            "connections": [],
+            "connections": [
+              {
+                "identifier": "9d060b88-7d22-3e3f-bd1c-f73144aa37bb",
+                "instanceIdentifier": "c9c8f4b3-5b2c-4d9b-3714-33a39e81ec44",
+                "name": "FILTER_HOLDING",
+                "source": {
+                  "id": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "JmesPathMatcher (events)",
+                  "comments": "Configure event JMESPath rules after import.",
+                  "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f"
+                },
+                "destination": {
+                  "id": "7e1e3325-7867-342c-ad23-2bb80454d6cc",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "PutElasticCS (holding)",
+                  "comments": "Holding-pen index for filtered events.",
+                  "instanceIdentifier": "2ed19b7a-1ad4-4df0-939f-cfb3e58ad12c"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "FILTER_HOLDING"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "1d89cc4f-7d0f-39ec-b1f4-9b8b8cd9bc18",
+                "instanceIdentifier": "8a6808a6-2fe8-4e50-fc33-f6df13da24c6",
+                "name": "ALL",
+                "source": {
+                  "id": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "JmesPathMatcher (alerts)",
+                  "comments": "Alerts routing (general). Configure JMESPath after import.",
+                  "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf"
+                },
+                "destination": {
+                  "id": "f3412341-7cd5-376d-b957-2901694d7b21",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "PutCybersiftSupport (OPTIONAL)",
+                  "comments": "OPTIONAL",
+                  "instanceIdentifier": "c0f1d913-701a-4f2c-73e6-b9ca6b061a27"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "ALL"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "308a4f87-ca19-3147-a36b-1c3a0f206966",
+                "instanceIdentifier": "e19b9a8f-00f0-4c2d-9ff7-607925343cfc",
+                "name": "All",
+                "source": {
+                  "id": "4da79368-b521-3fd7-aee4-e180f0d5ee50",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "GetRedisList",
+                  "comments": "Set Redis list name per environment.",
+                  "instanceIdentifier": "4c7bb3c0-0f6b-4b35-1357-6081777887cd"
+                },
+                "destination": {
+                  "id": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "JmesPathMatcher (events)",
+                  "comments": "Configure event JMESPath rules after import.",
+                  "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "All"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "7e819ac7-dbc6-308c-b224-450ad1301d78",
+                "instanceIdentifier": "e4af2f53-6f8a-4e62-f711-1da2b8d05c51",
+                "name": "ALL",
+                "source": {
+                  "id": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "JmesPathMatcher (alerts)",
+                  "comments": "Alerts routing (general). Configure JMESPath after import.",
+                  "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf"
+                },
+                "destination": {
+                  "id": "9cb00945-dad7-3b73-b8c6-e371d748bfb5",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "PutElasticCS (alerts)",
+                  "comments": "Alerts to alerts-* index.",
+                  "instanceIdentifier": "6fe9a9e4-6614-4a7b-52c6-f5f1668f5f7a"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "ALL"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "45f3ed72-300e-3ca7-be9d-7b44507a6c4b",
+                "instanceIdentifier": "f2b9b8cc-5c13-4c3c-9421-793eb88db15e",
+                "name": "SUCCESS",
+                "source": {
+                  "id": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "WindowsContextWorker",
+                  "comments": "Configure per client/environment.",
+                  "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664"
+                },
+                "destination": {
+                  "id": "663f78b9-9dfa-3e1d-aa11-40e56071c487",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "PutElasticCS (windows)",
+                  "comments": "Events to windows-* index.",
+                  "instanceIdentifier": "bd0d2d96-3ee4-43d7-3701-25655912e62a"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "SUCCESS"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "c680263d-749b-3d0a-9e1d-da7482432e06",
+                "instanceIdentifier": "c2a9f4d2-7c24-4c2f-4c98-fe1a607b4e64",
+                "name": "ALERTS",
+                "source": {
+                  "id": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "WindowsContextWorker",
+                  "comments": "Configure per client/environment.",
+                  "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664"
+                },
+                "destination": {
+                  "id": "c6cbc178-8267-34f3-91a1-f0b42ac53e1e",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "JmesPathMatcher (alerts)",
+                  "comments": "Alerts routing (general). Configure JMESPath after import.",
+                  "instanceIdentifier": "ecb2e8ad-19d8-4d1a-fd62-e49cffa22baf"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "ALERTS"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              },
+              {
+                "identifier": "6177e69f-7a5e-3a82-811a-820cb43df0a2",
+                "instanceIdentifier": "31d315b3-1e5f-4c1c-5c4e-65e1a363c30b",
+                "name": "UNMATCHED",
+                "source": {
+                  "id": "bca74d26-c1a7-3ce2-a66f-1afe76a54f77",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "JmesPathMatcher (events)",
+                  "comments": "Configure event JMESPath rules after import.",
+                  "instanceIdentifier": "9bf5d289-6e2e-4c55-5686-f5624a148b9f"
+                },
+                "destination": {
+                  "id": "713dd1f8-7deb-3935-94c1-5232dc7f1262",
+                  "type": "PROCESSOR",
+                  "groupId": "ca95704f-d6c5-30de-bbf5-63d870cbdd35",
+                  "name": "WindowsContextWorker",
+                  "comments": "Configure per client/environment.",
+                  "instanceIdentifier": "50b34e90-7f5b-4eab-6132-2272e6570664"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                  "UNMATCHED"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "ca95704f-d6c5-30de-bbf5-63d870cbdd35"
+              }
+            ],
             "labels": [],
             "funnels": [],
             "controllerServices": [],
@@ -1275,13 +1257,31 @@
             "defaultBackPressureDataSizeThreshold": "1 GB",
             "componentType": "PROCESS_GROUP",
             "flowFileConcurrency": "UNBOUNDED",
-            "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
-        },
-        "externalControllerServices": {},
-        "parameterContexts": {},
-        "flowEncodingVersion": "1.0",
-        "parameterProviders": {},
-        "latest": false
+            "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE",
+            "groupIdentifier": "f4226e45-2e79-32d6-92cf-74c529cba7da"
+          }
+        ],
+        "remoteProcessGroups": [],
+        "processors": [],
+        "inputPorts": [],
+        "outputPorts": [],
+        "connections": [],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [],
+        "variables": {},
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+      },
+      "externalControllerServices": {},
+      "parameterContexts": {},
+      "flowEncodingVersion": "1.0",
+      "parameterProviders": {},
+      "latest": false
     }
-}
+  }
 ]
