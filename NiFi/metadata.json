@@ -250,5 +250,266 @@
       "parameterProviders": {},
       "latest": false
     }
+  },
+{
+  "name": "Cloudflare API",
+  "description": "This flow is for Cloudflare audit events and stream them into Elasticsearch target indices.",
+  "reference": "https://outline.cybersift.io/s/sentio-siem/doc/cloudflare-pwsixwwVFm",
+  "tags": [
+    "cloudflare",
+    "elasticsearch",
+    "audit_logs"
+  ],
+  "export": {
+    "template": {
+      "groupId": "0192100a-8d3e-1b06-14a9-c368eed2cc19",
+      "name": "Cloudflare Integration",
+      "timestamp": "07/24/2026 10:48:16 UTC",
+      "snippet": {
+        "processors": [
+          {
+            "id": "c2cbb91a-e709-34fe-0000-000000000000",
+            "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
+            "versionedComponentId": "c2cbb91a-e709-34fe-82ad-e5308462c4fb",
+            "name": "CloudflareAudit",
+            "type": "io.cybersift.processors.CloudflareAudit.CloudflareAudit",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-CloudflareAudit-nar",
+              "version": "1.0"
+            },
+            "position": {
+              "x": 272.0,
+              "y": 0.0
+            },
+            "config": {
+              "schedulingPeriod": "60 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "retryCount": 10,
+              "maxBackoffPeriod": "10 mins",
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "properties": {
+                "API_TOKEN": "",
+                "ACCOUNT_ID": ""
+              },
+              "descriptors": {
+                "API_TOKEN": {
+                  "name": "API_TOKEN"
+                },
+                "ACCOUNT_ID": {
+                  "name": "ACCOUNT_ID"
+                }
+              }
+            },
+            "relationships": [
+              {
+                "name": "ALERTS",
+                "autoTerminate": false,
+                "retry": false
+              },
+              {
+                "name": "EVENTS",
+                "autoTerminate": false,
+                "retry": false
+              },
+              {
+                "name": "FILTERED",
+                "autoTerminate": false,
+                "retry": false
+              }
+            ],
+            "state": "RUNNING",
+            "executionNodeRestricted": false
+          },
+          {
+            "id": "a4b00910-2be6-3040-0000-000000000000",
+            "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
+            "versionedComponentId": "a4b00910-2be6-3040-834e-7ff722a8f2e1",
+            "name": "PutElasticCS",
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "position": {
+              "x": 0.0,
+              "y": 320.0
+            },
+            "config": {
+              "schedulingPeriod": "0 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "retryCount": 10,
+              "maxBackoffPeriod": "10 mins",
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "properties": {
+                "Elasticsearch ID attribute": "_id",
+                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('cloudflare-')}",
+                "Elasticsearch Username": "admin",
+                "Elasticsearch Index Flowfile Attribute": null,
+                "PROXY PORT": null,
+                "Backup Directory": " ",
+                "PROXY IP": null,
+                "Bulk Size": "1000",
+                "Elasticsearch Password": null,
+                "MULTILINE": "false",
+                "Elasticsearch URL": "http://localhost:9200"
+              }
+            },
+            "relationships": [
+              {
+                "name": "Elasticsearch Request",
+                "autoTerminate": true,
+                "retry": false
+              },
+              {
+                "name": "Elasticsearch Response",
+                "autoTerminate": true,
+                "retry": false
+              },
+              {
+                "name": "Original Flow Files",
+                "autoTerminate": true,
+                "retry": false
+              }
+            ],
+            "state": "RUNNING",
+            "executionNodeRestricted": false
+          },
+          {
+            "id": "79d7cdc5-0735-3c38-0000-000000000000",
+            "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
+            "versionedComponentId": "79d7cdc5-0735-3c38-8063-ff19cacdacec",
+            "name": "PutElasticCS",
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "position": {
+              "x": 576.0,
+              "y": 320.0
+            },
+            "config": {
+              "schedulingPeriod": "0 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "retryCount": 10,
+              "maxBackoffPeriod": "10 mins",
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "properties": {
+                "Elasticsearch ID attribute": "_id",
+                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
+                "Elasticsearch Username": "admin",
+                "Elasticsearch Index Flowfile Attribute": null,
+                "PROXY PORT": null,
+                "Backup Directory": " ",
+                "PROXY IP": null,
+                "Bulk Size": "1000",
+                "Elasticsearch Password": null,
+                "MULTILINE": "false",
+                "Elasticsearch URL": "http://localhost:9200"
+              }
+            },
+            "relationships": [
+              {
+                "name": "Elasticsearch Request",
+                "autoTerminate": true,
+                "retry": false
+              },
+              {
+                "name": "Elasticsearch Response",
+                "autoTerminate": true,
+                "retry": false
+              },
+              {
+                "name": "Original Flow Files",
+                "autoTerminate": true,
+                "retry": false
+              }
+            ],
+            "state": "RUNNING",
+            "executionNodeRestricted": false
+          }
+        ],
+        "connections": [
+          {
+            "id": "05a1e07c-f420-3e9e-0000-000000000000",
+            "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
+            "source": {
+              "id": "c2cbb91a-e709-34fe-0000-000000000000",
+              "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+              "type": "PROCESSOR",
+              "versionedComponentId": "c2cbb91a-e709-34fe-82ad-e5308462c4fb"
+            },
+            "destination": {
+              "id": "a4b00910-2be6-3040-0000-000000000000",
+              "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+              "type": "PROCESSOR",
+              "versionedComponentId": "a4b00910-2be6-3040-834e-7ff722a8f2e1"
+            },
+            "selectedRelationships": [
+              "EVENTS",
+              "FILTERED"
+            ],
+            "backPressureDataSizeThreshold": "1 GB",
+            "backPressureObjectThreshold": 10000,
+            "flowFileExpiration": "0 sec",
+            "labelIndex": 1,
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "loadBalanceStatus": "LOAD_BALANCE_NOT_CONFIGURED",
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "zIndex": 0
+          },
+          {
+            "id": "2defc246-c0a3-3cc5-0000-000000000000",
+            "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
+            "versionedComponentId": "2defc246-c0a3-3cc5-b1aa-cd7ca3819d53",
+            "source": {
+              "id": "c2cbb91a-e709-34fe-0000-000000000000",
+              "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+              "type": "PROCESSOR",
+              "versionedComponentId": "c2cbb91a-e709-34fe-82ad-e5308462c4fb"
+            },
+            "destination": {
+              "id": "79d7cdc5-0735-3c38-0000-000000000000",
+              "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+              "type": "PROCESSOR",
+              "versionedComponentId": "79d7cdc5-0735-3c38-8063-ff19cacdacec"
+            },
+            "selectedRelationships": [
+              "ALERTS"
+            ],
+            "backPressureDataSizeThreshold": "1 GB",
+            "backPressureObjectThreshold": 10000,
+            "flowFileExpiration": "0 sec",
+            "labelIndex": 1,
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "loadBalanceStatus": "LOAD_BALANCE_NOT_CONFIGURED",
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "zIndex": 0
+          }
+        ]
+      }
+    }
   }
+}
 ]
