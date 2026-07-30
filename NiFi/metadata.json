@@ -252,261 +252,504 @@
     }
   },
   {
-    "name": "Cloudflare API",
-    "description": "This flow is for Cloudflare audit events and stream them into Elasticsearch target indices.",
-    "reference": "https://outline.cybersift.io/s/sentio-siem/doc/cloudflare-pwsixwwVFm",
-    "tags": [
-      "cloudflare",
-      "elasticsearch",
-      "audit_logs"
-    ],
-    "export": {
-      "template": {
-        "groupId": "0192100a-8d3e-1b06-14a9-c368eed2cc19",
-        "name": "Cloudflare Integration",
-        "timestamp": "07/24/2026 10:48:16 UTC",
-        "snippet": {
+      "name": "Cloudflare API",
+      "description": "Ingest Cloudflare API logs to get an overview of all administrative actions within your environment",
+      "reference": "https://outline.cybersift.io/s/sentio-siem/doc/cloudflare-pwsixwwVFm",
+      "tags": ["cloudflare","api"],
+      "export": {
+        "flowContents": {
+          "identifier": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+          "instanceIdentifier": "b325828e-019f-1000-a9cc-d47110492f93",
+          "name": "Cloudflare API",
+          "comments": "",
+          "position": {
+            "x": 662.0,
+            "y": 919.0
+          },
+          "processGroups": [],
+          "remoteProcessGroups": [],
           "processors": [
             {
-              "id": "c2cbb91a-e709-34fe-0000-000000000000",
-              "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
-              "versionedComponentId": "c2cbb91a-e709-34fe-82ad-e5308462c4fb",
+              "identifier": "637e19ba-86cb-371b-acd7-58ad0bf2ee10",
+              "instanceIdentifier": "b32654ba-019f-1000-2d8c-2b9330d92582",
+              "name": "Alert Tuning (JmesPath Queries)",
+              "comments": "",
+              "position": {
+                "x": 1128.0,
+                "y": 544.0
+              },
+              "type": "io.cybersift.processors.JmesPathMatcher.JmesPathMatcher",
+              "bundle": {
+                "group": "io.cybersift",
+                "artifact": "nifi-JmesPathMatcher-nar",
+                "version": "1.0"
+              },
+              "properties": {
+                "EARLY_STOP": "true",
+                "EXPERIMENTAL": "false",
+                "PLACEHOLDER": "Placeholder - doesnt do anything. To add JMESPath expressions, use the '+' button on the top right",
+                "MULTILINE": "false"
+              },
+              "propertyDescriptors": {
+                "EARLY_STOP": {
+                  "name": "EARLY_STOP",
+                  "displayName": "Early Stop",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "EXPERIMENTAL": {
+                  "name": "EXPERIMENTAL",
+                  "displayName": "Enable experimental features",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "PLACEHOLDER": {
+                  "name": "PLACEHOLDER",
+                  "displayName": "Placeholder",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "MULTILINE": {
+                  "name": "MULTILINE",
+                  "displayName": "Multiple JSON per flowfile",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                }
+              },
+              "style": {},
+              "schedulingPeriod": "0 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "autoTerminatedRelationships": ["ALL"],
+              "scheduledState": "ENABLED",
+              "retryCount": 10,
+              "retriedRelationships": [],
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "maxBackoffPeriod": "10 mins",
+              "componentType": "PROCESSOR",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
+            },
+            {
+              "identifier": "52ed801b-cfd0-33d9-99c4-597b80211431",
+              "instanceIdentifier": "a4b00910-2be6-3040-e079-bf6b58c232fc",
+              "name": "PutElasticCS",
+              "comments": "",
+              "position": {
+                "x": 530.0,
+                "y": 551.0
+              },
+              "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+              "bundle": {
+                "group": "io.cybersift",
+                "artifact": "nifi-PutElasticCS-nar",
+                "version": "1.0"
+              },
+              "properties": {
+                "Elasticsearch ID attribute": "_id",
+                "Elasticsearch Username": "admin",
+                "Bulk Size": "1000",
+                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('cloudflare-')}",
+                "PROXY PORT": null,
+                "Elasticsearch Index Flowfile Attribute": null,
+                "PROXY IP": null,
+                "Backup Directory": " ",
+                "MULTILINE": "false",
+                "Elasticsearch URL": "http://localhost:9200"
+              },
+              "propertyDescriptors": {
+                "Elasticsearch ID attribute": {
+                  "name": "Elasticsearch ID attribute",
+                  "displayName": "Elasticsearch ID attribute",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Username": {
+                  "name": "Elasticsearch Username",
+                  "displayName": "Elasticsearch Username",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Bulk Size": {
+                  "name": "Bulk Size",
+                  "displayName": "Bulk Size",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Default Index": {
+                  "name": "Elasticsearch Default Index",
+                  "displayName": "Elasticsearch Default Index",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "PROXY PORT": {
+                  "name": "PROXY PORT",
+                  "displayName": "Proxy Port",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Index Flowfile Attribute": {
+                  "name": "Elasticsearch Index Flowfile Attribute",
+                  "displayName": "Elasticsearch Index Flowfile Attribute",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "PROXY IP": {
+                  "name": "PROXY IP",
+                  "displayName": "Proxy IP",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Password": {
+                  "name": "Elasticsearch Password",
+                  "displayName": "Elasticsearch Password",
+                  "identifiesControllerService": false,
+                  "sensitive": true
+                },
+                "Backup Directory": {
+                  "name": "Backup Directory",
+                  "displayName": "Backup Directory",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "MULTILINE": {
+                  "name": "MULTILINE",
+                  "displayName": "Multiple JSON per flowfile",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch URL": {
+                  "name": "Elasticsearch URL",
+                  "displayName": "Elasticsearch URL",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                }
+              },
+              "style": {},
+              "schedulingPeriod": "0 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "autoTerminatedRelationships": [
+                "Elasticsearch Response",
+                "Elasticsearch Request",
+                "Original Flow Files"
+              ],
+              "scheduledState": "ENABLED",
+              "retryCount": 10,
+              "retriedRelationships": [],
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "maxBackoffPeriod": "10 mins",
+              "componentType": "PROCESSOR",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
+            },
+            {
+              "identifier": "8d0cf828-2c2f-3773-b328-6681f31e5e15",
+              "instanceIdentifier": "79d7cdc5-0735-3c38-d64b-937abd320c96",
+              "name": "PutElasticCS",
+              "comments": "",
+              "position": {
+                "x": 1272.0,
+                "y": 840.0
+              },
+              "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+              "bundle": {
+                "group": "io.cybersift",
+                "artifact": "nifi-PutElasticCS-nar",
+                "version": "1.0"
+              },
+              "properties": {
+                "Elasticsearch ID attribute": "_id",
+                "Elasticsearch Username": "admin",
+                "Bulk Size": "1000",
+                "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
+                "PROXY PORT": null,
+                "Elasticsearch Index Flowfile Attribute": null,
+                "PROXY IP": null,
+                "Backup Directory": " ",
+                "MULTILINE": "false",
+                "Elasticsearch URL": "http://localhost:9200"
+              },
+              "propertyDescriptors": {
+                "Elasticsearch ID attribute": {
+                  "name": "Elasticsearch ID attribute",
+                  "displayName": "Elasticsearch ID attribute",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Username": {
+                  "name": "Elasticsearch Username",
+                  "displayName": "Elasticsearch Username",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Bulk Size": {
+                  "name": "Bulk Size",
+                  "displayName": "Bulk Size",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Default Index": {
+                  "name": "Elasticsearch Default Index",
+                  "displayName": "Elasticsearch Default Index",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "PROXY PORT": {
+                  "name": "PROXY PORT",
+                  "displayName": "Proxy Port",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Index Flowfile Attribute": {
+                  "name": "Elasticsearch Index Flowfile Attribute",
+                  "displayName": "Elasticsearch Index Flowfile Attribute",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "PROXY IP": {
+                  "name": "PROXY IP",
+                  "displayName": "Proxy IP",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch Password": {
+                  "name": "Elasticsearch Password",
+                  "displayName": "Elasticsearch Password",
+                  "identifiesControllerService": false,
+                  "sensitive": true
+                },
+                "Backup Directory": {
+                  "name": "Backup Directory",
+                  "displayName": "Backup Directory",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "MULTILINE": {
+                  "name": "MULTILINE",
+                  "displayName": "Multiple JSON per flowfile",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                },
+                "Elasticsearch URL": {
+                  "name": "Elasticsearch URL",
+                  "displayName": "Elasticsearch URL",
+                  "identifiesControllerService": false,
+                  "sensitive": false
+                }
+              },
+              "style": {},
+              "schedulingPeriod": "0 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "autoTerminatedRelationships": [
+                "Elasticsearch Response",
+                "Elasticsearch Request",
+                "Original Flow Files"
+              ],
+              "scheduledState": "ENABLED",
+              "retryCount": 10,
+              "retriedRelationships": [],
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "maxBackoffPeriod": "10 mins",
+              "componentType": "PROCESSOR",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
+            },
+            {
+              "identifier": "eee9c933-8159-3881-9cc8-5620cb93ca7a",
+              "instanceIdentifier": "c2cbb91a-e709-34fe-1b74-2ac5826965ef",
               "name": "CloudflareAudit",
+              "comments": "",
+              "position": {
+                "x": 802.0,
+                "y": 231.0
+              },
               "type": "io.cybersift.processors.CloudflareAudit.CloudflareAudit",
               "bundle": {
                 "group": "io.cybersift",
                 "artifact": "nifi-CloudflareAudit-nar",
                 "version": "1.0"
               },
-              "position": {
-                "x": 272.0,
-                "y": 0.0
+              "properties": {
+                "API_TOKEN": "",
+                "ACCOUNT_ID": ""
               },
-              "config": {
-                "schedulingPeriod": "60 sec",
-                "schedulingStrategy": "TIMER_DRIVEN",
-                "executionNode": "ALL",
-                "penaltyDuration": "30 sec",
-                "yieldDuration": "1 sec",
-                "bulletinLevel": "WARN",
-                "runDurationMillis": 0,
-                "concurrentlySchedulableTaskCount": 1,
-                "retryCount": 10,
-                "maxBackoffPeriod": "10 mins",
-                "backoffMechanism": "PENALIZE_FLOWFILE",
-                "properties": {
-                  "API_TOKEN": "",
-                  "ACCOUNT_ID": ""
+              "propertyDescriptors": {
+                "API_TOKEN": {
+                  "name": "API_TOKEN",
+                  "displayName": "Api Token",
+                  "identifiesControllerService": false,
+                  "sensitive": false
                 },
-                "descriptors": {
-                  "API_TOKEN": {
-                    "name": "API_TOKEN"
-                  },
-                  "ACCOUNT_ID": {
-                    "name": "ACCOUNT_ID"
-                  }
+                "ACCOUNT_ID": {
+                  "name": "ACCOUNT_ID",
+                  "displayName": "Account ID",
+                  "identifiesControllerService": false,
+                  "sensitive": false
                 }
               },
-              "relationships": [
-                {
-                  "name": "ALERTS",
-                  "autoTerminate": false,
-                  "retry": false
-                },
-                {
-                  "name": "EVENTS",
-                  "autoTerminate": false,
-                  "retry": false
-                },
-                {
-                  "name": "FILTERED",
-                  "autoTerminate": false,
-                  "retry": false
-                }
-              ],
-              "state": "RUNNING",
-              "executionNodeRestricted": false
-            },
-            {
-              "id": "a4b00910-2be6-3040-0000-000000000000",
-              "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
-              "versionedComponentId": "a4b00910-2be6-3040-834e-7ff722a8f2e1",
-              "name": "PutElasticCS",
-              "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
-              "bundle": {
-                "group": "io.cybersift",
-                "artifact": "nifi-PutElasticCS-nar",
-                "version": "1.0"
-              },
-              "position": {
-                "x": 0.0,
-                "y": 320.0
-              },
-              "config": {
-                "schedulingPeriod": "0 sec",
-                "schedulingStrategy": "TIMER_DRIVEN",
-                "executionNode": "ALL",
-                "penaltyDuration": "30 sec",
-                "yieldDuration": "1 sec",
-                "bulletinLevel": "WARN",
-                "runDurationMillis": 0,
-                "concurrentlySchedulableTaskCount": 1,
-                "retryCount": 10,
-                "maxBackoffPeriod": "10 mins",
-                "backoffMechanism": "PENALIZE_FLOWFILE",
-                "properties": {
-                  "Elasticsearch ID attribute": "_id",
-                  "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('cloudflare-')}",
-                  "Elasticsearch Username": "admin",
-                  "Elasticsearch Index Flowfile Attribute": null,
-                  "PROXY PORT": null,
-                  "Backup Directory": " ",
-                  "PROXY IP": null,
-                  "Bulk Size": "1000",
-                  "Elasticsearch Password": null,
-                  "MULTILINE": "false",
-                  "Elasticsearch URL": "http://localhost:9200"
-                }
-              },
-              "relationships": [
-                {
-                  "name": "Elasticsearch Request",
-                  "autoTerminate": true,
-                  "retry": false
-                },
-                {
-                  "name": "Elasticsearch Response",
-                  "autoTerminate": true,
-                  "retry": false
-                },
-                {
-                  "name": "Original Flow Files",
-                  "autoTerminate": true,
-                  "retry": false
-                }
-              ],
-              "state": "RUNNING",
-              "executionNodeRestricted": false
-            },
-            {
-              "id": "79d7cdc5-0735-3c38-0000-000000000000",
-              "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
-              "versionedComponentId": "79d7cdc5-0735-3c38-8063-ff19cacdacec",
-              "name": "PutElasticCS",
-              "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
-              "bundle": {
-                "group": "io.cybersift",
-                "artifact": "nifi-PutElasticCS-nar",
-                "version": "1.0"
-              },
-              "position": {
-                "x": 576.0,
-                "y": 320.0
-              },
-              "config": {
-                "schedulingPeriod": "0 sec",
-                "schedulingStrategy": "TIMER_DRIVEN",
-                "executionNode": "ALL",
-                "penaltyDuration": "30 sec",
-                "yieldDuration": "1 sec",
-                "bulletinLevel": "WARN",
-                "runDurationMillis": 0,
-                "concurrentlySchedulableTaskCount": 1,
-                "retryCount": 10,
-                "maxBackoffPeriod": "10 mins",
-                "backoffMechanism": "PENALIZE_FLOWFILE",
-                "properties": {
-                  "Elasticsearch ID attribute": "_id",
-                  "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
-                  "Elasticsearch Username": "admin",
-                  "Elasticsearch Index Flowfile Attribute": null,
-                  "PROXY PORT": null,
-                  "Backup Directory": " ",
-                  "PROXY IP": null,
-                  "Bulk Size": "1000",
-                  "Elasticsearch Password": null,
-                  "MULTILINE": "false",
-                  "Elasticsearch URL": "http://localhost:9200"
-                }
-              },
-              "relationships": [
-                {
-                  "name": "Elasticsearch Request",
-                  "autoTerminate": true,
-                  "retry": false
-                },
-                {
-                  "name": "Elasticsearch Response",
-                  "autoTerminate": true,
-                  "retry": false
-                },
-                {
-                  "name": "Original Flow Files",
-                  "autoTerminate": true,
-                  "retry": false
-                }
-              ],
-              "state": "RUNNING",
-              "executionNodeRestricted": false
+              "style": {},
+              "schedulingPeriod": "60 sec",
+              "schedulingStrategy": "TIMER_DRIVEN",
+              "executionNode": "ALL",
+              "penaltyDuration": "30 sec",
+              "yieldDuration": "1 sec",
+              "bulletinLevel": "WARN",
+              "runDurationMillis": 0,
+              "concurrentlySchedulableTaskCount": 1,
+              "autoTerminatedRelationships": [],
+              "scheduledState": "ENABLED",
+              "retryCount": 10,
+              "retriedRelationships": [],
+              "backoffMechanism": "PENALIZE_FLOWFILE",
+              "maxBackoffPeriod": "10 mins",
+              "componentType": "PROCESSOR",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
             }
           ],
+          "inputPorts": [],
+          "outputPorts": [],
           "connections": [
             {
-              "id": "05a1e07c-f420-3e9e-0000-000000000000",
-              "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
+              "identifier": "abcd0fa7-7069-37c1-abe3-66051a9b5b8e",
+              "instanceIdentifier": "05a1e07c-f420-3e9e-65de-734bfc03b9a8",
+              "name": "",
               "source": {
-                "id": "c2cbb91a-e709-34fe-0000-000000000000",
-                "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+                "id": "eee9c933-8159-3881-9cc8-5620cb93ca7a",
                 "type": "PROCESSOR",
-                "versionedComponentId": "c2cbb91a-e709-34fe-82ad-e5308462c4fb"
+                "groupId": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+                "name": "CloudflareAudit",
+                "comments": "",
+                "instanceIdentifier": "c2cbb91a-e709-34fe-1b74-2ac5826965ef"
               },
               "destination": {
-                "id": "a4b00910-2be6-3040-0000-000000000000",
-                "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+                "id": "52ed801b-cfd0-33d9-99c4-597b80211431",
                 "type": "PROCESSOR",
-                "versionedComponentId": "a4b00910-2be6-3040-834e-7ff722a8f2e1"
+                "groupId": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+                "name": "PutElasticCS",
+                "comments": "",
+                "instanceIdentifier": "a4b00910-2be6-3040-e079-bf6b58c232fc"
               },
+              "labelIndex": 1,
+              "zIndex": 0,
               "selectedRelationships": [
                 "EVENTS",
                 "FILTERED"
               ],
-              "backPressureDataSizeThreshold": "1 GB",
               "backPressureObjectThreshold": 10000,
+              "backPressureDataSizeThreshold": "1 GB",
               "flowFileExpiration": "0 sec",
-              "labelIndex": 1,
-              "loadBalanceCompression": "DO_NOT_COMPRESS",
-              "loadBalanceStatus": "LOAD_BALANCE_NOT_CONFIGURED",
+              "prioritizers": [],
+              "bends": [],
               "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-              "zIndex": 0
+              "partitioningAttribute": "",
+              "loadBalanceCompression": "DO_NOT_COMPRESS",
+              "componentType": "CONNECTION",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
             },
             {
-              "id": "2defc246-c0a3-3cc5-0000-000000000000",
-              "parentGroupId": "0a564dd0-7004-3bb9-0000-000000000000",
-              "versionedComponentId": "2defc246-c0a3-3cc5-b1aa-cd7ca3819d53",
+              "identifier": "2c72e911-4522-3b16-a4ed-f03610f57c90",
+              "instanceIdentifier": "2defc246-c0a3-3cc5-e4f6-97cc5b293190",
+              "name": "",
               "source": {
-                "id": "c2cbb91a-e709-34fe-0000-000000000000",
-                "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+                "id": "eee9c933-8159-3881-9cc8-5620cb93ca7a",
                 "type": "PROCESSOR",
-                "versionedComponentId": "c2cbb91a-e709-34fe-82ad-e5308462c4fb"
+                "groupId": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+                "name": "CloudflareAudit",
+                "comments": "",
+                "instanceIdentifier": "c2cbb91a-e709-34fe-1b74-2ac5826965ef"
               },
               "destination": {
-                "id": "79d7cdc5-0735-3c38-0000-000000000000",
-                "groupId": "0a564dd0-7004-3bb9-0000-000000000000",
+                "id": "637e19ba-86cb-371b-acd7-58ad0bf2ee10",
                 "type": "PROCESSOR",
-                "versionedComponentId": "79d7cdc5-0735-3c38-8063-ff19cacdacec"
+                "groupId": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+                "name": "Alert Tuning (JmesPath Queries)",
+                "comments": "",
+                "instanceIdentifier": "b32654ba-019f-1000-2d8c-2b9330d92582"
               },
-              "selectedRelationships": [
-                "ALERTS"
-              ],
-              "backPressureDataSizeThreshold": "1 GB",
-              "backPressureObjectThreshold": 10000,
-              "flowFileExpiration": "0 sec",
               "labelIndex": 1,
-              "loadBalanceCompression": "DO_NOT_COMPRESS",
-              "loadBalanceStatus": "LOAD_BALANCE_NOT_CONFIGURED",
+              "zIndex": 0,
+              "selectedRelationships": ["ALERTS"],
+              "backPressureObjectThreshold": 10000,
+              "backPressureDataSizeThreshold": "1 GB",
+              "flowFileExpiration": "0 sec",
+              "prioritizers": [],
+              "bends": [],
               "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
-              "zIndex": 0
+              "partitioningAttribute": "",
+              "loadBalanceCompression": "DO_NOT_COMPRESS",
+              "componentType": "CONNECTION",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
+            },
+            {
+              "identifier": "a40645cf-ca49-3ca0-ab5e-60489a00e5a2",
+              "instanceIdentifier": "b32679d6-019f-1000-fb08-c2657d2272b1",
+              "name": "",
+              "source": {
+                "id": "637e19ba-86cb-371b-acd7-58ad0bf2ee10",
+                "type": "PROCESSOR",
+                "groupId": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+                "name": "Alert Tuning (JmesPath Queries)",
+                "comments": "",
+                "instanceIdentifier": "b32654ba-019f-1000-2d8c-2b9330d92582"
+              },
+              "destination": {
+                "id": "8d0cf828-2c2f-3773-b328-6681f31e5e15",
+                "type": "PROCESSOR",
+                "groupId": "a7722325-91a3-3e66-81ef-1ff82185d57b",
+                "name": "PutElasticCS",
+                "comments": "",
+                "instanceIdentifier": "79d7cdc5-0735-3c38-d64b-937abd320c96"
+              },
+              "labelIndex": 1,
+              "zIndex": 0,
+              "selectedRelationships": [
+                "FAILED",
+                "UNMATCHED"
+              ],
+              "backPressureObjectThreshold": 10000,
+              "backPressureDataSizeThreshold": "1 GB",
+              "flowFileExpiration": "0 sec",
+              "prioritizers": [],
+              "bends": [],
+              "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+              "partitioningAttribute": "",
+              "loadBalanceCompression": "DO_NOT_COMPRESS",
+              "componentType": "CONNECTION",
+              "groupIdentifier": "a7722325-91a3-3e66-81ef-1ff82185d57b"
             }
+          ],
+          "labels": [],
+          "funnels": [],
+          "controllerServices": [],
+          "variables": {},
+          "defaultFlowFileExpiration": "0 sec",
+          "defaultBackPressureObjectThreshold": 10000,
+          "defaultBackPressureDataSizeThreshold": "1 GB",
+          "componentType": "PROCESS_GROUP",
+          "flowFileConcurrency": "UNBOUNDED",
+          "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+        },
+        "externalControllerServices": {},
+        "parameterContexts": {},
+        "flowEncodingVersion": "1.0",
+        "parameterProviders": {},
+        "latest": false
+      }
+    }
           ]
         }
       }
