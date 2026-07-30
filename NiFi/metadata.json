@@ -1,8 +1,8 @@
 [
   {
     "name": "SentinelOne API",
-    "description": "This flow is used to collect and monitor SentinelOne API data",
-    "reference": "https://www.cybersift.io",
+    "description": "Connect SentinelOne API to ingest alerts and incidents",
+    "reference": "https://outline.cybersift.io/s/sentio-siem/doc/sentinelone-kXzKXujORP",
     "tags": [
       "sentinelone"
     ],
