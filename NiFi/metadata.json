@@ -1318,7 +1318,7 @@
     "description": "F5 - Web Application Firewall ingestion of network logs.",
     "reference": "https://outline.cybersift.io/s/sentio-siem/doc/f5-NwINgyVb7C",
     "tags": [
-      "ListenHTTP",
+      "Syslog",
       "Cybersift Enrichment"
     ],
     "export": {
