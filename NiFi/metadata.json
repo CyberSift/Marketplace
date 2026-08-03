@@ -1947,5 +1947,381 @@
       "parameterProviders": {},
       "latest": false
     }
+  },
+  {
+    "name": "Armis",
+    "description": "Armis enriches SIEM data with comprehensive asset visibility and contextual intelligence across managed and unmanaged IT, IoT, OT, and IoMT environments.",
+    "reference": "https://outline.cybersift.io/s/sentio-siem/doc/armis-63ne8EbSqj",
+    "tags": [
+      "Syslog"
+    ],
+    "export": {
+      "flowContents": {
+        "identifier": "79545d02-9abf-3cd7-ab3c-38552680730b",
+        "instanceIdentifier": "019e1008-ca77-1178-ac01-eebd6692ec68",
+        "name": "Armis",
+        "comments": "",
+        "position": {
+          "x": -186.11178512581955,
+          "y": 914.2788854433334
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+          {
+            "identifier": "0a38cd83-7a3b-313f-9880-2c7706a5d974",
+            "instanceIdentifier": "aa7fb29d-2483-377f-426e-4d378d0a6e6a",
+            "name": "PutElasticCS",
+            "comments": "",
+            "position": {
+              "x": 696.0,
+              "y": 760.0
+            },
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Elasticsearch ID attribute": "es_id",
+              "Elasticsearch Username": null,
+              "Bulk Size": "1000",
+              "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('armis-')}",
+              "PROXY PORT": null,
+              "Elasticsearch Index Flowfile Attribute": null,
+              "PROXY IP": null,
+              "Backup Directory": " ",
+              "MULTILINE": "false",
+              "Elasticsearch URL": "http://localhost:9200"
+            },
+            "propertyDescriptors": {
+              "Elasticsearch ID attribute": {
+                "name": "Elasticsearch ID attribute",
+                "displayName": "Elasticsearch ID attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Username": {
+                "name": "Elasticsearch Username",
+                "displayName": "Elasticsearch Username",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Bulk Size": {
+                "name": "Bulk Size",
+                "displayName": "Bulk Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Default Index": {
+                "name": "Elasticsearch Default Index",
+                "displayName": "Elasticsearch Default Index",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY PORT": {
+                "name": "PROXY PORT",
+                "displayName": "Proxy Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Index Flowfile Attribute": {
+                "name": "Elasticsearch Index Flowfile Attribute",
+                "displayName": "Elasticsearch Index Flowfile Attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY IP": {
+                "name": "PROXY IP",
+                "displayName": "Proxy IP",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Password": {
+                "name": "Elasticsearch Password",
+                "displayName": "Elasticsearch Password",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "Backup Directory": {
+                "name": "Backup Directory",
+                "displayName": "Backup Directory",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "MULTILINE": {
+                "name": "MULTILINE",
+                "displayName": "Multiple JSON per flowfile",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch URL": {
+                "name": "Elasticsearch URL",
+                "displayName": "Elasticsearch URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Auto Terminated Relationships",
+              "Elasticsearch Response",
+              "Elasticsearch Request",
+              "Original Flow Files"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "79545d02-9abf-3cd7-ab3c-38552680730b"
+          },
+          {
+            "identifier": "e3a7f681-e90f-3fd1-8d1e-7afa082c0d8e",
+            "instanceIdentifier": "d91edbe1-52ab-3925-1e70-7684031e79d7",
+            "name": "Armis",
+            "comments": "",
+            "position": {
+              "x": 696.0,
+              "y": 456.0
+            },
+            "type": "io.cybersift.processors.Armis.Armis",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-Armis-nar",
+              "version": "1.0"
+            },
+            "properties": {},
+            "propertyDescriptors": {},
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "79545d02-9abf-3cd7-ab3c-38552680730b"
+          },
+          {
+            "identifier": "580e4de1-3685-3baf-b8b2-b822ddb9054e",
+            "instanceIdentifier": "019e1009-ca77-1178-f346-157906ffd5d6",
+            "name": "ListenUDP",
+            "comments": "",
+            "position": {
+              "x": 696.0,
+              "y": 168.0
+            },
+            "type": "org.apache.nifi.processors.standard.ListenUDP",
+            "bundle": {
+              "group": "org.apache.nifi",
+              "artifact": "nifi-standard-nar",
+              "version": "1.27.0"
+            },
+            "properties": {
+              "Sending Host": null,
+              "Max Size of Socket Buffer": "1 MB",
+              "Local Network Interface": null,
+              "Max Batch Size": "1",
+              "Port": null,
+              "Sending Host Port": null,
+              "Receive Buffer Size": "65507 B",
+              "Character Set": "UTF-8",
+              "Max Size of Message Queue": "10000",
+              "Message Delimiter": "\\n"
+            },
+            "propertyDescriptors": {
+              "Sending Host": {
+                "name": "Sending Host",
+                "displayName": "Sending Host",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Max Size of Socket Buffer": {
+                "name": "Max Size of Socket Buffer",
+                "displayName": "Max Size of Socket Buffer",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Local Network Interface": {
+                "name": "Local Network Interface",
+                "displayName": "Local Network Interface",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Max Batch Size": {
+                "name": "Max Batch Size",
+                "displayName": "Max Batch Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Port": {
+                "name": "Port",
+                "displayName": "Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Sending Host Port": {
+                "name": "Sending Host Port",
+                "displayName": "Sending Host Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Receive Buffer Size": {
+                "name": "Receive Buffer Size",
+                "displayName": "Receive Buffer Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Character Set": {
+                "name": "Character Set",
+                "displayName": "Character Set",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Max Size of Message Queue": {
+                "name": "Max Size of Message Queue",
+                "displayName": "Max Size of Message Queue",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Message Delimiter": {
+                "name": "Message Delimiter",
+                "displayName": "Batching Message Delimiter",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "79545d02-9abf-3cd7-ab3c-38552680730b"
+          }
+        ],
+        "inputPorts": [],
+        "outputPorts": [],
+        "connections": [
+          {
+            "identifier": "b4d7dfb6-57d1-3417-b469-1f4b090b8d87",
+            "instanceIdentifier": "e9ddc1ff-8942-38b8-0f2f-7e6a9253ead2",
+            "name": "",
+            "source": {
+              "id": "e3a7f681-e90f-3fd1-8d1e-7afa082c0d8e",
+              "type": "PROCESSOR",
+              "groupId": "79545d02-9abf-3cd7-ab3c-38552680730b",
+              "name": "Armis",
+              "comments": "",
+              "instanceIdentifier": "d91edbe1-52ab-3925-1e70-7684031e79d7"
+            },
+            "destination": {
+              "id": "0a38cd83-7a3b-313f-9880-2c7706a5d974",
+              "type": "PROCESSOR",
+              "groupId": "79545d02-9abf-3cd7-ab3c-38552680730b",
+              "name": "PutElasticCS",
+              "comments": "",
+              "instanceIdentifier": "aa7fb29d-2483-377f-426e-4d378d0a6e6a"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "SUCCESS",
+              "FAILED"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "79545d02-9abf-3cd7-ab3c-38552680730b"
+          },
+          {
+            "identifier": "d9d5910a-a09d-397a-9b5b-eaee398729da",
+            "instanceIdentifier": "019e100a-ca77-1178-216d-130db9b38549",
+            "name": "",
+            "source": {
+              "id": "580e4de1-3685-3baf-b8b2-b822ddb9054e",
+              "type": "PROCESSOR",
+              "groupId": "79545d02-9abf-3cd7-ab3c-38552680730b",
+              "name": "ListenUDP",
+              "comments": "",
+              "instanceIdentifier": "019e1009-ca77-1178-f346-157906ffd5d6"
+            },
+            "destination": {
+              "id": "e3a7f681-e90f-3fd1-8d1e-7afa082c0d8e",
+              "type": "PROCESSOR",
+              "groupId": "79545d02-9abf-3cd7-ab3c-38552680730b",
+              "name": "Armis",
+              "comments": "",
+              "instanceIdentifier": "d91edbe1-52ab-3925-1e70-7684031e79d7"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "success"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "79545d02-9abf-3cd7-ab3c-38552680730b"
+          }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [],
+        "variables": {},
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+      },
+      "externalControllerServices": {},
+      "parameterContexts": {},
+      "flowEncodingVersion": "1.0",
+      "parameterProviders": {},
+      "latest": false
+    }
   }
 ]
