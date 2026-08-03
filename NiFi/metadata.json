@@ -2891,5 +2891,553 @@
       "parameterProviders": {},
       "latest": false
     }
+  },
+  {
+    "name": "Office 365",
+    "description": "This is a module for Office 365 logs received via one of the Office 365 API endpoints. It currently supports user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs exposed by the Office 365 Management Activity API. Requires a configuration file. ",
+    "reference": "https://outline.cybersift.io/s/sentio-siem/doc/office365-microsoft-ad-OQ32tqEmKn",
+    "tags": [
+      "Filebeat",
+      "Cybersift Enrichment"
+    ],
+    "export": {
+      "flowContents": {
+        "identifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+        "instanceIdentifier": "10041195-1298-1cc2-ffa2-3403b2b52425",
+        "name": "Office365",
+        "comments": "",
+        "position": {
+          "x": 1688.0,
+          "y": 112.0
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+          {
+            "identifier": "0e231866-0e37-3147-b9fa-4dd1877587bc",
+            "instanceIdentifier": "1004119a-1298-1cc2-0132-ae8580ebf6b9",
+            "name": "PutElasticCS",
+            "comments": "",
+            "position": {
+              "x": 560.0,
+              "y": 944.0
+            },
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Elasticsearch ID attribute": "es_id",
+              "Elasticsearch Username": null,
+              "Bulk Size": "1000",
+              "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
+              "PROXY PORT": null,
+              "Elasticsearch Index Flowfile Attribute": null,
+              "PROXY IP": null,
+              "Backup Directory": " ",
+              "MULTILINE": "false",
+              "Elasticsearch URL": "http://localhost:9200"
+            },
+            "propertyDescriptors": {
+              "Elasticsearch ID attribute": {
+                "name": "Elasticsearch ID attribute",
+                "displayName": "Elasticsearch ID attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Username": {
+                "name": "Elasticsearch Username",
+                "displayName": "Elasticsearch Username",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Bulk Size": {
+                "name": "Bulk Size",
+                "displayName": "Bulk Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Default Index": {
+                "name": "Elasticsearch Default Index",
+                "displayName": "Elasticsearch Default Index",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY PORT": {
+                "name": "PROXY PORT",
+                "displayName": "Proxy Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Index Flowfile Attribute": {
+                "name": "Elasticsearch Index Flowfile Attribute",
+                "displayName": "Elasticsearch Index Flowfile Attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY IP": {
+                "name": "PROXY IP",
+                "displayName": "Proxy IP",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Password": {
+                "name": "Elasticsearch Password",
+                "displayName": "Elasticsearch Password",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "Backup Directory": {
+                "name": "Backup Directory",
+                "displayName": "Backup Directory",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "MULTILINE": {
+                "name": "MULTILINE",
+                "displayName": "Multiple JSON per flowfile",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch URL": {
+                "name": "Elasticsearch URL",
+                "displayName": "Elasticsearch URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Auto Terminated Relationships",
+              "Elasticsearch Response",
+              "Elasticsearch Request",
+              "Original Flow Files"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          },
+          {
+            "identifier": "08370f6e-b833-36c7-b38e-eda1ec7d137a",
+            "instanceIdentifier": "10041198-1298-1cc2-eb65-291b095e19fd",
+            "name": "O365Main",
+            "comments": "",
+            "position": {
+              "x": 859.9430909906381,
+              "y": 654.3119711261359
+            },
+            "type": "io.cybersift.processors.O365ContextWorker.O365Main",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-O365ContextWorker-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Liveliness Threshold (Hours)": "1",
+              "Alerts Index Name": "alerts"
+            },
+            "propertyDescriptors": {
+              "Liveliness Threshold (Hours)": {
+                "name": "Liveliness Threshold (Hours)",
+                "displayName": "Liveliness Threshold (Hours)",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Alerts Index Name": {
+                "name": "Alerts Index Name",
+                "displayName": "Alerts Index Name",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "FAILED",
+              "IGNORED"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          },
+          {
+            "identifier": "6a9af877-72cb-3445-8667-872439459434",
+            "instanceIdentifier": "10041197-1298-1cc2-b7ff-a024ae97d73a",
+            "name": "GetRedisList",
+            "comments": "",
+            "position": {
+              "x": 859.9430909906381,
+              "y": 398.3119711261359
+            },
+            "type": "io.cybersift.processors.GetRedisList.GetRedisList",
+            "bundle": {
+              "group": "default",
+              "artifact": "nifi-GetRedisList-nar",
+              "version": "unversioned"
+            },
+            "properties": {
+              "Redis Host": "127.0.0.1",
+              "Redis Batch Size": "100",
+              "Redis Port": "6377",
+              "Elastic Index Date Format": "yyyy.MM.dd",
+              "Redis Socket Type": "TCP",
+              "Content Type JSON": "true",
+              "Redis Password": " ",
+              "Redis Unix Path": "/tmp/redis.sock",
+              "List Name": "o365"
+            },
+            "propertyDescriptors": {
+              "Redis Host": {
+                "name": "Redis Host",
+                "displayName": "Redis Host",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Redis Batch Size": {
+                "name": "Redis Batch Size",
+                "displayName": "Redis Batch Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Redis Port": {
+                "name": "Redis Port",
+                "displayName": "Redis Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elastic Index Date Format": {
+                "name": "Elastic Index Date Format",
+                "displayName": "Elastic Index Date Format",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Redis Socket Type": {
+                "name": "Redis Socket Type",
+                "displayName": "Redis Socket Type",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Content Type JSON": {
+                "name": "Content Type JSON",
+                "displayName": "Content Type JSON",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Redis Password": {
+                "name": "Redis Password",
+                "displayName": "Redis Password",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Redis Unix Path": {
+                "name": "Redis Unix Path",
+                "displayName": "Redis Unix Path",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "List Name": {
+                "name": "List Name",
+                "displayName": "List Name",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Duplicates",
+              "LinuxEventLog",
+              "Filtered",
+              "WindowsEventLog",
+              "Other"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          },
+          {
+            "identifier": "c0aa0a45-8f76-3248-ab4d-5b35ca000722",
+            "instanceIdentifier": "1004119b-1298-1cc2-c37e-ca1b5316f7f3",
+            "name": "PutElasticCS",
+            "comments": "",
+            "position": {
+              "x": 1208.0,
+              "y": 936.0
+            },
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Elasticsearch ID attribute": "es_id",
+              "Elasticsearch Username": null,
+              "Bulk Size": "1000",
+              "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('o365-')}",
+              "PROXY PORT": null,
+              "Elasticsearch Index Flowfile Attribute": null,
+              "PROXY IP": null,
+              "Backup Directory": " ",
+              "MULTILINE": "false",
+              "Elasticsearch URL": "http://localhost:9200"
+            },
+            "propertyDescriptors": {
+              "Elasticsearch ID attribute": {
+                "name": "Elasticsearch ID attribute",
+                "displayName": "Elasticsearch ID attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Username": {
+                "name": "Elasticsearch Username",
+                "displayName": "Elasticsearch Username",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Bulk Size": {
+                "name": "Bulk Size",
+                "displayName": "Bulk Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Default Index": {
+                "name": "Elasticsearch Default Index",
+                "displayName": "Elasticsearch Default Index",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY PORT": {
+                "name": "PROXY PORT",
+                "displayName": "Proxy Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Index Flowfile Attribute": {
+                "name": "Elasticsearch Index Flowfile Attribute",
+                "displayName": "Elasticsearch Index Flowfile Attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY IP": {
+                "name": "PROXY IP",
+                "displayName": "Proxy IP",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Password": {
+                "name": "Elasticsearch Password",
+                "displayName": "Elasticsearch Password",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "Backup Directory": {
+                "name": "Backup Directory",
+                "displayName": "Backup Directory",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "MULTILINE": {
+                "name": "MULTILINE",
+                "displayName": "Multiple JSON per flowfile",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch URL": {
+                "name": "Elasticsearch URL",
+                "displayName": "Elasticsearch URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Auto Terminated Relationships",
+              "Elasticsearch Response",
+              "Elasticsearch Request",
+              "Original Flow Files"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          }
+        ],
+        "inputPorts": [],
+        "outputPorts": [],
+        "connections": [
+          {
+            "identifier": "6c9e182d-0064-349e-8889-fe3f2b596497",
+            "instanceIdentifier": "1004119d-1298-1cc2-126c-02f44c6c4592",
+            "name": "",
+            "source": {
+              "id": "08370f6e-b833-36c7-b38e-eda1ec7d137a",
+              "type": "PROCESSOR",
+              "groupId": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+              "name": "O365Main",
+              "comments": "",
+              "instanceIdentifier": "10041198-1298-1cc2-eb65-291b095e19fd"
+            },
+            "destination": {
+              "id": "0e231866-0e37-3147-b9fa-4dd1877587bc",
+              "type": "PROCESSOR",
+              "groupId": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+              "name": "PutElasticCS",
+              "comments": "",
+              "instanceIdentifier": "1004119a-1298-1cc2-0132-ae8580ebf6b9"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "ALERTS"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          },
+          {
+            "identifier": "48baa179-237a-39e6-9b5f-a09b598f5877",
+            "instanceIdentifier": "10041199-1298-1cc2-3b04-1f2fd5bd4f4e",
+            "name": "",
+            "source": {
+              "id": "6a9af877-72cb-3445-8667-872439459434",
+              "type": "PROCESSOR",
+              "groupId": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+              "name": "GetRedisList",
+              "comments": "",
+              "instanceIdentifier": "10041197-1298-1cc2-b7ff-a024ae97d73a"
+            },
+            "destination": {
+              "id": "08370f6e-b833-36c7-b38e-eda1ec7d137a",
+              "type": "PROCESSOR",
+              "groupId": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+              "name": "O365Main",
+              "comments": "",
+              "instanceIdentifier": "10041198-1298-1cc2-eb65-291b095e19fd"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "All"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          },
+          {
+            "identifier": "e4bd2c9c-e785-3cd1-84b5-96c553704d52",
+            "instanceIdentifier": "1004119e-1298-1cc2-013a-5f5967fa29ef",
+            "name": "",
+            "source": {
+              "id": "08370f6e-b833-36c7-b38e-eda1ec7d137a",
+              "type": "PROCESSOR",
+              "groupId": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+              "name": "O365Main",
+              "comments": "",
+              "instanceIdentifier": "10041198-1298-1cc2-eb65-291b095e19fd"
+            },
+            "destination": {
+              "id": "c0aa0a45-8f76-3248-ab4d-5b35ca000722",
+              "type": "PROCESSOR",
+              "groupId": "bb165d41-d8bf-36cb-bd7c-5418eac36c21",
+              "name": "PutElasticCS",
+              "comments": "",
+              "instanceIdentifier": "1004119b-1298-1cc2-c37e-ca1b5316f7f3"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "SUCCESS"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "bb165d41-d8bf-36cb-bd7c-5418eac36c21"
+          }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [],
+        "variables": {},
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+      },
+      "externalControllerServices": {},
+      "parameterContexts": {},
+      "flowEncodingVersion": "1.0",
+      "parameterProviders": {},
+      "latest": false
+    }
   }
 ]
