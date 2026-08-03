@@ -2898,7 +2898,8 @@
     "reference": "https://outline.cybersift.io/s/sentio-siem/doc/office365-microsoft-ad-OQ32tqEmKn",
     "tags": [
       "Filebeat",
-      "Cybersift Enrichment"
+      "Cybersift Enrichment",
+      "API"
     ],
     "export": {
       "flowContents": {
