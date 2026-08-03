@@ -2323,5 +2323,573 @@
       "parameterProviders": {},
       "latest": false
     }
+  },
+  {
+  "name": "Azure EventsHub",
+  "description": "Organizations use Event Hubs to build data pipelines for IoT telemetry, application logging, clickstream analytics, financial transaction processing, and other scenarios that require high-throughput, reliable event ingestion.",
+  "reference": "https://outline.cybersift.io/s/sentio-siem/doc/azure-eventshub-4ry5SgbLdp",
+  "tags": [
+    "Streaming"
+  ],
+  "export": {
+    "flowContents": {
+      "identifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+      "instanceIdentifier": "019e1010-ca77-1178-e216-cc08a8b6ce3f",
+      "name": "Azure EventsHub",
+      "comments": "",
+      "position": {
+        "x": -264.0,
+        "y": 488.0
+      },
+      "processGroups": [],
+      "remoteProcessGroups": [],
+      "processors": [
+        {
+          "identifier": "cb4650da-6fb0-39f8-9553-7bedfd2dc3c7",
+          "instanceIdentifier": "019e1015-ca77-1178-222e-f522a9c9e9b7",
+          "name": "PutElasticCS",
+          "comments": "",
+          "position": {
+            "x": 656.0,
+            "y": 720.0
+          },
+          "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+          "bundle": {
+            "group": "io.cybersift",
+            "artifact": "nifi-PutElasticCS-nar",
+            "version": "1.0"
+          },
+          "properties": {
+            "Elasticsearch ID attribute": "es_id",
+            "Elasticsearch Username": null,
+            "Bulk Size": "1000",
+            "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('azure-eh-')}",
+            "PROXY PORT": null,
+            "Elasticsearch Index Flowfile Attribute": null,
+            "PROXY IP": null,
+            "Backup Directory": " ",
+            "MULTILINE": "false",
+            "Elasticsearch URL": "http://localhost:9200"
+          },
+          "propertyDescriptors": {
+            "Elasticsearch ID attribute": {
+              "name": "Elasticsearch ID attribute",
+              "displayName": "Elasticsearch ID attribute",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Username": {
+              "name": "Elasticsearch Username",
+              "displayName": "Elasticsearch Username",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Bulk Size": {
+              "name": "Bulk Size",
+              "displayName": "Bulk Size",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Default Index": {
+              "name": "Elasticsearch Default Index",
+              "displayName": "Elasticsearch Default Index",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "PROXY PORT": {
+              "name": "PROXY PORT",
+              "displayName": "Proxy Port",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Index Flowfile Attribute": {
+              "name": "Elasticsearch Index Flowfile Attribute",
+              "displayName": "Elasticsearch Index Flowfile Attribute",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "PROXY IP": {
+              "name": "PROXY IP",
+              "displayName": "Proxy IP",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Password": {
+              "name": "Elasticsearch Password",
+              "displayName": "Elasticsearch Password",
+              "identifiesControllerService": false,
+              "sensitive": true
+            },
+            "Backup Directory": {
+              "name": "Backup Directory",
+              "displayName": "Backup Directory",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "MULTILINE": {
+              "name": "MULTILINE",
+              "displayName": "Multiple JSON per flowfile",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch URL": {
+              "name": "Elasticsearch URL",
+              "displayName": "Elasticsearch URL",
+              "identifiesControllerService": false,
+              "sensitive": false
+            }
+          },
+          "style": {},
+          "schedulingPeriod": "0 sec",
+          "schedulingStrategy": "TIMER_DRIVEN",
+          "executionNode": "ALL",
+          "penaltyDuration": "30 sec",
+          "yieldDuration": "1 sec",
+          "bulletinLevel": "WARN",
+          "runDurationMillis": 0,
+          "concurrentlySchedulableTaskCount": 1,
+          "autoTerminatedRelationships": [
+            "Auto Terminated Relationships",
+            "Elasticsearch Response",
+            "Elasticsearch Request",
+            "Original Flow Files"
+          ],
+          "scheduledState": "ENABLED",
+          "retryCount": 10,
+          "retriedRelationships": [],
+          "backoffMechanism": "PENALIZE_FLOWFILE",
+          "maxBackoffPeriod": "10 mins",
+          "componentType": "PROCESSOR",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        },
+        {
+          "identifier": "ed55f710-bbc5-3387-9914-0f242f315d49",
+          "instanceIdentifier": "019e1019-ca77-1178-95dd-42057ec5dc35",
+          "name": "GetAzureEventHub",
+          "comments": "",
+          "position": {
+            "x": 352.0,
+            "y": 144.0
+          },
+          "type": "org.apache.nifi.processors.azure.eventhub.GetAzureEventHub",
+          "bundle": {
+            "group": "org.apache.nifi",
+            "artifact": "nifi-azure-nar",
+            "version": "1.27.0"
+          },
+          "properties": {
+            "Event Hub Name": null,
+            "use-managed-identity": "false",
+            "Service Bus Endpoint": ".servicebus.windows.net",
+            "Shared Access Policy Name": null,
+            "Event Hub Namespace": null,
+            "Transport Type": "Amqp",
+            "Partition Receiver Timeout (millseconds)": null,
+            "proxy-configuration-service": null,
+            "Event Hub Consumer Group": "$Default",
+            "Number of Event Hub Partitions": null,
+            "Event Hub Message Enqueue Time": null,
+            "Partition Recivier Fetch Size": null
+          },
+          "propertyDescriptors": {
+            "use-managed-identity": {
+              "name": "use-managed-identity",
+              "displayName": "Use Azure Managed Identity",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Service Bus Endpoint": {
+              "name": "Service Bus Endpoint",
+              "displayName": "Service Bus Endpoint",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Shared Access Policy Name": {
+              "name": "Shared Access Policy Name",
+              "displayName": "Shared Access Policy Name",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Shared Access Policy Primary Key": {
+              "name": "Shared Access Policy Primary Key",
+              "displayName": "Shared Access Policy Key",
+              "identifiesControllerService": false,
+              "sensitive": true
+            },
+            "Partition Receiver Timeout (millseconds)": {
+              "name": "Partition Receiver Timeout (millseconds)",
+              "displayName": "Partition Receiver Timeout",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "proxy-configuration-service": {
+              "name": "proxy-configuration-service",
+              "displayName": "Proxy Configuration Service",
+              "identifiesControllerService": true,
+              "sensitive": false
+            },
+            "Event Hub Consumer Group": {
+              "name": "Event Hub Consumer Group",
+              "displayName": "Consumer Group",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Partition Recivier Fetch Size": {
+              "name": "Partition Recivier Fetch Size",
+              "displayName": "Partition Receiver Fetch Size",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Event Hub Name": {
+              "name": "Event Hub Name",
+              "displayName": "Event Hub Name",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Event Hub Namespace": {
+              "name": "Event Hub Namespace",
+              "displayName": "Event Hub Namespace",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Transport Type": {
+              "name": "Transport Type",
+              "displayName": "Transport Type",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Number of Event Hub Partitions": {
+              "name": "Number of Event Hub Partitions",
+              "displayName": "Number of Event Hub Partitions",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Event Hub Message Enqueue Time": {
+              "name": "Event Hub Message Enqueue Time",
+              "displayName": "Message Enqueue Time",
+              "identifiesControllerService": false,
+              "sensitive": false
+            }
+          },
+          "style": {},
+          "schedulingPeriod": "0 sec",
+          "schedulingStrategy": "TIMER_DRIVEN",
+          "executionNode": "ALL",
+          "penaltyDuration": "30 sec",
+          "yieldDuration": "1 sec",
+          "bulletinLevel": "WARN",
+          "runDurationMillis": 0,
+          "concurrentlySchedulableTaskCount": 1,
+          "autoTerminatedRelationships": [],
+          "scheduledState": "ENABLED",
+          "retryCount": 10,
+          "retriedRelationships": [],
+          "backoffMechanism": "PENALIZE_FLOWFILE",
+          "maxBackoffPeriod": "10 mins",
+          "componentType": "PROCESSOR",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        },
+        {
+          "identifier": "0e1473e2-aa2c-349c-911d-eee6e20debb4",
+          "instanceIdentifier": "019e1012-ca77-1178-41e4-8d91d135a776",
+          "name": "CybersiftParser",
+          "comments": "",
+          "position": {
+            "x": 352.0,
+            "y": 432.0
+          },
+          "type": "io.cybersift.processors.CybersiftParser.CybersiftParser",
+          "bundle": {
+            "group": "default",
+            "artifact": "nifi-CybersiftParser-nar",
+            "version": "unversioned"
+          },
+          "properties": {
+            "Alerts Index Name": "alerts",
+            "EventsHub": "AZURE_EVENT_HUB"
+          },
+          "propertyDescriptors": {
+            "Alerts Index Name": {
+              "name": "Alerts Index Name",
+              "displayName": "Alerts Index Name",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "EventsHub": {
+              "name": "EventsHub",
+              "displayName": "EventsHub",
+              "identifiesControllerService": false,
+              "sensitive": false
+            }
+          },
+          "style": {},
+          "schedulingPeriod": "0 sec",
+          "schedulingStrategy": "TIMER_DRIVEN",
+          "executionNode": "ALL",
+          "penaltyDuration": "30 sec",
+          "yieldDuration": "1 sec",
+          "bulletinLevel": "WARN",
+          "runDurationMillis": 0,
+          "concurrentlySchedulableTaskCount": 1,
+          "autoTerminatedRelationships": [
+            "Dropped",
+            "Failed"
+          ],
+          "scheduledState": "ENABLED",
+          "retryCount": 10,
+          "retriedRelationships": [],
+          "backoffMechanism": "PENALIZE_FLOWFILE",
+          "maxBackoffPeriod": "10 mins",
+          "componentType": "PROCESSOR",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        },
+        {
+          "identifier": "62ddff64-2593-39e3-bc53-d9f2ab5160a9",
+          "instanceIdentifier": "019e1014-ca77-1178-6647-6fb58c04342c",
+          "name": "PutElasticCS",
+          "comments": "",
+          "position": {
+            "x": 96.0,
+            "y": 720.0
+          },
+          "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+          "bundle": {
+            "group": "io.cybersift",
+            "artifact": "nifi-PutElasticCS-nar",
+            "version": "1.0"
+          },
+          "properties": {
+            "Elasticsearch ID attribute": "es_id",
+            "Elasticsearch Username": null,
+            "Bulk Size": "1000",
+            "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-azure-eh-')}",
+            "PROXY PORT": null,
+            "Elasticsearch Index Flowfile Attribute": null,
+            "PROXY IP": null,
+            "Backup Directory": " ",
+            "MULTILINE": "false",
+            "Elasticsearch URL": "http://localhost:9200"
+          },
+          "propertyDescriptors": {
+            "Elasticsearch ID attribute": {
+              "name": "Elasticsearch ID attribute",
+              "displayName": "Elasticsearch ID attribute",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Username": {
+              "name": "Elasticsearch Username",
+              "displayName": "Elasticsearch Username",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Bulk Size": {
+              "name": "Bulk Size",
+              "displayName": "Bulk Size",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Default Index": {
+              "name": "Elasticsearch Default Index",
+              "displayName": "Elasticsearch Default Index",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "PROXY PORT": {
+              "name": "PROXY PORT",
+              "displayName": "Proxy Port",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Index Flowfile Attribute": {
+              "name": "Elasticsearch Index Flowfile Attribute",
+              "displayName": "Elasticsearch Index Flowfile Attribute",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "PROXY IP": {
+              "name": "PROXY IP",
+              "displayName": "Proxy IP",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch Password": {
+              "name": "Elasticsearch Password",
+              "displayName": "Elasticsearch Password",
+              "identifiesControllerService": false,
+              "sensitive": true
+            },
+            "Backup Directory": {
+              "name": "Backup Directory",
+              "displayName": "Backup Directory",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "MULTILINE": {
+              "name": "MULTILINE",
+              "displayName": "Multiple JSON per flowfile",
+              "identifiesControllerService": false,
+              "sensitive": false
+            },
+            "Elasticsearch URL": {
+              "name": "Elasticsearch URL",
+              "displayName": "Elasticsearch URL",
+              "identifiesControllerService": false,
+              "sensitive": false
+            }
+          },
+          "style": {},
+          "schedulingPeriod": "0 sec",
+          "schedulingStrategy": "TIMER_DRIVEN",
+          "executionNode": "ALL",
+          "penaltyDuration": "30 sec",
+          "yieldDuration": "1 sec",
+          "bulletinLevel": "WARN",
+          "runDurationMillis": 0,
+          "concurrentlySchedulableTaskCount": 1,
+          "autoTerminatedRelationships": [
+            "Auto Terminated Relationships",
+            "Elasticsearch Response",
+            "Elasticsearch Request",
+            "Original Flow Files"
+          ],
+          "scheduledState": "ENABLED",
+          "retryCount": 10,
+          "retriedRelationships": [],
+          "backoffMechanism": "PENALIZE_FLOWFILE",
+          "maxBackoffPeriod": "10 mins",
+          "componentType": "PROCESSOR",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        }
+      ],
+      "inputPorts": [],
+      "outputPorts": [],
+      "connections": [
+        {
+          "identifier": "5ea6f0d2-40d0-3e2c-aaa7-79d08fd331d1",
+          "instanceIdentifier": "019e101a-ca77-1178-21f7-016bd2d93af7",
+          "name": "",
+          "source": {
+            "id": "ed55f710-bbc5-3387-9914-0f242f315d49",
+            "type": "PROCESSOR",
+            "groupId": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+            "name": "GetAzureEventHub",
+            "comments": "",
+            "instanceIdentifier": "019e1019-ca77-1178-95dd-42057ec5dc35"
+          },
+          "destination": {
+            "id": "0e1473e2-aa2c-349c-911d-eee6e20debb4",
+            "type": "PROCESSOR",
+            "groupId": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+            "name": "CybersiftParser",
+            "comments": "",
+            "instanceIdentifier": "019e1012-ca77-1178-41e4-8d91d135a776"
+          },
+          "labelIndex": 1,
+          "zIndex": 0,
+          "selectedRelationships": [
+            "success"
+          ],
+          "backPressureObjectThreshold": 10000,
+          "backPressureDataSizeThreshold": "1 GB",
+          "flowFileExpiration": "0 sec",
+          "prioritizers": [],
+          "bends": [],
+          "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+          "partitioningAttribute": "",
+          "loadBalanceCompression": "DO_NOT_COMPRESS",
+          "componentType": "CONNECTION",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        },
+        {
+          "identifier": "4e822a08-c17a-3964-a1de-027802bb1c33",
+          "instanceIdentifier": "019e1016-ca77-1178-a384-3d17200cebc0",
+          "name": "",
+          "source": {
+            "id": "0e1473e2-aa2c-349c-911d-eee6e20debb4",
+            "type": "PROCESSOR",
+            "groupId": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+            "name": "CybersiftParser",
+            "comments": "",
+            "instanceIdentifier": "019e1012-ca77-1178-41e4-8d91d135a776"
+          },
+          "destination": {
+            "id": "62ddff64-2593-39e3-bc53-d9f2ab5160a9",
+            "type": "PROCESSOR",
+            "groupId": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+            "name": "PutElasticCS",
+            "comments": "",
+            "instanceIdentifier": "019e1014-ca77-1178-6647-6fb58c04342c"
+          },
+          "labelIndex": 1,
+          "zIndex": 0,
+          "selectedRelationships": [
+            "ALERTS"
+          ],
+          "backPressureObjectThreshold": 10000,
+          "backPressureDataSizeThreshold": "1 GB",
+          "flowFileExpiration": "0 sec",
+          "prioritizers": [],
+          "bends": [],
+          "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+          "partitioningAttribute": "",
+          "loadBalanceCompression": "DO_NOT_COMPRESS",
+          "componentType": "CONNECTION",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        },
+        {
+          "identifier": "797996da-eb8e-3d3e-b721-8bf93c4d0dd7",
+          "instanceIdentifier": "019e1017-ca77-1178-eb03-c15a56627ca5",
+          "name": "",
+          "source": {
+            "id": "0e1473e2-aa2c-349c-911d-eee6e20debb4",
+            "type": "PROCESSOR",
+            "groupId": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+            "name": "CybersiftParser",
+            "comments": "",
+            "instanceIdentifier": "019e1012-ca77-1178-41e4-8d91d135a776"
+          },
+          "destination": {
+            "id": "cb4650da-6fb0-39f8-9553-7bedfd2dc3c7",
+            "type": "PROCESSOR",
+            "groupId": "74344c6c-8304-3c41-8ae5-f34add6ec36e",
+            "name": "PutElasticCS",
+            "comments": "",
+            "instanceIdentifier": "019e1015-ca77-1178-222e-f522a9c9e9b7"
+          },
+          "labelIndex": 1,
+          "zIndex": 0,
+          "selectedRelationships": [
+            "Success"
+          ],
+          "backPressureObjectThreshold": 10000,
+          "backPressureDataSizeThreshold": "1 GB",
+          "flowFileExpiration": "0 sec",
+          "prioritizers": [],
+          "bends": [],
+          "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+          "partitioningAttribute": "",
+          "loadBalanceCompression": "DO_NOT_COMPRESS",
+          "componentType": "CONNECTION",
+          "groupIdentifier": "74344c6c-8304-3c41-8ae5-f34add6ec36e"
+        }
+      ],
+      "labels": [],
+      "funnels": [],
+      "controllerServices": [],
+      "variables": {},
+      "defaultFlowFileExpiration": "0 sec",
+      "defaultBackPressureObjectThreshold": 10000,
+      "defaultBackPressureDataSizeThreshold": "1 GB",
+      "componentType": "PROCESS_GROUP",
+      "flowFileConcurrency": "UNBOUNDED",
+      "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+    },
+    "externalControllerServices": {},
+    "parameterContexts": {},
+    "flowEncodingVersion": "1.0",
+    "parameterProviders": {},
+    "latest": false
   }
+}
 ]
