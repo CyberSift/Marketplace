@@ -1536,5 +1536,176 @@
     "createdAt": "2026-06-29T01:51:09.879Z",
     "updatedAt": "2026-06-29T01:56:04.870Z"
   	}
+  },
+ {
+  "name": "Alerts Overview Network events  Dashboard",
+  "description": "A security overview dashboard showing your current  Alerts from different sources and your firewall traffic ",
+  "reference": "https://www.cybersift.io",
+  "tags": [
+    "firewall",
+    "alerts"
+  ],
+  "export": {
+    "id": 40,
+    "title": "Alerts Overview -network",
+    "description": "alerts about network ",
+    "panels": [
+      {
+        "id": "1776234920648-ls82qcwmb",
+        "type": "pie",
+        "config": {
+          "title": "NetworkDeniedInternalConnections",
+          "index": "alerts-*",
+          "query": "title:\"Volume Anomaly for NetworkDeniedInternalConnections\"",
+          "field": "description",
+          "fields": [],
+          "metric": {}
+        },
+        "x": 6,
+        "y": 23,
+        "w": 6,
+        "h": 9
+      },
+      {
+        "id": "1776313748985-4ck6z0un6",
+        "type": "data_table",
+        "config": {
+          "title": "SSH to public IP",
+          "index": "alerts-*",
+          "query": "title:\"SSH to public IP\"",
+          "field": "",
+          "fields": [
+            "original.ASN Description",
+            "original.DestinationAddress",
+            "original.action",
+            "original.rule_name"
+          ],
+          "size": 250
+        },
+        "x": 0,
+        "y": 8,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1776314319114-c69ygaene",
+        "type": "data_table",
+        "config": {
+          "title": "First seen ASN",
+          "index": "alerts-*",
+          "query": "title:\"First Seen Destination ASN\" AND NOT data.port:443",
+          "field": "",
+          "fields": [
+            "data.destination",
+            "data.port",
+            "data.asn"
+          ],
+          "size": 25
+        },
+        "x": 6,
+        "y": 15,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1776314518247-zw02t9get",
+        "type": "pie",
+        "config": {
+          "title": "Volume Anomaly for AsnVolume",
+          "index": "alerts-*",
+          "query": "title:\"Volume Anomaly for AsnVolume\"",
+          "field": "description",
+          "fields": [],
+          "metric": {},
+          "size": 11
+        },
+        "x": 0,
+        "y": 23,
+        "w": 6,
+        "h": 9
+      },
+      {
+        "id": "1776316108817-az9p7cddk",
+        "type": "data_table",
+        "config": {
+          "title": "Volume Anomaly for PortsUsed",
+          "index": "alerts-*",
+          "query": "title:\"Volume Anomaly for PortsUsed\"",
+          "field": "",
+          "fields": [
+            "description",
+            "details"
+          ],
+          "size": 22
+        },
+        "x": 0,
+        "y": 32,
+        "w": 12,
+        "h": 8
+      },
+      {
+        "id": "1776316395190-2ftknwg7w",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Possible Network Beacon",
+          "index": "alerts-*",
+          "query": "title:\"Possible Network Beacon\"",
+          "field": "DestinationAddress",
+          "fields": [],
+          "metric": {},
+          "split": "DestinationPort"
+        },
+        "x": 0,
+        "y": 15,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1776338607361-ks84txn3d",
+        "type": "data_table",
+        "config": {
+          "title": "SMB to public IP",
+          "index": "alerts-*",
+          "query": "title:\"SMB to public IP\"",
+          "field": "",
+          "fields": [
+            "original.SourceDestinationTuple",
+            "original.ASN Description"
+          ]
+        },
+        "x": 6,
+        "y": 8,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1785992900363-gyu19ulaj",
+        "type": "time_series_echarts",
+        "config": {
+          "title": "Alerts -Network",
+          "index": "alerts-*",
+          "query": "tags:network",
+          "field": "",
+          "fields": [],
+          "split": "title"
+        },
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    ],
+    "layout": {},
+    "index": "alerts-*",
+    "query": "",
+    "timeRange": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "filters": [],
+    "scope": "shared",
+    "createdAt": "2026-08-06T05:31:18.269Z",
+    "updatedAt": "2026-08-06T05:31:33.039Z"
   }
+}
 ]
