@@ -1538,9 +1538,9 @@
   	}
   },
  {
-  "name": "Network Alerts Overview Dashboard",
+  "name": "Network Alerts Overview",
   "description": "A security overview dashboard highlighting network-related security alerts.",
-  "reference": "https://www.cybersift.io",
+  "reference": "",
   "tags": [
     "network",
     "alerts"
