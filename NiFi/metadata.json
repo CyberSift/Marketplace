@@ -3440,5 +3440,586 @@
       "parameterProviders": {},
       "latest": false
     }
+  },
+  {
+    "name": "Syslog Ingestion",
+    "description": "Sentio supports a wide range of syslog sources, allowing organizations to collect and centralize logs from various devices and systems. This is achieved by configuring the syslog source to forward its logs to the SIEM’s public IP address.",
+    "tags": [
+      "Syslog",
+      "Cybersift Intelligence"
+    ],
+    "export": {
+      "flowContents": {
+        "identifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+        "instanceIdentifier": "faf7cc5e-019f-1000-7084-d2536b5b8cd8",
+        "name": "Syslog Ingestion",
+        "comments": "",
+        "position": {
+          "x": -472.0,
+          "y": 536.0
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+          {
+            "identifier": "0bbfb7d0-e94e-3d62-8e9a-63c14e32ff77",
+            "instanceIdentifier": "faf884f6-019f-1000-e081-6b285d633ee0",
+            "name": "ListenSyslog",
+            "comments": "",
+            "position": {
+              "x": 584.0,
+              "y": 24.0
+            },
+            "type": "org.apache.nifi.processors.standard.ListenSyslog",
+            "bundle": {
+              "group": "org.apache.nifi",
+              "artifact": "nifi-standard-nar",
+              "version": "1.27.0"
+            },
+            "properties": {
+              "Max Size of Socket Buffer": "1 MB",
+              "Max Number of TCP Connections": "2",
+              "Local Network Interface": null,
+              "Max Batch Size": "1",
+              "Port": "514",
+              "socket-keep-alive": "false",
+              "Receive Buffer Size": "65507 B",
+              "Message Delimiter": "\\n",
+              "SSL Context Service": null,
+              "Parse Messages": "true",
+              "Protocol": "UDP",
+              "Client Auth": "REQUIRED",
+              "Character Set": "UTF-8",
+              "Max Size of Message Queue": "10000"
+            },
+            "propertyDescriptors": {
+              "Max Size of Socket Buffer": {
+                "name": "Max Size of Socket Buffer",
+                "displayName": "Max Size of Socket Buffer",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Max Number of TCP Connections": {
+                "name": "Max Number of TCP Connections",
+                "displayName": "Max Number of TCP Connections",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Local Network Interface": {
+                "name": "Local Network Interface",
+                "displayName": "Local Network Interface",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Max Batch Size": {
+                "name": "Max Batch Size",
+                "displayName": "Max Batch Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Port": {
+                "name": "Port",
+                "displayName": "Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "socket-keep-alive": {
+                "name": "socket-keep-alive",
+                "displayName": "Socket Keep Alive",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Receive Buffer Size": {
+                "name": "Receive Buffer Size",
+                "displayName": "Receive Buffer Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Message Delimiter": {
+                "name": "Message Delimiter",
+                "displayName": "Message Delimiter",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "SSL Context Service": {
+                "name": "SSL Context Service",
+                "displayName": "SSL Context Service",
+                "identifiesControllerService": true,
+                "sensitive": false
+              },
+              "Parse Messages": {
+                "name": "Parse Messages",
+                "displayName": "Parse Messages",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Protocol": {
+                "name": "Protocol",
+                "displayName": "Protocol",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Client Auth": {
+                "name": "Client Auth",
+                "displayName": "Client Auth",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Character Set": {
+                "name": "Character Set",
+                "displayName": "Character Set",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Max Size of Message Queue": {
+                "name": "Max Size of Message Queue",
+                "displayName": "Max Size of Message Queue",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          },
+          {
+            "identifier": "963fa8d4-0c80-3799-ae60-7a0531693c5a",
+            "instanceIdentifier": "faf91d64-019f-1000-e4d2-010da55b10c6",
+            "name": "PutElasticCS",
+            "comments": "",
+            "position": {
+              "x": 320.0,
+              "y": 576.0
+            },
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Elasticsearch ID attribute": "es_id",
+              "Elasticsearch Username": null,
+              "Bulk Size": "1000",
+              "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('alerts-')}",
+              "PROXY PORT": null,
+              "Elasticsearch Index Flowfile Attribute": null,
+              "PROXY IP": null,
+              "Backup Directory": " ",
+              "MULTILINE": "false",
+              "Elasticsearch URL": "http://localhost:9200"
+            },
+            "propertyDescriptors": {
+              "Elasticsearch ID attribute": {
+                "name": "Elasticsearch ID attribute",
+                "displayName": "Elasticsearch ID attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Username": {
+                "name": "Elasticsearch Username",
+                "displayName": "Elasticsearch Username",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Bulk Size": {
+                "name": "Bulk Size",
+                "displayName": "Bulk Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Default Index": {
+                "name": "Elasticsearch Default Index",
+                "displayName": "Elasticsearch Default Index",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY PORT": {
+                "name": "PROXY PORT",
+                "displayName": "Proxy Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Index Flowfile Attribute": {
+                "name": "Elasticsearch Index Flowfile Attribute",
+                "displayName": "Elasticsearch Index Flowfile Attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY IP": {
+                "name": "PROXY IP",
+                "displayName": "Proxy IP",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Password": {
+                "name": "Elasticsearch Password",
+                "displayName": "Elasticsearch Password",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "Backup Directory": {
+                "name": "Backup Directory",
+                "displayName": "Backup Directory",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "MULTILINE": {
+                "name": "MULTILINE",
+                "displayName": "Multiple JSON per flowfile",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch URL": {
+                "name": "Elasticsearch URL",
+                "displayName": "Elasticsearch URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Auto Terminated Relationships",
+              "Elasticsearch Response",
+              "Elasticsearch Request",
+              "Original Flow Files"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          },
+          {
+            "identifier": "6c4414b1-8f49-345d-9711-7f12b11efca4",
+            "instanceIdentifier": "faf8a775-019f-1000-57a1-5eaf3011ba54",
+            "name": "SyslogParser",
+            "comments": "",
+            "position": {
+              "x": 584.0,
+              "y": 272.0
+            },
+            "type": "io.cybersift.processors.syslogParser.SyslogParser",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-syslog-parser-nar",
+              "version": "1.0-SNAPSHOT"
+            },
+            "properties": {
+              "PARSER": null,
+              "Liveliness Threshold (Hours)": "1",
+              "GEOIP_ATTRIBUTE": "/root/geolite/Country.mmdb"
+            },
+            "propertyDescriptors": {
+              "PARSER": {
+                "name": "PARSER",
+                "displayName": "Parser",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Liveliness Threshold (Hours)": {
+                "name": "Liveliness Threshold (Hours)",
+                "displayName": "Liveliness Threshold (Hours)",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "GEOIP_ATTRIBUTE": {
+                "name": "GEOIP_ATTRIBUTE",
+                "displayName": "GeoLite Filepath",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          },
+          {
+            "identifier": "dec3df8c-0a5d-3699-ac5f-da43200955ad",
+            "instanceIdentifier": "faf9160f-019f-1000-504f-0c423289d97d",
+            "name": "PutElasticCS",
+            "comments": "",
+            "position": {
+              "x": 872.0,
+              "y": 576.0
+            },
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Elasticsearch ID attribute": "es_id",
+              "Elasticsearch Username": null,
+              "Bulk Size": "1000",
+              "Elasticsearch Default Index": "${now():format('yyyy.MM.dd'):prepend('filebeat-')}",
+              "PROXY PORT": null,
+              "Elasticsearch Index Flowfile Attribute": null,
+              "PROXY IP": null,
+              "Backup Directory": " ",
+              "MULTILINE": "false",
+              "Elasticsearch URL": "http://localhost:9200"
+            },
+            "propertyDescriptors": {
+              "Elasticsearch ID attribute": {
+                "name": "Elasticsearch ID attribute",
+                "displayName": "Elasticsearch ID attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Username": {
+                "name": "Elasticsearch Username",
+                "displayName": "Elasticsearch Username",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Bulk Size": {
+                "name": "Bulk Size",
+                "displayName": "Bulk Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Default Index": {
+                "name": "Elasticsearch Default Index",
+                "displayName": "Elasticsearch Default Index",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY PORT": {
+                "name": "PROXY PORT",
+                "displayName": "Proxy Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Index Flowfile Attribute": {
+                "name": "Elasticsearch Index Flowfile Attribute",
+                "displayName": "Elasticsearch Index Flowfile Attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY IP": {
+                "name": "PROXY IP",
+                "displayName": "Proxy IP",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Password": {
+                "name": "Elasticsearch Password",
+                "displayName": "Elasticsearch Password",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "Backup Directory": {
+                "name": "Backup Directory",
+                "displayName": "Backup Directory",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "MULTILINE": {
+                "name": "MULTILINE",
+                "displayName": "Multiple JSON per flowfile",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch URL": {
+                "name": "Elasticsearch URL",
+                "displayName": "Elasticsearch URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Auto Terminated Relationships",
+              "Elasticsearch Response",
+              "Elasticsearch Request",
+              "Original Flow Files"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          }
+        ],
+        "inputPorts": [],
+        "outputPorts": [],
+        "connections": [
+          {
+            "identifier": "e44b1d7e-80f4-383e-83de-ab30e7ded912",
+            "instanceIdentifier": "faf94923-019f-1000-8dd4-6d86af84e676",
+            "name": "",
+            "source": {
+              "id": "6c4414b1-8f49-345d-9711-7f12b11efca4",
+              "type": "PROCESSOR",
+              "groupId": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+              "name": "SyslogParser",
+              "comments": "",
+              "instanceIdentifier": "faf8a775-019f-1000-57a1-5eaf3011ba54"
+            },
+            "destination": {
+              "id": "dec3df8c-0a5d-3699-ac5f-da43200955ad",
+              "type": "PROCESSOR",
+              "groupId": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+              "name": "PutElasticCS",
+              "comments": "",
+              "instanceIdentifier": "faf9160f-019f-1000-504f-0c423289d97d"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "Success"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          },
+          {
+            "identifier": "f7787b7e-0e1a-3d9f-8304-8403c42d4623",
+            "instanceIdentifier": "faf8ca76-019f-1000-4ba8-1a53f91aad36",
+            "name": "",
+            "source": {
+              "id": "0bbfb7d0-e94e-3d62-8e9a-63c14e32ff77",
+              "type": "PROCESSOR",
+              "groupId": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+              "name": "ListenSyslog",
+              "comments": "",
+              "instanceIdentifier": "faf884f6-019f-1000-e081-6b285d633ee0"
+            },
+            "destination": {
+              "id": "6c4414b1-8f49-345d-9711-7f12b11efca4",
+              "type": "PROCESSOR",
+              "groupId": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+              "name": "SyslogParser",
+              "comments": "",
+              "instanceIdentifier": "faf8a775-019f-1000-57a1-5eaf3011ba54"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "success",
+              "invalid"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          },
+          {
+            "identifier": "b39796fe-30d1-34b9-92b7-f2948010016e",
+            "instanceIdentifier": "faf930a2-019f-1000-8af2-a2686252a3f9",
+            "name": "",
+            "source": {
+              "id": "6c4414b1-8f49-345d-9711-7f12b11efca4",
+              "type": "PROCESSOR",
+              "groupId": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+              "name": "SyslogParser",
+              "comments": "",
+              "instanceIdentifier": "faf8a775-019f-1000-57a1-5eaf3011ba54"
+            },
+            "destination": {
+              "id": "963fa8d4-0c80-3799-ae60-7a0531693c5a",
+              "type": "PROCESSOR",
+              "groupId": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f",
+              "name": "PutElasticCS",
+              "comments": "",
+              "instanceIdentifier": "faf91d64-019f-1000-e4d2-010da55b10c6"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "Alerts"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "ce5f9563-7e47-3ac6-a13c-b0d69d0e509f"
+          }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [],
+        "variables": {},
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE",
+        "componentType": "PROCESS_GROUP"
+      },
+      "externalControllerServices": {},
+      "parameterContexts": {},
+      "flowEncodingVersion": "1.0",
+      "parameterProviders": {},
+      "latest": false
+    }
   }
 ]
