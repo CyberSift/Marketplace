@@ -2,7 +2,6 @@
   {
     "name": "O365 Enviornment Dashboard",
     "description": "An overview of your O365 environment including critical visuals to determine abnormalities in your environment",
-    "reference": "https://www.cybersift.io",
     "tags": [
       "o365"
     ],
@@ -192,7 +191,6 @@
   {
     "name": "User/IP/Host investigation",
     "description": "An overview of actions and alerts of particular asset",
-    "reference": "https://www.cybersift.io",
     "tags": [
       "firewall",
       "windows",
@@ -413,7 +411,6 @@
   {
     "name": "Network Security Posture Dashboard",
     "description": "An overview of your network environment including critical visuals to determine abnormalities in your environment",
-    "reference": "https://www.cybersift.io",
     "tags": [
       "network"
     ],
@@ -619,7 +616,6 @@
 {
   "name": "[Sonicwall] - Security Posture Dashboard",
   "description": "A security overview dashboard showing your current security posture which is split between Alerts from different sources and your firewall traffic ",
-  "reference": "https://www.cybersift.io",
   "tags": [
       "firewall",
       "alerts"
@@ -914,7 +910,6 @@
 {
   "name": "ESET Dashboard",
   "description": "Provides visibility into ESET security events by displaying the severity level, total event count, event titles, associated process names, and command-line execution parameters",
-  "reference": "https://www.cybersift.io",
   "tags": [
     "eset"
   ],
@@ -1105,7 +1100,6 @@
 {
     "name": "Alerts Management",
     "description": "The dashboard provides a comprehensive overview of all alerts, with key highlights for top-priority and persistent issues. It also features dedicated insights into machine learning detections and host liveliness monitoring, enabling quick identification of high priority events and system health status.",
-    "reference": "https://cybersift.io",
     "tags": [
       "alerts"
     ],
@@ -1343,7 +1337,6 @@
 	{
   "name": "Entra ID Posture",
   "description": "This is a dashboard which gives you insights into your Entra based interactive and non-interactive sign-in logs",
-  "reference": "http://cybersift.io/",
   "tags": ["entra", "azure", "microsoft", "dashboard", "posture"],
   "export": {
     "id": 26,
@@ -1540,7 +1533,6 @@
  {
   "name": "Network Alerts Overview",
   "description": "A security overview dashboard highlighting network-related security alerts.",
-  "reference": "",
   "tags": [
     "network",
     "alerts"
