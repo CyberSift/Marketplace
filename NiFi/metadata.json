@@ -3444,7 +3444,7 @@
   {
     "name": "Syslog Ingestion",
     "description": "Sentio supports a wide range of syslog sources, allowing organizations to collect and centralize logs from various devices and systems. This is achieved by configuring the syslog source to forward its logs to the SIEM’s public IP address.",
-    "reference":  "https://outline.cybersift.io/s/e84410ac-1358-47d9-bf4d-5c17fcd1f70f",
+    "reference": "https://outline.cybersift.io/s/e84410ac-1358-47d9-bf4d-5c17fcd1f70f",
     "tags": [
       "Syslog",
       "Cybersift Intelligence"
