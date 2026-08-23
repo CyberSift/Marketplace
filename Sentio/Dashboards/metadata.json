@@ -1699,5 +1699,315 @@
     "createdAt": "2026-08-08T09:15:59.272Z",
     "updatedAt": "2026-08-08T09:38:08.913Z"
   }
+},
+{
+  "name": "Windows Alerts Overview Dashboard",
+  "description": "A security overview dashboard highlighting windows-related security alerts.",
+  "reference": "https://www.cybersift.io",
+  "tags": [
+    "windows",
+    "alerts"
+  ],
+  "export": {
+    "id": 151,
+    "title": "Windows Alerts Overview v2",
+    "description": "Overview dashboard highlighting windows-related security alerts.",
+    "panels": [
+      {
+        "id": "1776229875726-t71a44udl",
+        "type": "data_table",
+        "config": {
+          "title": "Disabled User Activity",
+          "index": "alerts-*",
+          "query": "title:\"Disabled User Activity\"",
+          "field": "",
+          "fields": [
+            "original.agent.hostname",
+            "original.winlog.cybersift.SubjectUserNameNormalized",
+            "original.event.code",
+            "original.winlog.event_data.LogonTypeText"
+          ],
+          "size": 15
+        },
+        "x": 0,
+        "y": 55,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1776230056124-v5lmhanrd",
+        "type": "data_table",
+        "config": {
+          "title": "Non-existent user login",
+          "index": "alerts-*",
+          "query": "title:\"Non-existent user login\"",
+          "field": "",
+          "fields": [
+            "original.winlog.cybersift.TargetUserNameNormalized",
+            "original.winlog.cybersift.SubjectUserNameNormalized",
+            "original.winlog.cybersift.LoginInfo.FailureReason",
+            "original.winlog.cybersift.LoginInfo.SourceAddress",
+            "original.winlog.event_data.LogonTypeText"
+          ],
+          "size": 25
+        },
+        "x": 6,
+        "y": 38,
+        "w": 6,
+        "h": 9
+      },
+      {
+        "id": "1776231089901-8oan8f0b7",
+        "type": "data_table",
+        "config": {
+          "title": "Abnormal Login Source Workstation",
+          "index": "alerts-*",
+          "query": "title:(\"Abnormal Login Source Workstation\" OR \"Abnormal Login Source Workstation Rarely Seen\")",
+          "field": "",
+          "fields": [
+            "original.winlog.cybersift.TargetUserNameNormalized",
+            "original.winlog.cybersift.LoginInfo.SourceAddress",
+            "original.winlog.event_data.LogonTypeText",
+            "original.winlog.event_id",
+            "original.winlog.cybersift.Indicator"
+          ],
+          "size": 25
+        },
+        "x": 0,
+        "y": 47,
+        "w": 12,
+        "h": 8
+      },
+      {
+        "id": "1776235515625-3gwm4r039",
+        "type": "data_table",
+        "config": {
+          "title": "Unusual Windows Process",
+          "index": "alerts-*",
+          "query": "title:\"Unusual windows process\"",
+          "field": "",
+          "fields": [
+            "original.agent.hostname",
+            "details",
+            "original.winlog.event_data.ProcessName"
+          ]
+        },
+        "x": 2,
+        "y": 8,
+        "w": 10,
+        "h": 7
+      },
+      {
+        "id": "1776315598546-eg5bo75uo",
+        "type": "pie",
+        "config": {
+          "title": "Win_Success_Login_Volume",
+          "index": "alerts-*",
+          "query": "title:\"Volume Anomaly for Win_Success_Login_Volume\"",
+          "field": "description",
+          "fields": [],
+          "metric": {}
+        },
+        "x": 6,
+        "y": 31,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1786182342681-xu6nda4t2",
+        "type": "time_series_echarts",
+        "config": {
+          "title": "Windows Alerts Trend",
+          "index": "alerts-*",
+          "query": "tags:windows",
+          "field": "",
+          "fields": [],
+          "split": "title"
+        },
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      {
+        "id": "1786182819789-rhoovy332",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Local Administrator Activity",
+          "index": "alerts-*",
+          "query": "title:\"Local Administrator Activity\"",
+          "field": "original.winlog.task",
+          "fields": [],
+          "metric": {},
+          "split": "original.winlog.cybersift.ComputerNameNormalized",
+          "size": 20
+        },
+        "x": 0,
+        "y": 40,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1786183183753-tlinaxk08",
+        "type": "metric",
+        "config": {
+          "title": "NTLM V1 Logins Detected",
+          "index": "alerts-*",
+          "query": "title:\"NTLM V1 Detected\"",
+          "field": "",
+          "fields": [],
+          "metric": {
+            "type": "count",
+            "field": "_id"
+          }
+        },
+        "x": 0,
+        "y": 8,
+        "w": 2,
+        "h": 3
+      },
+      {
+        "id": "1786184986153-hreuump1o",
+        "type": "data_table",
+        "config": {
+          "title": "Successful Interactive Logon from Public IP",
+          "index": "alerts-*",
+          "query": "title:\"Successful Interactive Logon from Public IP\"",
+          "field": "",
+          "fields": [
+            "original.agent.name",
+            "original.winlog.cybersift.TargetUserNameNormalized",
+            "original.winlog.event_data.LogonTypeText",
+            "original.winlog.event_data.IpAddress"
+          ]
+        },
+        "x": 0,
+        "y": 15,
+        "w": 6,
+        "h": 5
+      },
+      {
+        "id": "1786185101691-p8dtwt4wn",
+        "type": "metric",
+        "config": {
+          "title": "Liveliness check failed",
+          "index": "alerts-*",
+          "query": " title:\"Liveliness check failed\"",
+          "field": "",
+          "fields": [],
+          "metric": {
+            "type": "count",
+            "field": "_id"
+          }
+        },
+        "x": 0,
+        "y": 11,
+        "w": 2,
+        "h": 4
+      },
+      {
+        "id": "1786185460950-1kiddfnfd",
+        "type": "vertical_bar",
+        "config": {
+          "title": "Windows Failed Logins",
+          "index": "alerts-*",
+          "query": "title:\"Volume Anomaly for Win_Failed_Login_Volume_User\"",
+          "field": "description",
+          "fields": [],
+          "metric": {},
+          "split": "details"
+        },
+        "x": 0,
+        "y": 33,
+        "w": 6,
+        "h": 7
+      },
+      {
+        "id": "1786186227518-rwh36rdbc",
+        "type": "data_table",
+        "config": {
+          "title": "Direct administrator logins should be disabled",
+          "index": "alerts-*",
+          "query": "title:\"Administrator Login \\- direct administrator logins should be disabled\"",
+          "field": "",
+          "fields": [
+            "original.winlog.cybersift.Indicator",
+            "original.winlog.cybersift.LoginInfo.DestinationAddress",
+            "original.winlog.cybersift.LogonTypeText"
+          ]
+        },
+        "x": 6,
+        "y": 15,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1786186554105-1di9sfdut",
+        "type": "data_table",
+        "config": {
+          "title": "Suspicious Unicode Characters Detected",
+          "index": "alerts-*",
+          "query": "title:\"Suspicious Unicode Characters Detected\"",
+          "field": "",
+          "fields": [
+            "original.agent.hostname",
+            "original.message"
+          ],
+          "metric": {}
+        },
+        "x": 0,
+        "y": 28,
+        "w": 6,
+        "h": 5
+      },
+      {
+        "id": "1786186739556-je0ve25c4",
+        "type": "data_table",
+        "config": {
+          "title": "User Group Membership Changed",
+          "index": "alerts-*",
+          "query": "title:\"User Group Membership Changed\"",
+          "field": "",
+          "fields": [
+            "details"
+          ],
+          "metric": {},
+          "size": 100
+        },
+        "x": 6,
+        "y": 23,
+        "w": 6,
+        "h": 8
+      },
+      {
+        "id": "1786186908870-hhtpbaam4",
+        "type": "time_series_echarts",
+        "config": {
+          "title": "Windows Kerberos Ticket Volume",
+          "index": "alerts-*",
+          "query": "title:\"Volume Anomaly for Win_Kerberos_Ticket_Volume\"",
+          "field": "",
+          "fields": [],
+          "metric": {},
+          "split": "description"
+        },
+        "x": 0,
+        "y": 20,
+        "w": 6,
+        "h": 8
+      }
+    ],
+    "layout": {},
+    "index": "*",
+    "query": "",
+    "timeRange": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "filters": [],
+    "scope": "shared",
+    "createdAt": "2026-08-10T23:21:18.529Z",
+    "updatedAt": "2026-08-10T23:22:02.436Z"
+  }
 }
 ]
