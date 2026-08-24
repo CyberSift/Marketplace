@@ -1703,7 +1703,7 @@
 {
   "name": "Windows Alerts Overview Dashboard",
   "description": "A security overview dashboard highlighting windows-related security alerts.",
-  "reference": "https://www.cybersift.io",
+  "reference": "",
   "tags": [
     "windows",
     "alerts"
