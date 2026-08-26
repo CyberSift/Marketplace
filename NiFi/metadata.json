@@ -152,7 +152,7 @@
             },
             "properties": {
               "INACTIVE_THRESHOLD": "7",
-              "MANAGEMENT_URL": "https://euce1-105.sentinelone.net"
+              "MANAGEMENT_URL": ""
             },
             "propertyDescriptors": {
               "API_KEY": {
