@@ -4923,7 +4923,7 @@
     "description": "The GitHub integration enables you to ingest audit logs from your development team into Sentio SIEM, ensuring comprehensive visibility and effective monitoring of development activities.",
     "reference": "https://outline.cybersift.io/s/sentio-siem/doc/github-api-X1LKdKWdzM",
     "tags": [
-      "flow_tag_1"
+      "API"
     ],
     "export": {
       "flowContents": {
