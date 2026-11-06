@@ -5331,5 +5331,308 @@
       "parameterProviders": {},
       "latest": false
     }
+  },
+  {
+    "name": "Mimecast API 2.0",
+    "description": "A Mimecast SIEM connection integrates Mimecast security event data with your Security Information and Event Management (SIEM) platform, providing centralized visibility into email security threats and activity. It enables real-time threat monitoring, faster incident detection and response, improved security investigations, and enhanced overall security posture.",
+    "reference": "https://outline.cybersift.io/s/5917b6fb-32b0-48cc-bdd8-539f34943f99",
+    "tags": [
+      "API"
+    ],
+    "export": {
+      "flowContents": {
+        "identifier": "36be7393-99dd-3c80-a8de-25395d1f7652",
+        "instanceIdentifier": "7d0a5583-01a1-1000-c7bb-047e797ed92b",
+        "name": "Mimecast",
+        "comments": "",
+        "position": {
+          "x": 272.0,
+          "y": 888.0
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+          {
+            "identifier": "1b9bc619-d13d-33d5-b143-340db42e88fd",
+            "instanceIdentifier": "01a01000-32cb-1c17-8f2c-1f686d0cc4c8",
+            "name": "PutElasticCS",
+            "comments": "",
+            "position": {
+              "x": 464.0,
+              "y": 488.0
+            },
+            "type": "io.cybersift.processors.PutElasticCS.PutElasticCS",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-PutElasticCS-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "Elasticsearch Username": null,
+              "Elasticsearch ID attribute": null,
+              "Bulk Size": "1000",
+              "Elasticsearch Default Index": "mimecast-${now():format('yyyy.MM.dd')}",
+              "PROXY PORT": null,
+              "Elasticsearch Index Flowfile Attribute": null,
+              "PROXY IP": null,
+              "Backup Queue Capacity": "10000",
+              "Backup Directory": " ",
+              "Elasticsearch URL": "http://localhost:9200",
+              "MULTILINE": "false"
+            },
+            "propertyDescriptors": {
+              "Elasticsearch Username": {
+                "name": "Elasticsearch Username",
+                "displayName": "Elasticsearch Username",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch ID attribute": {
+                "name": "Elasticsearch ID attribute",
+                "displayName": "Elasticsearch ID attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Bulk Size": {
+                "name": "Bulk Size",
+                "displayName": "Bulk Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Default Index": {
+                "name": "Elasticsearch Default Index",
+                "displayName": "Elasticsearch Default Index",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY PORT": {
+                "name": "PROXY PORT",
+                "displayName": "Proxy Port",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Index Flowfile Attribute": {
+                "name": "Elasticsearch Index Flowfile Attribute",
+                "displayName": "Elasticsearch Index Flowfile Attribute",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PROXY IP": {
+                "name": "PROXY IP",
+                "displayName": "Proxy IP",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Backup Queue Capacity": {
+                "name": "Backup Queue Capacity",
+                "displayName": "Backup Queue Capacity",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch Password": {
+                "name": "Elasticsearch Password",
+                "displayName": "Elasticsearch Password",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "Backup Directory": {
+                "name": "Backup Directory",
+                "displayName": "Backup Directory",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "Elasticsearch URL": {
+                "name": "Elasticsearch URL",
+                "displayName": "Elasticsearch URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "MULTILINE": {
+                "name": "MULTILINE",
+                "displayName": "Multiple JSON per flowfile",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [
+              "Elasticsearch Response",
+              "Elasticsearch Request",
+              "Original Flow Files"
+            ],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "36be7393-99dd-3c80-a8de-25395d1f7652"
+          },
+          {
+            "identifier": "31068cdd-5173-33dc-be54-57d539cb263e",
+            "instanceIdentifier": "b1079dc7-01a1-1000-0944-8c1b424d2199",
+            "name": "Mimecast",
+            "comments": "",
+            "position": {
+              "x": 464.0,
+              "y": 152.0
+            },
+            "type": "io.cybersift.processors.mimecast.Mimecast",
+            "bundle": {
+              "group": "io.cybersift",
+              "artifact": "nifi-mimecast-nar",
+              "version": "1.0"
+            },
+            "properties": {
+              "API_BASE_URL": "https://api.services.mimecast.com",
+              "EVENTS_PATH": "/siem/v1/events/cg",
+              "MAX_PAGES_PER_TRIGGER": "10",
+              "REQUEST_TIMEOUT_SEC": "120",
+              "CLIENT_ID": null,
+              "PAGE_SIZE": "100",
+              "EVENT_TYPES": null,
+              "DATE_RANGE_STARTS_AT": null
+            },
+            "propertyDescriptors": {
+              "API_BASE_URL": {
+                "name": "API_BASE_URL",
+                "displayName": "API Base URL",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "EVENTS_PATH": {
+                "name": "EVENTS_PATH",
+                "displayName": "Events Path",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "CLIENT_SECRET": {
+                "name": "CLIENT_SECRET",
+                "displayName": "Client Secret",
+                "identifiesControllerService": false,
+                "sensitive": true
+              },
+              "MAX_PAGES_PER_TRIGGER": {
+                "name": "MAX_PAGES_PER_TRIGGER",
+                "displayName": "Max Pages Per Trigger",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "REQUEST_TIMEOUT_SEC": {
+                "name": "REQUEST_TIMEOUT_SEC",
+                "displayName": "Request Timeout (seconds)",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "CLIENT_ID": {
+                "name": "CLIENT_ID",
+                "displayName": "Client ID",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "PAGE_SIZE": {
+                "name": "PAGE_SIZE",
+                "displayName": "Page Size",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "EVENT_TYPES": {
+                "name": "EVENT_TYPES",
+                "displayName": "Event Types",
+                "identifiesControllerService": false,
+                "sensitive": false
+              },
+              "DATE_RANGE_STARTS_AT": {
+                "name": "DATE_RANGE_STARTS_AT",
+                "displayName": "Date Range Starts At",
+                "identifiesControllerService": false,
+                "sensitive": false
+              }
+            },
+            "style": {},
+            "schedulingPeriod": "0 sec",
+            "schedulingStrategy": "TIMER_DRIVEN",
+            "executionNode": "ALL",
+            "penaltyDuration": "30 sec",
+            "yieldDuration": "1 sec",
+            "bulletinLevel": "WARN",
+            "runDurationMillis": 0,
+            "concurrentlySchedulableTaskCount": 1,
+            "autoTerminatedRelationships": [],
+            "scheduledState": "ENABLED",
+            "retryCount": 10,
+            "retriedRelationships": [],
+            "backoffMechanism": "PENALIZE_FLOWFILE",
+            "maxBackoffPeriod": "10 mins",
+            "componentType": "PROCESSOR",
+            "groupIdentifier": "36be7393-99dd-3c80-a8de-25395d1f7652"
+          }
+        ],
+        "inputPorts": [],
+        "outputPorts": [],
+        "connections": [
+          {
+            "identifier": "d6f8a024-7920-3e0b-b607-968ec4e25557",
+            "instanceIdentifier": "b10ac9c0-01a1-1000-d81d-b022e4d86ebb",
+            "name": "",
+            "source": {
+              "id": "31068cdd-5173-33dc-be54-57d539cb263e",
+              "type": "PROCESSOR",
+              "groupId": "36be7393-99dd-3c80-a8de-25395d1f7652",
+              "name": "Mimecast",
+              "comments": "",
+              "instanceIdentifier": "b1079dc7-01a1-1000-0944-8c1b424d2199"
+            },
+            "destination": {
+              "id": "1b9bc619-d13d-33d5-b143-340db42e88fd",
+              "type": "PROCESSOR",
+              "groupId": "36be7393-99dd-3c80-a8de-25395d1f7652",
+              "name": "PutElasticCS",
+              "comments": "",
+              "instanceIdentifier": "01a01000-32cb-1c17-8f2c-1f686d0cc4c8"
+            },
+            "labelIndex": 1,
+            "zIndex": 0,
+            "selectedRelationships": [
+              "EVENTS",
+              "FAILURE"
+            ],
+            "backPressureObjectThreshold": 10000,
+            "backPressureDataSizeThreshold": "1 GB",
+            "flowFileExpiration": "0 sec",
+            "prioritizers": [],
+            "bends": [],
+            "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+            "partitioningAttribute": "",
+            "loadBalanceCompression": "DO_NOT_COMPRESS",
+            "componentType": "CONNECTION",
+            "groupIdentifier": "36be7393-99dd-3c80-a8de-25395d1f7652"
+          }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [],
+        "variables": {},
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+      },
+      "externalControllerServices": {},
+      "parameterContexts": {},
+      "flowEncodingVersion": "1.0",
+      "parameterProviders": {},
+      "latest": false
+    }
   }
 ]
