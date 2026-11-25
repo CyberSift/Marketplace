@@ -255,26 +255,36 @@
         }
     },
     {
-    "name": "Account lockouts",
-    "description": "This visualization shows the number of user account lockouts over time. It helps identify potential brute-force or password spraying attacks, as well as user-related issues such as repeated failed logins, by highlighting spikes or unusual patterns in account lockout activity.",
-    "tags": ["windows", "account lockout"],
-    "export": {
-  "id": 19,
-  "type": "time_series_echarts",
-  "config": {
-    "title": "Account lockouts",
-    "index": "winlogbeat-*",
-    "query": "event.code:4740",
-    "field": "",
-    "fields": [],
-    "timeRange": {
-      "from": "now-7d",
-      "to": "now"
-    },
-    "globalQuery": ""
-  },
-  "createdAt": "2026-04-07T12:27:18.470Z",
-  "updatedAt": "2026-04-07T12:27:33.388Z"
-     }        
-  }
+        "name": "High Number of different Destination Ports",
+        "description": "This visual shows the number of unique ports targeted per ASN - useful to identify port scanning",
+        "tags": [
+            "port scan",
+            "severity"
+        ],
+        "export": {
+            "type": "time_series_echarts",
+            "config": {
+                "title": "High Number of different Destination Ports",
+                "index": "filebeat-*",
+                "query": "",
+                "field": "",
+                "fields": [],
+                "split": "ASN Description",
+                "aggregation": {
+                    "interval": "1h",
+                    "metric": {
+                        "type": "cardinality",
+                        "field": "DestinationPort"
+                    }
+                },
+                "timeRange": {
+                    "from": "now-7d",
+                    "to": "now"
+                },
+                "globalQuery": ""
+            },
+            "createdAt": "2026-07-23T13:09:52.618Z",
+            "updatedAt": "2026-07-23T13:10:14.888Z"
+        }
+    }
 ]
